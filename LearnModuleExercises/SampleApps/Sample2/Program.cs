@@ -60,7 +60,6 @@ class Device
         {
             Bme280ReadResult sensorOutput = s_bme280.Read();         
 
-            // Update the Twin
             await UpdateTwin(
                     sensorOutput.Temperature.Value.DegreesFahrenheit, 
                     sensorOutput.Humidity.Value.Percent);
@@ -73,7 +72,6 @@ class Device
     {
         if (s_fanState is stateEnum.failed)
         {
-            // Acknowledge the direct method call with a 400 error message.
             string result = "{\"result\":\"Fan failed\"}";
             RedMessage("Direct method failed: " + result);
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 400));
