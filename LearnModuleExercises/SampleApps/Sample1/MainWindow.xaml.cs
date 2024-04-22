@@ -64,7 +64,7 @@ namespace ParallelAsyncExample
 
             Task<int>[] downloadTasks = downloadTasksQuery.ToArray();
 
-            int[] lengths = await Task.WhenAll(downloadTasks);
+            int[] lengths = Task.WhenAll(downloadTasks);
             int total = lengths.Sum();
 
             await Dispatcher.BeginInvoke(() =>
