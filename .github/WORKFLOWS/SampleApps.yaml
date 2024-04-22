@@ -1,0 +1,29 @@
+name: CreateSamplesZip
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - LearnModuleExercises/SampleApps/**
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  create_zip:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Create SampleApps zip
+      run: | 
+        cd ./LearnModuleExercises/SampleApps
+        zip -r -q ../Downloads/SampleApps.zip * .vscode/*
+    - name: Commit and push
+      uses: Endbug/add-and-commit@v7
+      with:
+        add: '["LearnModuleExercises/Downloads/SampleApps.zip"]'
+        message: 'Updating Zip for API source files'
+        push: true
