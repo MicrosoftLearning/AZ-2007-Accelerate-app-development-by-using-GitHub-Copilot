@@ -44,6 +44,7 @@ x64/
 *.log
 *.vspscc
 *.vssscc
+*.sln
 .builds
 
 # Visual C++ cache files
