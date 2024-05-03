@@ -1,6 +1,8 @@
-﻿namespace BankAccountApp
+﻿using System;
+
+namespace BankAccountApp
 {
-    class BankAccount
+    public class BankAccount
     {
         public string AccountNumber { get; }
         public double Balance { get; private set; }
@@ -10,11 +12,6 @@
 
         public BankAccount(string accountNumber, double initialBalance, string accountHolderName, string accountType, DateTime dateOpened)
         {
-            if (initialBalance < 200)
-            {
-                throw new Exception("Initial balance must be at least 200.");
-            }
-
             AccountNumber = accountNumber;
             Balance = initialBalance;
             AccountHolderName = accountHolderName;
@@ -24,22 +21,11 @@
 
         public void Credit(double amount)
         {
-
-            if (AccountType == "Money Market" || AccountType == "Certificate of Deposit" || AccountType == "Retirement")
-            {
-                throw new Exception("Credits to this account type are not allowed.");
-            }
-
             Balance += amount;
         }
 
         public void Debit(double amount)
         {
-
-            if (AccountType == "Money Market" || AccountType == "Certificate of Deposit" || AccountType == "Retirement")
-            {
-                throw new Exception("Debits from this account type are not allowed.");
-            }
 
             if (Balance >= amount)
             {
@@ -63,16 +49,6 @@
                 if (AccountHolderName != toAccount.AccountHolderName && amount > 500)
                 {
                     throw new Exception("Transfer amount exceeds maximum limit for different account owners.");
-                }
-
-                if (Balance - amount < 200)
-                {
-                    throw new Exception("Transfer amount would result in balance below 200.");
-                }
-
-                if (AccountType == "Money Market" || AccountType == "Certificate of Deposit" || AccountType == "Retirement")
-                {
-                    throw new Exception("Transfers from this account type are not allowed.");
                 }
 
                 Debit(amount);
