@@ -7,10 +7,12 @@
             List<BankAccount> accounts = new List<BankAccount>();
 
             // Create bank accounts with random balances
-            int numberOfAccounts = 4;
+            int numberOfAccounts = 20;
             int createdAccounts = 0;
             while (createdAccounts < numberOfAccounts)
             {
+                try
+                {
                     double initialBalance = GenerateRandomBalance(10, 50000);
                     string accountHolderName = GenerateRandomAccountHolder();
                     string accountType = GenerateRandomAccountType();
@@ -18,14 +20,21 @@
                     BankAccount account = new BankAccount($"Account {createdAccounts + 1}", initialBalance, accountHolderName, accountType, dateOpened);
                     accounts.Add(account);
                     createdAccounts++;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Account creation failed: {ex.Message}");
+                }
             }
 
-            // Simulate 5 transactions for each account
+            // Simulate 100 transactions for each account
             foreach (BankAccount account in accounts)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     double transactionAmount = GenerateRandomBalance(-500, 500);
+                    try
+                    {
                         if (transactionAmount >= 0)
                         {
                             account.Credit(transactionAmount);
@@ -36,6 +45,11 @@
                             account.Debit(-transactionAmount);
                             Console.WriteLine($"Debit: {transactionAmount}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Transaction failed: {ex.Message}");
+                    }
                 }
 
                 Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
@@ -48,9 +62,16 @@
                 {
                     if (fromAccount != toAccount)
                     {
+                        try
+                        {
                             double transferAmount = GenerateRandomBalance(0, fromAccount.Balance);
                             fromAccount.Transfer(toAccount, transferAmount);
                             Console.WriteLine($"Transfer: {transferAmount.ToString("C")} from {fromAccount.AccountNumber} ({fromAccount.AccountHolderName}, {fromAccount.AccountType}) to {toAccount.AccountNumber} ({toAccount.AccountHolderName}, {toAccount.AccountType})");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Transfer failed: {ex.Message}"); 
+                        }
                     }
                 }
             }
@@ -92,59 +113,6 @@
             }
 
             return randomDate;
-        }
-    }
-
-    class BankAccount
-    {
-        public string AccountNumber { get; }
-        public double Balance { get; private set; }
-        public string AccountHolderName { get; }
-        public string AccountType { get; }
-        public DateTime DateOpened { get; }
-
-        public BankAccount(string accountNumber, double initialBalance, string accountHolderName, string accountType, DateTime dateOpened)
-        {
-            AccountNumber = accountNumber;
-            Balance = initialBalance;
-            AccountHolderName = accountHolderName;
-            AccountType = accountType;
-            DateOpened = dateOpened;
-        }
-
-        public void Credit(double amount)
-        {
-            Balance += amount;
-        }
-
-        public void Debit(double amount)
-        {
-                Balance -= amount;
-        }
-
-        public double GetBalance()
-        {
-            return Balance;
-        }
-
-        public void Transfer(BankAccount toAccount, double amount)
-        {
-            if (Balance >= amount)
-            {
-                Debit(amount);
-                toAccount.Credit(amount);
-            }
-        }
-
-        public void PrintStatement()
-        {
-            Console.WriteLine($"Account Number: {AccountNumber}, Balance: {Balance}");
-            // Add code here to print recent transactions
-        }
-
-        public double CalculateInterest(double interestRate)
-        {
-            return Balance * interestRate;
         }
     }
 }
