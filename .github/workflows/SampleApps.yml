@@ -25,5 +25,5 @@ jobs:
       uses: Endbug/add-and-commit@v7
       with:
         add: '["LearnModuleExercises/Downloads/SampleApps.zip"]'
-        message: 'Updating Zip for API source files'
+        message: 'Updating Zip with sample app source files'
         push: true
