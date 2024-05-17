@@ -36,4 +36,14 @@ public class PrimeServiceTests
         var result = _primeService.IsPrime(4);
         Assert.False(result, "4 should not be prime");
     }
+    
+    [Theory]
+    [InlineData(-1)]
+    [InlineData(0)]
+    [InlineData(1)]
+    public void IsPrime_NegativeNumbersAndZero_ReturnFalse(int value)
+    {
+        var result = _primeService.IsPrime(value);
+        Assert.False(result, $"{value} should not be prime");
+    }
 }
