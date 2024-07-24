@@ -1,0 +1,59 @@
+# This workflow is triggered on two events: workflow_dispatch and push.
+#
+#   - The workflow_dispatch event allows you to manually trigger the workflow from GitHub's UI. 
+#   - The push event triggers the workflow whenever there's a push to the master branch, but only 
+#     if the changes include files in the LearnModuleExercises/SampleApps/** directory.
+#
+# The defaults section sets the default shell for all run commands in the workflow to PowerShell (pwsh).
+#
+# The workflow consists of a single job named CreateGPZip, which runs on the latest version of Ubuntu. 
+#
+# This job has three steps:
+#
+# 1. The Checkout step uses the actions/checkout@v4 action to checkout the repository's code onto the 
+#   runner. This is a common first step in most workflows as it allows subsequent steps to operate on 
+#   the codebase.
+# 
+# 2. The Create GuidedProjectApp zip step changes the current directory to ./LearnModuleExercises/GuidedProject 
+#   and then creates a zip file of all the files in that directory, including those in the .vscode 
+#   subdirectory. The -r option is used to zip directories recursively and the -q option is used to run
+#   the command quietly without printing a lot of output. The resulting zip file is saved in the 
+#   ../Downloads directory with the name GuidedProjectApp.zip.
+# 
+# 3. The Commit and push step uses the Endbug/add-and-commit@v7 action to add the newly created zip file 
+#   to the repository, commit the changes with the message 'Updating Zip for API source files', and then 
+#   push the changes back to the repository. The add input is set to the path of the zip file and the push
+#   input is set to true to enable pushing.
+#
+# This workflow is useful for automatically packaging and versioning sample applications whenever changes 
+# are made to them.
+#
+name: CreateGPZip
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - LearnModuleExercises/GuidedProject/**
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  create_zip:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Create GuidedProjectApp zip
+      run: | 
+        cd ./LearnModuleExercises/GuidedProject
+        zip -r -q ../Downloads/GuidedProjectApp.zip * .vscode/*
+    - name: Commit and push
+      uses: Endbug/add-and-commit@v7
+      with:
+        add: '["LearnModuleExercises/Downloads/GuidedProjectApp.zip"]'
+        message: 'Updating Zip with sample app source files'
+        push: true
