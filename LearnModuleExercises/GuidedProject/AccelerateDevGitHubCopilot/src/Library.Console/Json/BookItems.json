@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "BookId": 1,
+    "AcquisitionDate": "2023-09-20T00:40:43.1716563",
+    "Condition": "Good"
+  },
+  {
+    "Id": 2,
+    "BookId": 2,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717503",
+    "Condition": "Fair"
+  },
+  {
+    "Id": 3,
+    "BookId": 3,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717511",
+    "Condition": "Excellent"
+  },
+  {
+    "Id": 4,
+    "BookId": 4,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717513",
+    "Condition": "Poor"
+  },
+  {
+    "Id": 5,
+    "BookId": 5,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717516",
+    "Condition": "Good"
+  },
+  {
+    "Id": 6,
+    "BookId": 6,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717521",
+    "Condition": "Fair"
+  },
+  {
+    "Id": 7,
+    "BookId": 7,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717523",
+    "Condition": "Excellent"
+  },
+  {
+    "Id": 8,
+    "BookId": 8,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717526",
+    "Condition": "Poor"
+  },
+  {
+    "Id": 9,
+    "BookId": 9,
+    "AcquisitionDate": "2023-09-20T00:40:43.171757",
+    "Condition": "Good"
+  },
+  {
+    "Id": 10,
+    "BookId": 10,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717574",
+    "Condition": "Fair"
+  },
+  {
+    "Id": 11,
+    "BookId": 11,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717576",
+    "Condition": "Excellent"
+  },
+  {
+    "Id": 12,
+    "BookId": 12,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717578",
+    "Condition": "Poor"
+  },
+  {
+    "Id": 13,
+    "BookId": 13,
+    "AcquisitionDate": "2023-09-20T00:40:43.171758",
+    "Condition": "Good"
+  },
+  {
+    "Id": 14,
+    "BookId": 14,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717609",
+    "Condition": "Fair"
+  },
+  {
+    "Id": 15,
+    "BookId": 15,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717611",
+    "Condition": "Excellent"
+  },
+  {
+    "Id": 16,
+    "BookId": 16,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717613",
+    "Condition": "Poor"
+  },
+  {
+    "Id": 17,
+    "BookId": 17,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717616",
+    "Condition": "Good"
+  },
+  {
+    "Id": 18,
+    "BookId": 18,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717619",
+    "Condition": "Fair"
+  },
+  {
+    "Id": 19,
+    "BookId": 19,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717621",
+    "Condition": "Excellent"
+  },
+  {
+    "Id": 20,
+    "BookId": 20,
+    "AcquisitionDate": "2023-09-20T00:40:43.1717626",
+    "Condition": "Poor"
+  }
+]

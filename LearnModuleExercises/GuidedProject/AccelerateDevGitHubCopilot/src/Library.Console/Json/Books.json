@@ -1,0 +1,162 @@
+[
+  {
+    "Id": 1,
+    "Title": "Book One",
+    "AuthorId": 1,
+    "Genre": "Dystopian",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524935"
+  },
+  {
+    "Id": 2,
+    "Title": "Book Two",
+    "AuthorId": 2,
+    "Genre": "Classic",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524936"
+  },
+  {
+    "Id": 3,
+    "Title": "Book Three",
+    "AuthorId": 3,
+    "Genre": "Romance",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524937"
+  },
+  {
+    "Id": 4,
+    "Title": "Book Four",
+    "AuthorId": 4,
+    "Genre": "Classic",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524938"
+  },
+  {
+    "Id": 5,
+    "Title": "Book Five",
+    "AuthorId": 5,
+    "Genre": "Coming-of-age",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524939"
+  },
+  {
+    "Id": 6,
+    "Title": "Book Six",
+    "AuthorId": 6,
+    "Genre": "Modernist",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524940"
+  },
+  {
+    "Id": 7,
+    "Title": "Book Seven",
+    "AuthorId": 7,
+    "Genre": "Adventure",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524941"
+  },
+  {
+    "Id": 8,
+    "Title": "Book Eight",
+    "AuthorId": 8,
+    "Genre": "Fantasy",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524942"
+  },
+  {
+    "Id": 9,
+    "Title": "Book Nine",
+    "AuthorId": 9,
+    "Genre": "Fantasy",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524943"
+  },
+  {
+    "Id": 10,
+    "Title": "Book Ten",
+    "AuthorId": 10,
+    "Genre": "Epic",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524944"
+  },
+  {
+    "Id": 11,
+    "Title": "Book Eleven",
+    "AuthorId": 11,
+    "Genre": "Psychological",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524945"
+  },
+  {
+    "Id": 12,
+    "Title": "Book Twelve",
+    "AuthorId": 12,
+    "Genre": "Psychological",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524946"
+  },
+  {
+    "Id": 13,
+    "Title": "Book Thirteen",
+    "AuthorId": 13,
+    "Genre": "Magical realism",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524947"
+  },
+  {
+    "Id": 14,
+    "Title": "Book Fourteen",
+    "AuthorId": 14,
+    "Genre": "Classic",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524948"
+  },
+  {
+    "Id": 15,
+    "Title": "Book Fifteen",
+    "AuthorId": 15,
+    "Genre": "Adventure",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524949"
+  },
+  {
+    "Id": 16,
+    "Title": "Book Sixteen",
+    "AuthorId": 16,
+    "Genre": "Historical",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524950"
+  },
+  {
+    "Id": 17,
+    "Title": "Book Seventeen",
+    "AuthorId": 17,
+    "Genre": "Gothic",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524951"
+  },
+  {
+    "Id": 18,
+    "Title": "Book Eighteen",
+    "AuthorId": 18,
+    "Genre": "Dystopian",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524952"
+  },
+  {
+    "Id": 19,
+    "Title": "Book Nineteen",
+    "AuthorId": 19,
+    "Genre": "Classic",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524953"
+  },
+  {
+    "Id": 20,
+    "Title": "Book Twenty",
+    "AuthorId": 20,
+    "Genre": "Adventure",
+    "ImageName": "BookCover01.jpg",
+    "ISBN": "978-0451524954"
+  }
+]
