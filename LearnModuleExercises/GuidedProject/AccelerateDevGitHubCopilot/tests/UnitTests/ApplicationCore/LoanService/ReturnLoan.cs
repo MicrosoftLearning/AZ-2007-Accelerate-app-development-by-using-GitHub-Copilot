@@ -96,6 +96,4 @@ public class ReturnLoanTest
         Assert.Equal(LoanReturnStatus.Success, returnStatus);
         Assert.NotNull(loan.ReturnDate);
     }
-
-    
 }
