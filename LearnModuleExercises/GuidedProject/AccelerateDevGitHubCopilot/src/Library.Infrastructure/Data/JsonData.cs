@@ -1,9 +1,6 @@
 ﻿using System.Text.Json;
 using Library.ApplicationCore.Entities;
-
-
 using Microsoft.Extensions.Configuration;
-
 
 namespace Library.Infrastructure.Data;
 
@@ -14,14 +11,6 @@ public class JsonData
     public List<BookItem>? BookItems { get; set; }
     public List<Patron>? Patrons { get; set; }
     public List<Loan>? Loans { get; set; }
-
-    /* 
-        private readonly string _authorsPath = Path.Combine("Json", "Authors.json");
-        private readonly string _booksPath = Path.Combine("Json", "Books.json");
-        private readonly string _bookItemsPath = Path.Combine("Json", "BookItems.json");
-        private readonly string _patronsPath = Path.Combine("Json", "Patrons.json");
-        private readonly string _loansPath = Path.Combine("Json", "Loans.json");
-    */
 
     private readonly string _authorsPath;
     private readonly string _booksPath;
