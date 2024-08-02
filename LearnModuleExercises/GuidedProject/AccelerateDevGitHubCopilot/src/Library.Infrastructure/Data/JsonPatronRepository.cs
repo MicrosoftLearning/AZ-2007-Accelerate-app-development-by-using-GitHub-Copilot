@@ -12,18 +12,6 @@ public class JsonPatronRepository : IPatronRepository
         _jsonData = jsonData;
     }
 
-    /*
-        public Patron? GetPatron(int patronId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patron> SearchPatrons(string searchInput)
-        {
-            throw new NotImplementedException();
-        }
-     */
-
     public async Task<List<Patron>> SearchPatrons(string searchInput)
     {
         await _jsonData.EnsureDataLoaded();
@@ -42,7 +30,6 @@ public class JsonPatronRepository : IPatronRepository
 
         return searchResults;
     }
-
 
     public async Task<Patron?> GetPatron(int id)
     {
@@ -83,5 +70,4 @@ public class JsonPatronRepository : IPatronRepository
             await _jsonData.LoadData();
         }
     }
-
 }
