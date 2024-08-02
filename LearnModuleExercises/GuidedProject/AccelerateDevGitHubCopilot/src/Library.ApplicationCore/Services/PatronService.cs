@@ -2,8 +2,6 @@ using Library.ApplicationCore;
 using Library.ApplicationCore.Entities;
 using Library.ApplicationCore.Enums;
 
-//namespace Library.ApplicationCore.Services;
-
 public class PatronService : IPatronService
 {
     private readonly IPatronRepository _patronRepository;
