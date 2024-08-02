@@ -1,4 +1,5 @@
 ﻿namespace Library.ApplicationCore.Entities;
+
 public class Loan
 {
     public int Id { get; set; }
