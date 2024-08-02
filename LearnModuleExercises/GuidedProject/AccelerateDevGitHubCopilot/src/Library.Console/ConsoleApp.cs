@@ -5,17 +5,12 @@ using Library.Console;
 
 public class ConsoleApp
 {
-
-
     ConsoleState _currentState = ConsoleState.PatronSearch;
 
     List<Patron> matchingPatrons = new List<Patron>();
 
     Patron? selectedPatronDetails = null;
-
     Loan selectedLoanDetails = null!;
-
-
 
     IPatronRepository _patronRepository;
     ILoanRepository _loanRepository;
@@ -32,7 +27,6 @@ public class ConsoleApp
 
     public async Task Run()
     {
-
         while (true)
         {
             switch (_currentState)
@@ -51,16 +45,12 @@ public class ConsoleApp
                     break;
             }
         }
-
-
     }
-
 
     async Task<ConsoleState> PatronSearch()
     {
         string searchInput = ReadPatronName();
 
-        //matchingPatrons = SearchPatrons(searchInput);
         matchingPatrons = await _patronRepository.SearchPatrons(searchInput);
 
         // Guard-style clauses for edge cases
@@ -190,7 +180,6 @@ public class ConsoleApp
         }
     }
 
-
     async Task<ConsoleState> PatronDetails()
     {
         Console.WriteLine($"Name: {selectedPatronDetails.Name}");
@@ -237,10 +226,8 @@ public class ConsoleApp
             return ConsoleState.PatronDetails;
         }
 
-
         throw new InvalidOperationException("An input option is not handled.");
     }
-
 
     async Task<ConsoleState> LoanDetails()
     {
@@ -284,5 +271,4 @@ public class ConsoleApp
 
         throw new InvalidOperationException("An input option is not handled.");
     }
-
 }
