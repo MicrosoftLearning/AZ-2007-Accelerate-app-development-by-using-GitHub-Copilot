@@ -289,11 +289,11 @@
     },
     {
       "Id": 37,
-      "BookItemId": 15,
+      "BookItemId": 1,
       "PatronId": 5,
       "LoanDate": "2023-12-18T00:40:43.1809466",
-      "DueDate": "2024-01-01T00:40:43.1809466",
-      "ReturnDate": null
+      "DueDate": "2024-01-18T00:40:43.1809466",
+      "ReturnDate": "2024-01-17T00:40:43.1809466"
     },
     {
       "Id": 38,
@@ -361,10 +361,10 @@
     },
     {
       "Id": 46,
-      "BookItemId": 7,
+      "BookItemId": 1,
       "PatronId": 49,
-      "LoanDate": "2023-12-09T00:40:43.1809503",
-      "DueDate": "2023-12-23T00:40:43.1809503",
+      "LoanDate": "2024-7-09T00:40:43.1809503",
+      "DueDate": "2024-9-09T00:40:43.1809503",
       "ReturnDate": null
     },
     {
