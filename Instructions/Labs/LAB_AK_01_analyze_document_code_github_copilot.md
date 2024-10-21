@@ -22,9 +22,23 @@ While your colleague begins working on the software, you use library records to 
 
 You'll use GitHub Copilot to help get the work done as efficiently as possible. If all goes well, your app will be used to support the library's book drives and other offsite functions in the future.
 
-#### Setup Task - Set up the library application in Visual Studio Code
+#### Lab scenario
 
-Your colleague has developed an initial version of the library application and has made it available as a .zip file. To prepare for the guided project exercises, you need to perform the following tasks:
+GitHub Copilot can help you understand and document a codebase by generating explanations and documentation. In this lab, you'll use GitHub Copilot to analyze and document the library application. You'll also create a GitHub repository for the library application and generate a README file for the repository using GitHub Copilot.
+
+This lab includes the following exercises:
+
+- Use GitHub Copilot to explain the library application codebase.
+- Use Visual Studio Code to create a GitHub repository for the library application.
+- Use GitHub Copilot extensions to create a README.md file for the repository.
+
+### Exercise 1: Analyze the library application codebase
+
+Before you create a code repository and README file, you should take some time to examine the codebase. It's important to understand the app architecture and key features before documenting the project. You should also run the application to ensure that it performs as expected.
+
+#### Task 1: Set up the library application in Visual Studio Code
+
+Your colleague has developed an initial version of the library application and has made it available as a .zip file. To prepare for this lab, you need to perform the following actions:
 
 - Download the zip file.
 - Extract the code files.
@@ -46,7 +60,7 @@ Use the following steps to set up the library application:
 
     1. Make note of the extracted folder location.
 
-1. Copy the extracted **GuidedProjectApp** folder to a location that easy to access, such as your Windows Desktop folder.
+1. Copy the extracted folder to a location that easy to access, such as your Windows Desktop folder.
 
 1. Open the **AccelerateDevGitHubCopilot** folder in Visual Studio Code.
 
@@ -56,11 +70,11 @@ Use the following steps to set up the library application:
 
     1. In Visual Studio Code, on the **File** menu, select **Open Folder**.
 
-    1. Navigate to the Windows Desktop folder, open the **GuidedProjectApp** folder, and locate the **AccelerateDevGitHubCopilot** folder.
+    1. Navigate to the Windows Desktop folder, open the **GuidedProjectApp** folder, and then locate the **AccelerateDevGitHubCopilot** folder.
 
     1. Select **AccelerateDevGitHubCopilot** and then select **Select Folder**.
 
-1. In the Visual Studio Code SOLUTION EXPLORER view, verify the following solution structure:
+1. In the Visual Studio Code EXPLORER view, open SOLUTION EXPLORER, and then verify the following project structure:
 
     - AccelerateDevGitHubCopilot\
         - src\
@@ -76,31 +90,7 @@ Use the following steps to set up the library application:
 
     You'll see several Warnings, but there shouldn't be any Errors.
 
-You're now ready to begin the course labs.
-
-### Exercise 1: 
-
-#### Task 0: 
-
-
-
-
-
-
-
-GitHub Copilot can help you understand and document a codebase by generating explanations and documentation. In this exercise, you'll use GitHub Copilot to analyze and document the library application. You'll also create a GitHub repository for the library application and generate a README file for the repository using GitHub Copilot.
-
-This exercise includes the following tasks:
-
-- Use GitHub Copilot to explain the library application codebase.
-- Use Visual Studio Code to create a GitHub repository for the library application.
-- Use GitHub Copilot extensions to analyze the solution and create a README.md file for the repository.
-
-## Examine the library application codebase
-
-Before you create a code repository and README file, you should take some time to examine the codebase. It's important to understand the app architecture and key features before documenting the project. You should also run the application to ensure that it performs as expected.
-
-### Use GitHub Copilot to explain the library application codebase
+#### Task 2: Use GitHub Copilot to explain the library application codebase
 
 GitHub Copilot can help you to understand an unfamiliar codebase by generating explanations at the solution and feature levels.
 
@@ -373,7 +363,7 @@ Use the following steps to complete this section of the exercise:
     > [!NOTE]
     > Notice that Author names, book titles, and patron names have been anonymized for the purposes of this guided project.
 
-### Build and run the application
+#### Task 3: Build and run the application
 
 Running the application will help you understand the user interface, key features of the application, and how app components interact.
 
@@ -428,12 +418,18 @@ Use the following steps to complete this section of the exercise:
 
 1. Stop the debug session.
 
-## Create the GitHub repository for your code
+#### Review
+
+This exercise helped you understand the library application codebase and how the application interacts with the user. You used GitHub Copilot to generate explanations for the project structure, key classes, and data access classes. You also ran the application to see how the console interface works and how the application components interact.
+
+### Exercise 2: Create the GitHub repository and empty README file
 
 Creating the GitHub repository for your code will enable you to share your work with others and collaborate on the project.
 
 > [!NOTE]
 > You use your own GitHub account to create a private GitHub repository for the library application.
+
+#### Task 1: Create the GitHub repository
 
 Use the following steps to complete this section of the exercise:
 
@@ -457,6 +453,10 @@ Use the following steps to complete this section of the exercise:
 
     When the publish process is finished, you'll see a message informing you that your code was successfully published to the GitHub repository that you specified.
 
+#### Task 2: Create an empty README file in GitHub
+
+Use the following steps to complete this section of the exercise:
+
 1. Switch to the browser window for your GitHub account.
 
 1. Open the new AccelerateDevGitHubCopilot repository in your GitHub account.
@@ -473,21 +473,32 @@ Use the following steps to complete this section of the exercise:
 
 1. In the `Commit changes` dialog, select **Commit changes**.
 
+#### Task 3: Pull the changes to your local repository
+
+Use the following steps to complete this section of the exercise:
+
 1. Switch to Visual Studio Code and ensure that the Source Control view is open.
 
 1. Open the **Views and More Actions** menu, and then select **Pull**.
 
     The Views and More Actions menu can be opened using the ellipsis in the top-right corner of the Source Control view.
 
-1. Open the Explorer view (not Solution Explorer), and then expand the **AccelerateDevGitHubCopilot** folder.
+1. Open the EXPLORER view (collapse the SOLUTION EXPLORER and use Visual Studio Code's default file/folder explorer), and then expand the **AccelerateDevGitHubCopilot** folder.
 
 1. Open the README.md file.
 
     You should see the message "Coming soon".
 
+    > [!NOTE]
+    > You could have created the README file content directly in Visual Studio Code and then pushed the updates to the GitHub repository.
+
 You'll be using GitHub Copilot Chat to update your repository's README file in the next section of this exercise.
 
-## Create the project documentation for the README file
+#### Review
+
+This exercise helped you create a GitHub repository for the library application and an empty README file. You also pulled the changes to your local repository to ensure that you have the latest updates.
+
+### Exercise 3: Create the project documentation for the README file
 
 The README file is an essential part of any GitHub repository. The README provides information based on the needs of the project, project contributors, and stakeholders.
 
@@ -499,6 +510,8 @@ For this guided project exercise, your README file should include the following 
 - **Key Classes and Interfaces**: A list of key classes and interfaces in the project.
 - **Usage**: Instructions on how to use the project, often including code examples.
 - **License**: The license that the project is under.
+
+#### Task 1: Use GitHub Copilot to generate project documentation
 
 In this section of the exercise, you'll use GitHub Copilot to create project documentation and add it to your `README.md` file.
 
@@ -581,6 +594,10 @@ Use the following steps to complete this section of the exercise:
 
 1. Save the updated README.md file.
 
+#### Task 2: Commit and push the README file updates
+
+Use the following steps to complete this section of the exercise:
+
 1. Open the Source Control view.
 
 1. To have GitHub Copilot generate a commit message, select the icon on the right side of the message box.
@@ -595,9 +612,9 @@ Use the following steps to complete this section of the exercise:
 
 1. Sync (or Push) your updates to the GitHub repository.
 
-## Check your work
+#### Task 3: Check your work
 
-To check your work, complete the following steps:
+Use the following steps to complete this section of the exercise:
 
 1. Open the GitHub repository for the AccelerateDevGitHubCopilot project.
 
@@ -605,4 +622,6 @@ To check your work, complete the following steps:
 
 1. Ensure that the project structure described in the README file aligns the folder structure of the repository.
 
-1. Review the commit history and locate the commit message generated by GitHub Copilot.
+#### Review
+
+This exercise helped you create project documentation for the README file using GitHub Copilot. You used GitHub Copilot to generate the project description, project structure, key classes and interfaces, usage instructions, and license information. You also committed and pushed the README file updates to the GitHub repository.

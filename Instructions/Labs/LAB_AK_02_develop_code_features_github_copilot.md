@@ -1,8 +1,18 @@
 ---
-title: Exercise - Develop code features using GitHub Copilot tools
-durationInMinutes: 20
+lab:
+    title: 'Lab: Develop code features using GitHub Copilot tools'
+    type: 'Answer Key'
+    module: 'Module 2: Generate documentation using GitHub Copilot tools'
 ---
 
+# Lab: Develop code features using GitHub Copilot tools
+# Student lab answer key
+
+## Instructions
+
+### Before you start
+
+#### Project overview
 
 You and your coworker meet to discuss your goals for the library application. You want to improve the user experience for the librarians and patrons. You discuss several new features that could be added to the application.
 
@@ -16,18 +26,23 @@ You agree to work on the following features:
 
 Each of you will work on one of the new features and then regroup. You'll work on the feature to determine the availability status of a book. Your coworker will work on the feature to loan a book to a patron. The final feature, to reserve a book for a patron, will be developed after the other two features are completed.
 
-During this exercise, you complete the following tasks:
+#### Lab scenario
 
-1. Create a "book availability" branch in the code repository.
+GitHub Copilot can help you develop new features for the library application. In this lab, you'll use GitHub Copilot to generate code suggestions that help you implement the new features more quickly and accurately.
 
-1. Develop a new "book availability" feature.
+This lab includes the following exercises:
 
-    - Use GitHub Copilot suggestions to help implement the code more quickly and accurately.
-    - Sync your code updates to the "book availability" branch of your remote repository.
+- Develop a new "book availability" feature.
+- Merge your changes into the main branch of the repository.
 
-1. Create a pull request to merge your changes into the main branch of the repository.
+### Exercise 1: Develop a new "book availability" feature
 
-## Create a new branch in the repository
+During this exercise, you'll complete the following tasks:
+
+- Create a "book availability" branch in your code repository.
+- Use GitHub Copilot suggestions to help implement the code more quickly and accurately.
+
+#### Task 1: Create a new branch in the repository
 
 Before you start developing the new "book availability" feature, you need to create a new branch in the repository. This enables you to work on the new feature without affecting the main branch of the repository. You can merge the new feature into the main branch when it's ready.
 
@@ -43,7 +58,7 @@ Use the following steps to complete this section of the exercise:
 
 1. To push the new branch to the remote repository, select **Publish Branch**.
 
-## Develop a feature that enables a librarian to determine the availability status of a book
+#### Task 2: Develop a feature that enables a librarian to determine the availability status of a book
 
 In this section of the exercise, you use GitHub Copilot to help you implement a new feature for the library application. Your new feature enables a librarian to determine the availability status of a book.
 
@@ -573,26 +588,21 @@ Use the following steps to complete this section of the exercise:
 
     To build the solution in the Solution Explorer view, right-click **AccelerateDevGitHubCopilot** and then select **Build**.
 
-## Sync your changes with the remote repository
+#### Summary
 
-1. Select the Source Control view.
+You used GitHub Copilot to help you implement a new feature for the library application. You created a new branch in the repository and then used GitHub Copilot to generate code suggestions that helped you implement the new feature more quickly and accurately. You added a new `SearchBooks` action to `CommonActions`, updated the `WriteInputOptions` and `ReadInputOptions` methods in `ConsoleApp.cs`, and created a new `SearchBooks` method to determine the availability status of a book.
 
-1. Ensure that the `CommonActions.cs` and `ConsoleApp.cs` files listed under **Changes**.
+### Exercise 2: Merge your changes into the main branch of the repository
 
-1. Use GitHub Copilot to generate a message for the **Commit**.
+You completed the new feature that enables a librarian to determine the availability status of a book. Now you need to merge your changes into the main branch of the repository. 
 
-1. To stage and commit your changes, select **Commit** and then select **Yes**.
+During this exercise, you'll complete the following tasks:
 
-1. Sync (or Push) changes to the remote repository.
+- Verify that your new feature works as expected
+- Sync your changes with the remote repository
+- Create a pull request to merge your changes into the main branch of the repository
 
-## Check your work
-
-In this section of the exercise, you complete the following tasks:
-
-1. Verify that the new feature correctly determines the availability status of a book.
-1. Create a pull request to merge your changes into the main branch of the repository.
-
-### Verify that your new feature works as expected
+#### Task 1: Verify that your new feature works as expected
 
 Since you don't have automated tests, manual testing can be used to verify that the new feature works as expected. Using a data source that can be verified is important. In this case, you use the `Books.json` and `Loans.json` files to verify that the new feature reports the availability status of a book correctly.
 
@@ -662,9 +672,25 @@ Use the following steps to complete this section of the exercise:
 
     If you're running in the debugger and you cleaned the solution after making changes to the `Loans.json` file, those changes are lost. After you clean the solution, the `Loans.json` file is reset to the original data the next time you run the application. You can manually update the `Loans.json` file to test the availability status of Book One and Book Nine.
 
-### Create a pull request to merge your changes into the main branch
+#### Task 2: Sync your changes with the remote repository
 
-You completed the new feature that enables a librarian to determine the availability status of a book. Now you need to merge your changes into the main branch of the repository. You can create a pull request to merge your changes into the main branch.
+You can use the Source Control view in Visual Studio Code to commit your changes to the local repository. After you commit your changes, you can sync them with the remote repository.
+
+Use the following steps to complete this section of the exercise:
+
+1. Select the Source Control view.
+
+1. Ensure that the `CommonActions.cs` and `ConsoleApp.cs` files listed under **Changes**.
+
+1. Use GitHub Copilot to generate a message for the **Commit**.
+
+1. To stage and commit your changes, select **Commit** and then select **Yes**.
+
+1. Sync (or Push) changes to the remote repository.
+
+#### Task 3: Create a pull request to merge your changes into the main branch of the repository
+
+You can use a pull request to suggest changes to the main branch of the repository. After you create a pull request, you can review the changes, verify that the checks pass, and then merge the changes into the main branch. GitHub Copilot can help you generate a summary of the pull request to help reviewers understand your changes.
 
 Use the following steps to complete this section of the exercise:
 
@@ -682,19 +708,11 @@ Use the following steps to complete this section of the exercise:
 
 1. Select **Create pull request**.
 
-1. Enter a title and description for the pull request.
+1. Enter a title for the pull request.
 
-    You can use the following title and description:
+1. Use GitHub Copilot to generate a summary of a pull request.
 
-    - **Title**: feat: Add search functionality for books in ConsoleApp
-    - **Description**: This pull request adds a new feature that enables a librarian to determine the availability status of a book. The feature includes a new `SearchBooks` action in `CommonActions`, updates to the `WriteInputOptions`, `ReadInputOptions`, and `PatronDetails` methods in `ConsoleApp`, and adds a new `SearchBooks` method in `ConsoleApp`.
-
-    > [!NOTE]
-    > Members of an enterprise with a subscription to GitHub Copilot Enterprise, can use GitHub Copilot to generate a summary of a pull request on GitHub.com. You can use the summary to help reviewers understand your changes, or to quickly understand the changes in a pull request you're reviewing.
-
-    Here's an example of a pull request summary that was generated using a GitHub Copilot Enterprise account:
-
-    ![Screenshot showing a pull request summary generated using a GitHub Copilot Enterprise account.](../media/pull-request-summary.png)
+    Members of an enterprise with a subscription to GitHub Copilot Enterprise, can use GitHub Copilot to generate a summary of a pull request. The summary to help reviewers understand your changes, or to quickly understand the changes in a pull request you're reviewing.
 
 1. Ensure that the title and description reflect your code updates, and then select **Create pull request**.
 
@@ -715,3 +733,7 @@ Use the following steps to complete this section of the exercise:
 1. Verify that the changes you made in the **book-availability** branch are now in the **main** branch.
 
     The changes you made to the `CommonActions.cs` and `ConsoleApp.cs` files should be present in the `main` branch.
+
+#### Summary
+
+In this exercise, you tested you code and then merged your changes into the main branch of the repository. You committed your changes to the local repository, synced them with the remote repository, and then created a pull request to merge your changes into the main branch of the repository. You used GitHub Copilot to generate a summary of the pull request to help reviewers understand your changes.
