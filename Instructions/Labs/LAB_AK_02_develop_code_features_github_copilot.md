@@ -37,10 +37,16 @@ This lab includes the following exercises:
 
 ### Exercise 1: Develop a new "book availability" feature
 
+The book availability feature should include the following code updates:
+
+- Implement a new `CommonActions.SearchBooks` action that enables a librarian to select the option to search for a book.
+- Create a new `SearchBooks` method in ConsoleApp.cs. The `SearchBooks` method should read a user provided book title. Check if a book is available for loan, and display a message stating either "`book.title` is available for loan" or "`book.title` is on loan to another patron. The return due date is `loan.DueDate`.
+
 During this exercise, you'll complete the following tasks:
 
 - Create a "book availability" branch in your code repository.
-- Use GitHub Copilot suggestions to help implement the code more quickly and accurately.
+- Use GitHub Copilot suggestions to help implement a new SearchBooks common action that can be selected by a librarian.
+- Use GitHub Copilot suggestions to help develop the SearchBooks method that reads a user provided book title, checks if a book is available for loan, and displays a message indicating the availability status of the book.
 
 #### Task 1: Create a new branch in the repository
 
@@ -58,17 +64,16 @@ Use the following steps to complete this section of the exercise:
 
 1. To push the new branch to the remote repository, select **Publish Branch**.
 
-#### Task 2: Develop a feature that enables a librarian to determine the availability status of a book
+#### Task 2: Implement a new "SearchBooks" common action
 
-In this section of the exercise, you use GitHub Copilot to help you implement a new feature for the library application. Your new feature enables a librarian to determine the availability status of a book.
+In this section of the exercise, you use GitHub Copilot to help you implement a menu option named SearchBooks. Librarians will choose the SearchBooks action to check the availability status of a book.
 
-The book availability feature should include the following code updates:
+Complete the following steps to implement the new `SearchBooks` common action:
 
-- Add a new `SearchBooks` action to `CommonActions`.
-- Update the `WriteInputOptions` method in ConsoleApp.cs. Add support for the new `CommonActions.SearchBooks` option. Display the option to check if a book is available for loan.
-- Update the `ReadInputOptions` method in ConsoleApp.cs. Add support for the new `CommonActions.SearchBooks` option.
-- Update the `PatronDetails` method in ConsoleApp.cs. Add `CommonActions.SearchBooks` to `options` before calling `ReadInputOptions`. Add an `else if` to handle the `SearchBooks` action. The `else if` block should call a new method named `SearchBooks`.
-- Create a new `SearchBooks` method in ConsoleApp.cs. The `SearchBooks` method should read a user provided book title. Check if a book is available for loan, and display a message stating either "`book.title` is available for loan" or "`book.title` is on loan to another patron. The return due date is `loan.DueDate`.
+- Update the `CommonActions` enum: Add a new `SearchBooks` action to the `CommonActions` enum.
+- Update the `WriteInputOptions` method in ConsoleApp.cs: Add support for displaying the new `CommonActions.SearchBooks` option.
+- Update the `ReadInputOptions` method in ConsoleApp.cs: Add support for reading (selecting) the new `CommonActions.SearchBooks` option.
+- Update the `PatronDetails` method in ConsoleApp.cs: Add support for processing the new `CommonActions.SearchBooks` option when it's selected.
 
 Use the following steps to complete this section of the exercise:
 
@@ -210,7 +215,7 @@ Use the following steps to complete this section of the exercise:
     - You need to add `CommonActions.SearchBooks` to `options` before calling `ReadInputOptions`.
     - You also need to add an `else if` to handle the `SearchBooks` action. The `else if` block should call a new method named `SearchBooks`.
 
-    You can address both of these together.
+    You can address both of these using a single prompt.
 
 1. Open the inline chat and then enter the following prompt:
 
@@ -279,6 +284,12 @@ Use the following steps to complete this section of the exercise:
 
     > [!NOTE]
     > Inline chat suggestions may also create stub code for the `SearchBooks` method.
+
+#### Task 3: Develop the `SearchBooks` method
+
+The SearchBooks method should read a user provided book title, check if a book is available for loan, and display a message indicating the availability status of the book. The method should use the `Books.json` and `Loans.json` files to find the matching book title and determine the availability status of the book.
+
+Use the following steps to complete this section of the exercise:
 
 1. Take a minute to consider the process requirements for the `SearchBooks` method.
 
@@ -442,9 +453,9 @@ Use the following steps to complete this section of the exercise:
 
 1. Use the code suggestions to update the `SearchBooks` method:
 
-    The suggested code should use LINQ queries to search for the book by title and to check if the book is on loan. The code also includes logic to display the availability status of the book based on the search results. The logic used to display response messages can be implemented in several ways. Two examples are provided in the code snippets below.
+    The suggested code should use LINQ queries to search for the book by title and to check if the book is on loan. The code also includes logic to display the availability status of the book based on the search results. The logic suggested by GitHub Copilot to display response messages can be implemented in several ways. Two examples are provided in the code snippets below.
 
-    The following code snippet shows one possible implementation of the `SearchBooks` method:
+    The following code snippet shows one possible (GitHub Copilot suggested) implementation for the `SearchBooks` method:
 
     ```csharp
     async Task<ConsoleState> SearchBooks()
@@ -484,7 +495,7 @@ Use the following steps to complete this section of the exercise:
     }
     ```
 
-    The following code snippet shows a second possible implementation of the `SearchBooks` method:
+    The following code snippet shows a second possible (GitHub Copilot suggested) implementation for the `SearchBooks` method:
 
     ```csharp
     async Task<ConsoleState> SearchBooks()
@@ -586,7 +597,7 @@ Use the following steps to complete this section of the exercise:
 
     You'll see Warning messages, but there shouldn't be any errors.
 
-    To build the solution in the Solution Explorer view, right-click **AccelerateDevGitHubCopilot** and then select **Build**.
+    To build the solution in the SOLUTION EXPLORER view, right-click **AccelerateDevGitHubCopilot** and then select **Build**.
 
 #### Summary
 

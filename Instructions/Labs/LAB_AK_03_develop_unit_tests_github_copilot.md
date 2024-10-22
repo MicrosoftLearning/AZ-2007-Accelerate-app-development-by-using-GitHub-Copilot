@@ -1,8 +1,18 @@
 ---
-title: Exercise - Develop unit tests using GitHub Copilot tools
-durationInMinutes: 20
+lab:
+    title: 'Lab: Develop unit tests using GitHub Copilot tools'
+    type: 'Answer Key'
+    module: 'Module 2: Generate documentation using GitHub Copilot tools'
 ---
 
+# Lab: Develop unit tests using GitHub Copilot tools
+# Student lab answer key
+
+## Instructions
+
+### Before you start
+
+#### Project overview
 
 GitHub Copilot can help you write unit tests for your code. There are several ways to use GitHub Copilot to generate unit tests:
 
@@ -14,17 +24,7 @@ GitHub Copilot can help you write unit tests for your code. There are several wa
 - **Generate test setup code**: Copilot can generate setup code for your unit tests. This code can help you set up the test environment before running your tests.
 - **Generate test teardown code**: Copilot can generate teardown code for your unit tests. This code can help you clean up the test environment after running your tests.
 
-Your existing solution includes a unit test project named UnitTests. This project already contains unit tests that partially cover the service classes in the ApplicationCore project.
-
-In this exercise, you use GitHub Copilot to complete the following tasks:
-
-1. Examine the approach to unit testing implemented by the UnitTests project.
-
-1. Extend the UnitTests project to begin testing the data access classes in the `Library.Infrastructure` project.
-
-## Examine the approach to unit testing implemented by the UnitTests project
-
-Your existing codebase includes a UnitTests project that implements the following folder structure:
+Your existing solution includes a UnitTests project that implements the following folder structure:
 
 - UnitTests\
   - ApplicationCore\
@@ -42,6 +42,23 @@ This structure mirrors and supports the `Services` portion of the `ApplicationCo
   - Services\
     - LoanService.cs: Contains the `ExtendLoan` and `ReturnLoan` methods.
     - PatronService.cs: Contains the `RenewMembership` method.
+
+The existing unit tests partially cover the service classes in the ApplicationCore project.
+
+
+#### Lab scenario
+
+ You
+
+In this lab, you use GitHub Copilot to complete the following actions:
+
+1. Evaluate the approach to unit testing implemented by the UnitTests project.
+
+1. Extend the UnitTests project to begin testing the data access classes in the `Library.Infrastructure` project.
+
+### Exercise 1: Examine the approach to unit testing implemented by the UnitTests project
+
+#### Task 1: Use GitHub Copilot to examine the approach to unit testing implemented by the UnitTests project
 
 In this section of the exercise, you use GitHub Copilot to examine the unit testing approach implemented by the UnitTests project.
 
