@@ -54,7 +54,11 @@ Your colleague has developed an initial version of the library application and h
 
 Use the following steps to set up the library application:
 
-1. To download the zip file containing your code project, select the following link: [GuidedProjectApp](https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/GuidedProjectApp.zip).
+1. Open a web browser.
+
+1. To download the zip file containing your code project, navigate to the following URL: `https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/GuidedProjectApp.zip`
+
+    The project file should download automatically.
 
 1. Unzip the downloaded project files.
 
@@ -443,9 +447,12 @@ Use the following steps to complete this section of the exercise:
 
 1. Open a browser window and navigate to your GitHub account.
 
-    The GitHub login page is: [https://github.com/login](https://github.com/login).
+    URL: `https://github.com/enterprises/Microsoft-APL/sso`
 
 1. Sign in to your GitHub account.
+
+    Username: `@lab.CloudPortalCredential(1).Username`
+    Password: `@lab.CloudPortalCredential(1).Password`
 
 1. Open your GitHub account menu, and then select **Your repositories**.
 
