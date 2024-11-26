@@ -12,9 +12,17 @@ lab:
 
 ### Before you start
 
+#### GitHub Account
+
+The following Enterprise SSO URL must be used to sign into GitHub:
+
+URL: `https://github.com/enterprises/Microsoft-APL/sso`
+Username: `@lab.CloudPortalCredential(1).Username`
+Password: `@lab.CloudPortalCredential(1).Password`
+
 #### Project overview
 
-An accident damaged the servers that host the library database and backend services. It'll take weeks for administrators to obtain the funding/authorization required to replace the servers and get the system back online. Your department needs to develop a temporary solution that will enable librarians to perform basic functions.
+You're a software developer working for a regional IT department. Most of the applications that you work on support the local community. Recently, the community library's servers were damaged in an accident, and it will take weeks to get the authorization to replace them. Your department needs to develop a temporary solution that will enable librarians to perform basic functions.
 
 Your team has met with the librarians. They need a minimal solution that enables them to provide library patrons with essential services like book loans and returns. Your team investigates the available resources and develops a plan. Initially, only you and one other coworker will be assigned to the project. The local government has closed the library until your temporary solution is available. You have three days develop a v1 solution that enables the library to reopen.
 

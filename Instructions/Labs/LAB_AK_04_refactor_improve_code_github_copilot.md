@@ -1,18 +1,32 @@
 ---
-title: Exercise - Refactor and improve code sections using GitHub Copilot tools
-durationInMinutes: 15
+lab:
+    title: 'Lab: Refactor and improve code sections using GitHub Copilot tools'
+    type: 'Answer Key'
+    module: 'Module 2: Generate documentation using GitHub Copilot tools'
 ---
 
+# Lab: Refactor and improve code sections using GitHub Copilot tools
+# Student lab answer key
+
+## Instructions
+
+### Before you start
+
+#### Project overview
+
+You and your coworker have completed the initial development phase of the project and are now investigating ways to refactor and improve your codebase.
 
 Code refactoring is a process that restructures existing code without changing its external behavior. Refactoring is often used to improve a specific aspect of your code. GitHub Copilot can help you refactor your code by suggesting changes that improve the code's quality, reliability, performance, and security.
 
-In this exercise, you use GitHub Copilot to refactor the following code sections:
+#### Lab scenario
+
+In this lab, you use GitHub Copilot to refactor the following code sections:
 
 - You refactor the EnumHelper class to use dictionaries instead of reflection. Using dictionaries improves performance by reducing the overhead of reflection. Eliminating reflection also improves code readability, maintainability, and security.
 
 - You refactor the data access methods to use LINQ (Language Integrated Query) rather than foreach loops. Using LINQ provides a more concise and readable way to query collections, databases, and XML documents. Using LINQ can improve code readability, maintainability, and performance.
 
-## Use GitHub Copilot to refactor the EnumHelper class
+### Exercise 1: Use GitHub Copilot to refactor the EnumHelper class
 
 Reflection is a powerful feature that allows you to inspect and manipulate objects at runtime. However, reflection can be slow and there are potential security risks associated with reflection that should be considered.
 
