@@ -438,7 +438,7 @@ This exercise helped you understand the library application codebase and how the
 
 Creating the GitHub repository for your code will enable you to share your work with others and collaborate on the project.
 
-#### Task 1: Create the GitHub repository
+#### Task 1: Create a GitHub repository
 
 Use the following steps to complete this section of the exercise:
 
@@ -453,13 +453,30 @@ Use the following steps to complete this section of the exercise:
 
 1. Open your GitHub account menu, and then select **Your repositories**.
 
+1. Select **New** to create a new repository.You should see a message indicating that you don't have any repositories yet.
+
 1. Switch to the Visual Studio Code window.
+
+1. Open Visual Studio Code's integrated terminal.
+
+    On the Terminal menu, select **New Terminal**.
+
+1. To configure Git using the credentials associated with your GitHub account, enter the following command in the terminal:
+
+    ```bash
+    git config --global user.email <lab assigned email>
+    git config --global user.name <user name>
+    ```
+
+    Use the email defined in the lab environment: @lab.CloudPortalCredential(1).Username
+
+    You can use your own name as the user name.
 
 1. In Visual Studio Code, open the Source Control view.
 
 1. Select **Publish to GitHub**.
 
-    If a dialog box opens asking to su=ign in using your GitHub account, complete the following steps:
+    If a dialog box opens asking to sign in using your GitHub account, complete the following steps:
 
     1. Select **Allow**.
     1. Select the account that you're using in this lab environment.
