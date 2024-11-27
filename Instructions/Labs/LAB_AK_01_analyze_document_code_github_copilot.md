@@ -8,7 +8,7 @@ lab:
 # Lab: Accelerate app development by using GitHub Copilot
 # Student lab answer key
 
-## Instructions - Part 1: Analyze and document code using GitHub Copilot tools
+## Part 1: Analyze and document code using GitHub Copilot tools
 
 ### Before you start
 
@@ -22,11 +22,13 @@ While your colleague begins working on the software, you use library records to 
 
 You'll use GitHub Copilot to help get the work done as efficiently as possible. If all goes well, your app will be used to support the library's book drives and other offsite functions in the future.
 
-#### Lab scenario - Part 1
+#### Lab scenario (part 1)
 
-GitHub Copilot can help you understand and document a codebase by generating explanations and documentation. In part 1 of this lab, you'll use GitHub Copilot to analyze and document the library application. You'll also create a GitHub repository for the library application and generate a README file for the repository using GitHub Copilot.
+GitHub Copilot can help you understand and document a codebase by generating explanations and documentation.
 
-Part 1 of this lab includes the following exercises:
+In part 1 of this lab, you'll use GitHub Copilot to analyze and document the library application. You'll also create a GitHub repository for the library application and generate a README file for the repository using GitHub Copilot.
+
+Part 1 includes the following exercises:
 
 - Configure GitHub Copilot extensions for Visual Studio Code.
 - Use GitHub Copilot to explain the library application codebase.
@@ -34,6 +36,8 @@ Part 1 of this lab includes the following exercises:
 - Use GitHub Copilot extensions to create a README.md file for the repository.
 
 ### Exercise 1: Configure GitHub Copilot extensions for Visual Studio Code
+
+You'll use your GitHub account to authorize Visual Studio Code to verify your GitHub Copilot subscription.
 
 Use the following steps to install the GitHub Copilot extensions:
 
@@ -43,7 +47,7 @@ Use the following steps to install the GitHub Copilot extensions:
 
 1. Sign in to your GitHub account using the following credentials.
 
-    Username: `@lab.CloudPortalCredential(1).Username`
+    Email/Username: `@lab.CloudPortalCredential(1).Username`
     Password: `@lab.CloudPortalCredential(1).Password`
 
 1. Open Visual Studio Code.
@@ -56,28 +60,17 @@ Use the following steps to install the GitHub Copilot extensions:
 
 1. On the GitHub Copilot extension page, select **Install**.
 
-1. 
+1. When you see the "Sign in to use GitHub Copilot notification, select **Sign in to GitHub**.
 
+    Since you're already signed in to your GitHub account in a browser window, a new Verify Session browser tab should open.
 
+1. On the Verify Session page, select **Continue**.
 
+1. On the Authorize Visual Studio Code page, select **Authorize Visual Studio Code**.
 
-1. Watch for a GitHub authorization prompt.
+1. To open Visual Studio Code, select **Open**.
 
-    Your experience with authorization might vary depending on whether you've previously authorized Visual Studio Code for your GitHub account.
-
-    - If you've authorized Visual Studio Code for your account on GitHub, GitHub Copilot is automatically authorized.
-
-    - If you haven't authorized Visual Studio Code in your GitHub account, Visual Studio Code prompts you to sign in to GitHub.
-
-    - If you don't receive a prompt asking you to authorize, select the bell icon on the far right side of Visual Studio Code's bottom panel.
-
-     GitHub requests the necessary permissions for GitHub Copilot when the browser opens.
-
-1. To approve the authorization request, select **Authorize Visual Studio Code**.
-
-    A dialog box named Visual Studio Code opens in Visual Studio Code.
-
-1. To confirm your GitHub authorization in the Visual Studio Code dialog box, select **Open**.
+1. Close Visual Studio Code.
 
 #### Exercise summary
 
@@ -97,15 +90,15 @@ Your colleague has developed an initial version of the library application and h
 
 Use the following steps to prepare the library application:
 
-1. Open a web browser.
+1. Ensure that you have your web browser open, and then open a new browser tab.
 
 1. To download the zip file containing your code project, navigate to the following URL: `https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/GuidedProjectApp.zip`
 
     The zip file containing your solution code, GuidedProjectApp.zip, should download automatically.
 
-1. Once the download is complete, close the browser.
+1. Once the download is complete, close the browser tab.
 
-1. Open File Explorer and navigate to the Downloads folder.
+1. Open Windows File Explorer and navigate to the Downloads folder.
 
 1. Unzip the downloaded project files.
 
@@ -119,7 +112,7 @@ Use the following steps to prepare the library application:
 
     1. Make note of the extracted folder location.
 
-1. Copy the extracted folder to a location that's easy to access, such as your Windows Desktop folder.
+1. Copy the extracted folder, AccelerateDevGitHubCopilot, to a location that's easy to access, such as your Windows Desktop folder.
 
 1. Open the **AccelerateDevGitHubCopilot** folder in Visual Studio Code.
 
@@ -129,11 +122,13 @@ Use the following steps to prepare the library application:
 
     1. In Visual Studio Code, on the **File** menu, select **Open Folder**.
 
-    1. Navigate to the Windows Desktop folder, open the **GuidedProjectApp** folder, and then locate the **AccelerateDevGitHubCopilot** folder.
+    1. Navigate to the Windows Desktop folder, and then locate the **AccelerateDevGitHubCopilot** folder.
 
     1. Select **AccelerateDevGitHubCopilot** and then select **Select Folder**.
 
-1. In the Visual Studio Code EXPLORER view, open SOLUTION EXPLORER, and then verify the following project structure:
+    1. Select **Yes, I trust the authors**.
+
+1. In the Visual Studio Code EXPLORER view, select SOLUTION EXPLORER, and then verify the following project structure:
 
     - AccelerateDevGitHubCopilot\
         - src\
@@ -149,15 +144,26 @@ Use the following steps to prepare the library application:
 
     You'll see several Warnings, but there shouldn't be any Errors. You'll run the application later in this exercise.
 
+    > [!NOTE]
+    > Do not install workload updates unless your instructor directs you to do so.
+
 #### Task 2: Use GitHub Copilot to explain the library application codebase
 
 GitHub Copilot can help you to understand an unfamiliar codebase by generating explanations at the solution and feature levels.
 
 Use the following steps to complete this section of the exercise:
 
-1. Ensure that you have the `AccelerateDevGitHubCopilot` solution open in Visual Studio Code.
+1. Ensure that you have the AccelerateDevGitHubCopilot solution open in Visual Studio Code.
 
-1. Open the Chat view, and then enter a prompt that uses GitHub Copilot's `@workspace` participant to generate a description of the project.
+1. Open the Chat view.
+
+    You can open the Chat view in the following ways:
+
+    - Select the **Open Chat** button (located at the top of the Visual Studio Code window, just to the right of the command center).
+    - Use the keyboard shortcut: **Ctrl+Alt+I**.
+    - Open the GitHub Copilot status menu, and then select **GitHub Copilot Chat**.
+
+1. Enter a prompt that uses GitHub Copilot's `@workspace` participant to generate a description of the project.
 
     For example, enter the following prompt in the Chat view:
 
@@ -278,11 +284,11 @@ Use the following steps to complete this section of the exercise:
     This setup ensures that all dependencies are properly injected and configured before the application starts running.
     ```
 
-1. Expand the Library.Infrastructure project folder.
+1. Expand the Library.Infrastructure project, and then expand the Data folder.
 
 1. Add the `JsonData.cs`, `JsonLoanRepository.cs`, and `JsonPatronRepository.cs` files to the Chat context.
 
-    Use the **Attach Context** button to add the files to the Chat context. You can also use a drag-and-drop operation to add the files from the Solution Explorer to the Chat context.
+    You can use a drag-and-drop operation to add the files from the Solution Explorer to the Chat view. You can also use the **Attach Context** button (paper clip) in the Chat view to add files to the Chat context.
 
 1. Enter a prompt in the Chat view that generates an explanation of the data access classes.
 
@@ -297,19 +303,67 @@ Use the following steps to complete this section of the exercise:
     You should see a response similar to the following description:
 
     ```markdown
-    The `JsonData` class in `JsonData.cs` is responsible for managing the loading and saving of data from JSON files. It handles various entities such as `Author`, `Book`, `BookItem`, Patron`, and `Loan`. The class uses the `IConfiguration` interface to read file paths from the configuration settings, ensuring that the correct JSON files are loaded.
+    The data access classes in this project are designed to handle the loading, saving, and manipulation of data stored in JSON files. These classes include JsonData, JsonPatronRepository, and JsonLoanRepository. Here's an explanation of how each class works:
     
-    The constructor of the `JsonData` class initializes the file paths for each entity by reading from the configuration section "JsonPaths". If the paths are not specified in the configuration, it defaults to specific paths within a "Json" directory.
+    ### JsonData Class
+    The JsonData class is responsible for loading and saving data from and to JSON files. It also provides methods to populate related entities.
     
-    The `EnsureDataLoaded` method checks if the data is already loaded and, if not, calls the `LoadData` method to load the data from the JSON files. The `LoadData` method reads the JSON files and deserializes them into the respective lists of entities.
+    #### Key Responsibilities:
+    1. **Loading Data**: The LoadData method loads data from JSON files into in-memory collections (Authors, Books, BookItems, Patrons, Loans).
+    2. **Saving Data**: The SaveJson method saves data to JSON files. Specific methods like SaveLoans and SavePatrons handle saving loans and patrons, respectively.
+    3. **Ensuring Data is Loaded**: The EnsureDataLoaded method ensures that data is loaded into memory before any operations are performed.
+    4. **Populating Related Entities**: Methods like GetPopulatedPatron, GetPopulatedLoan, GetPopulatedBookItem, and GetPopulatedBook populate related entities to provide a complete view of the data.
     
-    The `SaveLoans` and `SavePatrons` methods handle saving the loan and patron data back to the JSON files. These methods ensure that only a subset of properties is saved, maintaining data integrity and consistency.
+    #### Example Methods:
+    - **LoadData**: Loads all data from JSON files.
+    - **SaveLoans**: Saves loan data to the JSON file.
+    - **GetPopulatedPatron**: Populates a patron with related loans.
+    - **SearchBookByTitle**: Searches for a book by its title.
     
-    The class also provides methods to populate entities with related data. For example, `GetPopulatedPatrons` and `GetPopulatedPatron` methods populate patron entities with their associated loans. Similarly, `GetPopulatedLoan` and `GetPopulatedBookItem` methods populate loan and book item entities with their related data.
+    ### JsonPatronRepository Class
+    The JsonPatronRepository class implements the IPatronRepository interface and provides methods to interact with patron data.
+
+    #### Key Responsibilities:
+    1. **Searching Patrons**: The SearchPatrons method searches for patrons by name. 
+    2. **Getting a Patron**: The GetPatron method retrieves a patron by ID and populates related data.
+    3. **Updating a Patron**: The UpdatePatron method updates patron information and saves it to the JSON file.
     
-    The `LoadJson` and `SaveJson` methods are utility methods for reading from and writing to JSON files. They use the `JsonSerializer` class to handle the serialization and deserialization processes.
+    #### Example Methods:
+    - **SearchPatrons**: Searches for patrons whose names contain the search input.
+    - **GetPatron**: Retrieves a patron by ID and populates related loans.
+    - **UpdatePatron**: Updates patron information and saves it to the JSON file.
     
-    Overall, the `JsonData` class serves as a central point for managing the persistence of data in JSON format, ensuring that the application can load, save, and manipulate data efficiently.
+    ### JsonLoanRepository Class
+    The JsonLoanRepository class implements the ILoanRepository interface and provides methods to interact with loan data.
+    
+    #### Key Responsibilities:
+    1. **Getting a Loan**: The GetLoan method retrieves a loan by ID and populates related data.
+    2. **Updating a Loan**: The UpdateLoan method updates loan information and saves it to the JSON file.
+    
+    #### Example Methods:
+    - **GetLoan**: Retrieves a loan by ID and populates related book items and patrons.
+    - **UpdateLoan**: Updates loan information and saves it to the JSON file.
+    
+    ### How They Work Together
+    1. **Loading Data**: When the application starts, the JsonData class loads data from JSON files into memory.
+    2. **Searching and Retrieving Data**: The JsonPatronRepository and JsonLoanRepository classes use the JsonData class to search and retrieve data. They ensure data is loaded before performing operations.
+    3. **Updating Data**: When data is updated, the repository classes call methods on the JsonData class to save the updated data back to the JSON files.
+    4. **Populating Related Entities**: The JsonData class provides methods to populate related entities, ensuring that when a patron or loan is retrieved, it includes related data like loans or book items.
+    
+    ### Example Workflow
+    1. **Search for a Patron**:
+        - The SearchPatrons method in JsonPatronRepository calls EnsureDataLoaded to ensure data is loaded.
+        - It then searches the Patrons collection for matching names and returns the results.
+
+    2. **Get a Loan**:
+       - The GetLoan method in JsonLoanRepository calls EnsureDataLoaded to ensure data is loaded.
+       - It retrieves the loan by ID and uses GetPopulatedLoan to include related book items and patrons.
+
+    3. **Update a Patron**:
+       - The UpdatePatron method in JsonPatronRepository calls EnsureDataLoaded to ensure data is loaded.
+       - It updates the patron information and calls SavePatrons to save the updated data to the JSON file.
+
+    By using these data access classes, the application can efficiently manage data stored in JSON files, ensuring that data is loaded, manipulated, and saved correctly.
     ```
 
 1. Take a couple minutes to examine the JSON data files that are used to simulate library records.
@@ -378,26 +432,23 @@ Use the following steps to complete this section of the exercise:
 
 #### Exercise summary
 
-This exercise helped you understand the library application codebase and how the application interacts with the user. You used GitHub Copilot to generate explanations for the project structure, key classes, and data access classes. You also ran the application to see how the console interface works and how the application components interact.
+This exercise helped you understand the library application codebase and how the application interacts with the user. You used GitHub Copilot to generate explanations for the project structure, selected files, and data access classes. You also ran the application to see how the console interface works and how the application components interact.
 
 ### Exercise 3: Create the GitHub repository and empty README file
 
 Creating the GitHub repository for your code will enable you to share your work with others and collaborate on the project.
 
-> [!NOTE]
-> You use your own GitHub account to create a private GitHub repository for the library application.
-
 #### Task 1: Create the GitHub repository
 
 Use the following steps to complete this section of the exercise:
 
-1. Open a browser window and navigate to your GitHub account.
+1. Ensure that you have your GitHub account open a browser window.
+
+    If necessary, open a browser window and use the following information to login:
 
     URL: `https://github.com/enterprises/Microsoft-APL/sso`
 
-1. Sign in to your GitHub account.
-
-    Username: `@lab.CloudPortalCredential(1).Username`
+    Email/Username: `@lab.CloudPortalCredential(1).Username`
     Password: `@lab.CloudPortalCredential(1).Password`
 
 1. Open your GitHub account menu, and then select **Your repositories**.
@@ -408,10 +459,13 @@ Use the following steps to complete this section of the exercise:
 
 1. Select **Publish to GitHub**.
 
-1. Accept the default name for the repository (AccelerateDevGitHubCopilotSelect) and select **Publish to GitHub private repository**.
+    If a dialog box opens asking to su=ign in using your GitHub account, complete the following steps:
 
-    > [!NOTE]
-    > If you're not signed in to GitHub in Visual Studio Code, you'll be prompted to sign in. Once you're signed in, authorize Visual Studio Code with the requested permissions.
+    1. Select **Allow**.
+    1. Select the account that you're using in this lab environment.
+    1. If necessary, select **Publish to GitHub** again.
+
+1. Accept the default name for the repository (AccelerateDevGitHubCopilotSelect) and select **Publish to GitHub private repository**.
 
 1. In the Source Control view, enter a commit message, such as "Initial commit", and then select **Publish Branch**.
 
@@ -636,7 +690,7 @@ To check your work, complete the following steps:
 
 This exercise helped you create project documentation for the README file using GitHub Copilot. You used GitHub Copilot to generate the project description, project structure, key classes and interfaces, usage instructions, and license information. You also committed and pushed the README file updates to the GitHub repository.
 
-## Instructions - Part 2: Develop code features using GitHub Copilot tools
+## Part 2: Develop code features using GitHub Copilot tools
 
 ### Before you start
 
@@ -654,11 +708,13 @@ You agree to work on the following features:
 
 Each of you will work on one of the new features and then regroup. You'll work on the feature to determine the availability status of a book. Your coworker will work on the feature to loan a book to a patron. The final feature, to reserve a book for a patron, will be developed after the other two features are completed.
 
-#### Lab scenario - Part 2
+#### Lab scenario (part 2)
 
-GitHub Copilot can help you develop new features for the library application. In part 2 of this lab, you'll use GitHub Copilot to generate code suggestions that help you implement the new features more quickly and accurately.
+GitHub Copilot can help you develop new features for the library application.
 
-Part 2 of this lab includes the following exercises:
+In part 2 of this lab, you'll use GitHub Copilot to generate code suggestions that help you implement the new features more quickly and accurately.
+
+Part 2 includes the following exercises:
 
 - Develop a new "book availability" feature.
 - Merge your changes into the main branch of the repository.
@@ -1411,7 +1467,7 @@ Use the following steps to complete this section of the exercise:
 
 In this exercise, you tested you code and then merged your changes into the main branch of the repository. You committed your changes to the local repository, synced them with the remote repository, and then created a pull request to merge your changes into the main branch of the repository. You used GitHub Copilot to generate a summary of the pull request to help reviewers understand your changes.
 
-## Instructions - Part 3: Develop unit tests using GitHub Copilot tools
+## Part 3: Develop unit tests using GitHub Copilot tools
 
 ### Before you start
 
@@ -1421,7 +1477,7 @@ Your colleague created a test project named `UnitTests`. The existing unit tests
 
 You need to extend the `UnitTests` project to cover the data access classes in the `Library.Infrastructure` project.
 
-#### Lab scenario - Part 3
+#### Lab scenario (part 3)
 
 GitHub Copilot can help you write unit tests for your code. There are several ways to use GitHub Copilot to generate unit tests:
 
@@ -1435,7 +1491,7 @@ GitHub Copilot can help you write unit tests for your code. There are several wa
 
 In part 3 of this lab, you develop unit tests for the `Library.Infrastructure` project.
 
-Part 3 of this lab includes the following exercise:
+Part includes the following exercise:
 
 - Use GitHub Copilot to evaluate and extend the `UnitTests` project.
 
@@ -1945,7 +2001,7 @@ Use the following steps to complete this section of the exercise:
 
 In this exercise, you used GitHub Copilot to evaluate the existing `UnitTests` project and extend the project to begin testing the data access classes in the `Library.Infrastructure` project. You added a reference to the `Library.Infrastructure` project in the `UnitTests.csproj` file and created unit tests for the `JsonLoanRepository` class. You used GitHub Copilot to help you write the unit tests for the `GetLoan` method in the `JsonLoanRepository` class. You ran the unit tests using Visual Studio Code's Test Explorer and verified that the tests passed.
 
-## Instructions - Part 4: Refactor and improve code sections using GitHub Copilot tools
+## Part 4: Refactor and improve code sections using GitHub Copilot tools
 
 ### Before you start
 
@@ -1955,7 +2011,7 @@ You and your coworker have completed the initial development phase of the projec
 
 Code refactoring is a process that restructures existing code without changing its external behavior. Refactoring is often used to improve a specific aspect of your code. GitHub Copilot can help you refactor your code by suggesting changes that improve the code's quality, reliability, performance, and security.
 
-#### Lab scenario - Part 4
+#### Lab scenario (part 4)
 
 In part 4 of this lab, you use GitHub Copilot to refactor the following code sections:
 
@@ -1963,7 +2019,7 @@ In part 4 of this lab, you use GitHub Copilot to refactor the following code sec
 
 - You refactor the data access methods to use LINQ (Language Integrated Query) rather than foreach loops. Using LINQ provides a more concise and readable way to query collections, databases, and XML documents. Using LINQ can improve code readability, maintainability, and performance.
 
-Part 4 of this lab includes the following exercises:
+Part includes the following exercises:
 
 - Use GitHub Copilot to refactor the EnumHelper class.
 - Use GitHub Copilot to improve the data access classes with LINQ.
