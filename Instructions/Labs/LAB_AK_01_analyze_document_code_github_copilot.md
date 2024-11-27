@@ -663,7 +663,7 @@ Part 2 of this lab includes the following exercises:
 - Develop a new "book availability" feature.
 - Merge your changes into the main branch of the repository.
 
-### Exercise 1: Develop a new "book availability" feature
+### Exercise 5: Develop a new "book availability" feature
 
 The book availability feature should include the following code updates:
 
@@ -1265,7 +1265,7 @@ Use the following steps to complete this section of the exercise:
 
 You used GitHub Copilot to help you implement a new feature for the library application. You created a new branch in the repository and then used GitHub Copilot to generate code suggestions that helped you implement the new feature more quickly and accurately. You added a new `SearchBooks` action to `CommonActions`, updated the `WriteInputOptions` and `ReadInputOptions` methods in `ConsoleApp.cs`, and created a new `SearchBooks` method to determine the availability status of a book.
 
-### Exercise 2: Merge your changes into the main branch of the repository
+### Exercise 6: Merge your changes into the main branch of the repository
 
 You completed the new feature that enables a librarian to determine the availability status of a book. Now you need to merge your changes into the main branch of the repository.
 
@@ -1419,7 +1419,7 @@ In this exercise, you tested you code and then merged your changes into the main
 
 Your colleague created a test project named `UnitTests`. The existing unit tests partially cover the service classes in the `Library.ApplicationCore` project. The `Library.ApplicationCore` project contains the business logic for a library management system. The `UnitTests` project uses the xUnit framework to write and run unit tests. The project also uses the NSubstitute library to create mock objects for testing.
 
-Your need to extend the `UnitTests` project to cover the data access classes in the `Library.Infrastructure` project.
+You need to extend the `UnitTests` project to cover the data access classes in the `Library.Infrastructure` project.
 
 #### Lab scenario - Part 3
 
@@ -1435,17 +1435,17 @@ GitHub Copilot can help you write unit tests for your code. There are several wa
 
 In part 3 of this lab, you develop unit tests for the `Library.Infrastructure` project.
 
-Part 3 of this lab includes the following exercises:
+Part 3 of this lab includes the following exercise:
 
 - Use GitHub Copilot to evaluate and extend the `UnitTests` project.
 
-### Exercise 1: Use GitHub Copilot to evaluate and extend the `UnitTests` project
+### Exercise 7: Use GitHub Copilot to evaluate and extend the `UnitTests` project
 
 In this exercise, you use GitHub Copilot to complete the following tasks:
 
-1. Evaluate the approach to unit testing implemented by the UnitTests project.
+1. Use GitHub Copilot to evaluate the existing UnitTests project.
 
-1. Extend the UnitTests project to begin testing the data access classes in the `Library.Infrastructure` project.
+1. Extend the UnitTests project to begin testing data access classes.
 
 #### Task 1: Use GitHub Copilot to evaluate the existing UnitTests project
 
@@ -1472,10 +1472,16 @@ Evaluating the existing unit tests will help you to develop unit tests for the d
 
 Use the following steps to complete this section of the exercise:
 
-1. Open the Chat view and then enter the following prompt:
+1. Open the Chat view.
+
+1. Add the following files to the Chat context: `LoanFactory.cs`, `PatronFactory.cs`, `ExtendLoan.cs`, `ReturnLoan.cs`, `RenewMembership.cs`, `LoanService.cs`, `PatronService.cs`.
+
+    The files are located in the `tests/UnitTests`, `tests/UnitTests/ApplicationCore/LoanService`, `tests/UnitTests/ApplicationCore/PatronService`, and `src/Library.ApplicationCore/Services` folders.
+
+1. Enter the following prompt:
 
     ```plaintext
-    @workspace #file:ExtendLoan.cs #file:ReturnLoan.cs #file:RenewMembership.cs #file:LoanFactory.cs #file:PatronFactory.cs #file:LoanService.cs #file:PatronService.cs Explain the approach to unit testing in the context of this workspace.
+    @workspace Explain the approach to unit testing that's been implemented in this workspace.
     ```
 
     This prompt asks GitHub Copilot to explain the approach to unit testing in the context of the workspace. Several files are included in the prompt to provide context for the response.
@@ -1484,12 +1490,12 @@ Use the following steps to complete this section of the exercise:
 
     You should see an explanation that's similar to the following description:
 
-    - Test organization: Tests are organized into separate files based on the methods being tested. For example, `ExtendLoan` and `ReturnLoan` methods are tested in separate files under the `LoanService` folder.
     - Mocking dependencies: The tests use `NSubstitute` to create mock implementations of interfaces.
-    - Factory methods: Factory methods are used to create test data consistently.
-    - Test scenarios: The tests cover various scenarios for each method, such as returning different statuses based on the input.
+    - Test organization: Tests are organized into separate files based on the methods being tested. For example, `ExtendLoan` and `ReturnLoan` methods are tested in separate files under the `LoanService` folder.
     - Assertions: Assertions are used to verify the expected outcome of each test.
+    - Test scenarios: The tests cover various scenarios for each method, such as returning different statuses based on the input.
     - Isolation: Each test is isolated from others to prevent side effects.
+    - Factory methods: Factory methods are used to create test data consistently.
 
 1. Enter the following prompt:
 
@@ -1508,10 +1514,12 @@ Use the following steps to complete this section of the exercise:
     - Separation of Concerns: The separation of test data creation from the test logic itself keeps the tests clean and focused on the behavior being tested.
     - Immediate Feedback: Running unit tests provides immediate feedback on the correctness of the code.
 
+1. Add the following files to the Chat context: `ExtendLoan.cs`, `ReturnLoan.cs`, `RenewMembership.cs`, `LoanFactory.cs`, `PatronFactory.cs`, `LoanService.cs`, `PatronService.cs`.
+
 1. Enter the following prompt:
 
     ```plaintext
-    @workspace #file:ExtendLoan.cs #file:ReturnLoan.cs #file:RenewMembership.cs #file:LoanFactory.cs #file:PatronFactory.cs #file:LoanService.cs #file:PatronService.cs How can I extend the `UnitTests` project to begin testing methods in the `Library.Infrastructure` project? Provide a process overview.
+    @workspace How can I extend the `UnitTests` project to begin testing methods in the `Library.Infrastructure` project? Provide a process overview.
     ```
 
     This prompt asks GitHub Copilot to provide a process overview for extending the `UnitTests` project to begin testing methods in the `Library.Infrastructure` project. Several files are included in the prompt to provide context for the response.
@@ -1558,10 +1566,12 @@ You'll start by writing unit tests for the `JsonLoanRepository` class.
 
 Use the following steps to complete this section of the exercise:
 
+1. Add the following project file to the Chat context: `UnitTests.csproj`.
+
 1. Enter the following prompt in the Chat view:
 
     ```plaintext
-    @workspace #file:UnitTests.csproj Explain how to add a reference to the Library.Infrastructure project inside `UnitTests.csproj`.
+    @workspace Explain how to add a reference to the Library.Infrastructure project inside `UnitTests.csproj`.
     ```
 
     This prompt asks GitHub Copilot to explain how to add a reference to the `Library.Infrastructure` project inside the `UnitTests.csproj` file.
@@ -1674,7 +1684,7 @@ Use the following steps to complete this section of the exercise:
 
     This folder structure mirrors the approach used for the `Library.ApplicationCore` unit tests.
 
-1. Create a file named `GetLoan.cs` in the `JsonLoanRepository` folder.
+1. Create a class file named `GetLoan` in the `JsonLoanRepository` folder.
 
 1. Take a minute to consider the field and class constructor requirements for the `GetLoan` unit tests.
 
@@ -1688,10 +1698,12 @@ Use the following steps to complete this section of the exercise:
 
     - You'll need a `JsonData` object to create a non-mock `JsonLoanRepository` object. Since the `UnitTests` project doesn't have access to the `JsonData` object created by the `ConsoleApp` project, you'll need to create one using the `IConfiguration` interface.
 
-1. Open the Chat view, and then enter the following prompt:
+1. Add the following files to the Chat context: `JsonLoanRepository.cs`, `ReturnLoan.cs`, `LoanService.cs`, `LoanFactory.cs`, `JsonData.cs`.
+
+1. Enter the following prompt:
 
     ```plaintext
-    @workspace #file:JsonLoanRepository.cs #file:ReturnLoan.cs #file:LoanService.cs #file:LoanFactory.cs #file:JsonData.cs Create fields and a class constructor for the `GetLoan.cs` file. The class will be used to create unit tests for the GetLoan method in the `JsonLoanRepository.cs` file. Create the following private readonly fields: `_mockLoanRepository`, `_jsonLoanRepository`, `_configuration`, and `_jsonData`. Instantiate the fields in the `GetLoanTest` constructor. Use `ConfigurationBuilder` to create a `_configuration` object that can be used to instantiate the JsonData object.
+    @workspace Create fields and a class constructor for the `GetLoan.cs` file. The class will be used to create unit tests for the GetLoan method in the `JsonLoanRepository.cs` file. Create the following private readonly fields: `_mockLoanRepository`, `_jsonLoanRepository`, `_configuration`, and `_jsonData`. Instantiate the fields in the `GetLoanTest` constructor. Use `ConfigurationBuilder` to create a `_configuration` object that can be used to instantiate the JsonData object.
     ```
 
     This prompt asks GitHub Copilot to suggest fields and a class constructor.
@@ -1701,11 +1713,12 @@ Use the following steps to complete this section of the exercise:
     You should see a code suggestion that's similar to the following code snippet:
 
     ```csharp
-    using System;
-    using Microsoft.Extensions.Configuration;
     using NSubstitute;
+    using Library.ApplicationCore;
+    using Library.ApplicationCore.Entities;
     using Library.ApplicationCore.Interfaces;
     using Library.Infrastructure.Data;
+    using Microsoft.Extensions.Configuration;
     
     namespace UnitTests.Infrastructure.JsonLoanRepository;
     
@@ -1734,18 +1747,20 @@ Use the following steps to complete this section of the exercise:
 
 1. Notice the following issues:
 
-    - There is a conflict between the namespace and the use of `JsonLoanRepository` in the code. You should update the namespace to follow the pattern used in the `ReturnLoan.cs` and `RenewMembership.cs` files.
+    - There is a conflict between the namespace and the use of `JsonLoanRepository` in the code. You should update the namespace in GetLoans.cs to follow the pattern used in the `ReturnLoan.cs` and `RenewMembership.cs` files.
 
-    - `ILoanRepository` is not recognized. You should add a `using` directive for `Library.ApplicationCore` to the top of the file.
+    - If `ILoanRepository` isn't recognized in your code, you may need to add a `using` directive for `Library.ApplicationCore` to the top of the file.
 
-    - The `ConfigurationBuilder.AddJsonFile` method is not recognized. You should update the code to use `_configuration = new ConfigurationBuilder().Build();`.
+    - If the `_configuration` object isn't instantiated correctly, you may need to update the code line containing `ConfigurationBuilder`. You can simplify the code to use `_configuration = new ConfigurationBuilder().Build();`.
+
+    - If a `using Library.ApplicationCore.Interfaces` is suggested by GitHub Copilot, you can delete it from the top of the file.
 
 1. Update the `GetLoan.cs` file to match the following code snippet:
 
     ```csharp
     using NSubstitute;
     using Library.ApplicationCore;
-    using Library.ApplicationCore.Interfaces;
+    using Library.ApplicationCore.Entities;
     using Library.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
     
@@ -1769,14 +1784,12 @@ Use the following steps to complete this section of the exercise:
     }
     ```
 
-1. Notice that the `Library.ApplicationCore.Interfaces` namespace isn't recognized.
-
-1. Delete `using Library.ApplicationCore.Interfaces;` from the top of the file.
+1. Add the following files to the Chat context: `JsonLoanRepository.cs`, `ReturnLoan.cs`, `LoanService.cs`, `LoanFactory.cs`, `JsonData.cs`, `Loans.json`.
 
 1. Select the contents of the `GetLoan.cs` file, and then enter the following prompt in the Chat view:
 
     ```plaintext
-    @workspace #file:GetLoan.cs #file:JsonLoanRepository.cs #file:ReturnLoan.cs #file:LoanService.cs #file:LoanFactory.cs #file:JsonData.cs #file:Loans.json Update the selection to include a unit test for the `JsonLoanRepository.GetLoan` method. The unit test should test the case where a loan ID is found in the data. Use `_mockLoanRepository` to arrange the expected return loan. Use `_jsonLoanRepository` to return an actual loan. Asserts should verify that the return loan ID matches the expected loan ID. Use a loan ID that exists in the `Loans.json` file.
+    @workspace Update the selection to include a unit test for the `JsonLoanRepository.GetLoan` method. The unit test should test the case where a loan ID is found in the data. Use `_mockLoanRepository` to arrange the expected return loan. Use `_jsonLoanRepository` to return an actual loan. Asserts should verify that the return loan ID matches the expected loan ID. Use a loan ID that exists in the `Loans.json` file.
     ```
 
     This prompt asks GitHub Copilot to suggest a unit test for the `JsonLoanRepository.GetLoan` method. The unit test should test the case where a loan ID is found in the data. The test should use `_mockLoanRepository` to arrange the expected return loan, `_jsonLoanRepository` to return an actual loan, and asserts to verify that the return loan ID matches the expected loan ID. The loan ID should exist in the `Loans.json` file.
@@ -1788,6 +1801,7 @@ Use the following steps to complete this section of the exercise:
     ```csharp
     using NSubstitute;
     using Library.ApplicationCore;
+    using Library.ApplicationCore.Entities;
     using Library.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
     using Xunit;
@@ -1832,13 +1846,9 @@ Use the following steps to complete this section of the exercise:
 
     The `JsonLoanRepository.GetLoan` method calls `_jsonData.EnsureDataLoaded` to ensure that the JSON data is loaded. You can delete the code line that calls `_jsonData.EnsureDataLoaded` in the test method if it's included.
 
-1. Notice that there are issues with the code:
+    If the `Loan` class isn't recognized in your code, ensure that you have a `using Library.ApplicationCore.Entities` statement at the top of the GetLoan.cs file. The `Loan` class is located in the `Library.ApplicationCore.Entities` namespace.
 
-    - The `Loan` class isn't recognized. The `Loan` class is located in the `Library.ApplicationCore.Entities` namespace.
-
-1. Add a `using` directive for `Library.ApplicationCore.Entities` to the top of the file.
-
-1. Build the solution to ensure there are no errors.
+1. Build the `AccelerateDevGitHubCopilot` solution to ensure there are no errors.
 
 1. Use GitHub Copilot's autocompletion feature to create a test for the case where the loan ID isn't found.
 
@@ -1867,41 +1877,12 @@ Use the following steps to complete this section of the exercise:
         // Assert
         Assert.Null(actualLoan);
     }
+
     ```
 
-    ```csharp
-    [Fact(DisplayName = "JsonLoanRepository.GetLoan: Returns loan when loan ID is found")]
-    public async Task GetLoan_ReturnsLoanWhenLoanIdIsFound()
-    {
-        // Arrange
-        var loanId = 1; // Use a loan ID that exists in the Loans.json file
-        var expectedLoan = new Loan { Id = loanId, BookItemId = 101, PatronId = 202, LoanDate = DateTime.Now, DueDate = DateTime.Now.AddDays(14) };
-        _mockLoanRepository.GetLoan(loanId).Returns(expectedLoan);
+1. Accept the autocompletion suggestion that assigns a `loanId` value that isn't in the data set.
 
-        // Act
-        var actualLoan = await _jsonLoanRepository.GetLoan(loanId);
-
-        // Assert
-        Assert.NotNull(actualLoan);
-        Assert.Equal(expectedLoan.Id, actualLoan?.Id);
-    }
-    ```
-
-    ```csharp
-    [Fact(DisplayName = "JsonLoanRepository.GetLoan: Returns loan when loan ID is found")]
-    public async Task GetLoan_ReturnsLoanWhenLoanIdIsFound()
-    {
-        // Arrange
-        var loanId = 1; // Use a loan ID that exists in the Loans.json file
- 
-        // Act
-        var actualLoan = await _jsonLoanRepository.GetLoan(loanId);
-
-        // Assert
-        Assert.NotNull(actualLoan);
-        Assert.Equal(expectedLoan.Id, actualLoan?.Id);
-    }
-    ```
+    If none of the suggestions assign `loanId` numbers that aren't in the data set, you can use the **Ctrl+Enter** keyboard shortcut to list additional suggestions.
 
 1. Notice that the unit tests require access to the JSON data files.
 
@@ -1987,7 +1968,7 @@ Part 4 of this lab includes the following exercises:
 - Use GitHub Copilot to refactor the EnumHelper class.
 - Use GitHub Copilot to improve the data access classes with LINQ.
 
-### Exercise 1: Use GitHub Copilot to refactor the EnumHelper class
+### Exercise 8: Use GitHub Copilot to refactor the EnumHelper class
 
 Reflection is a powerful feature that allows you to inspect and manipulate objects at runtime. However, reflection can be slow and there are potential security risks associated with reflection that should be considered.
 
@@ -2029,10 +2010,12 @@ Use the following steps to complete this exercise:
     }
     ```
 
-1. Open the Chat view and then enter the following prompt:
+1. Open the Chat view, and then add the following files to the Chat context: `EnumHelper.cs`, `LoanExtensionStatus.cs`, `LoanReturnStatus.cs`, `MembershipRenewalStatus.cs`.
+
+1. Enter the following prompt:
 
     ```plaintext
-    @workspace #file:EnumHelper.cs #file:LoanExtensionStatus.cs #file:LoanReturnStatus.cs #file:MembershipRenewalStatus.cs I want to refactor the `EnumHelper` class using dictionaries rather than reflection to get enum description attributes. I want a separate dictionary for each enum. The enum values are in the `LoanExtensionStatus.cs`, `LoanReturnStatus.cs`, and `MembershipRenewalStatus.cs` files. Explain how to update the EnumHelper class to use dictionaries and provide the updated code.
+    @workspace I want to refactor the `EnumHelper` class using dictionaries rather than reflection to get enum description attributes. I want a separate dictionary for each enum. The enum values are in the `LoanExtensionStatus.cs`, `LoanReturnStatus.cs`, and `MembershipRenewalStatus.cs` files. Explain how to update the EnumHelper class to use dictionaries and provide the updated code.
     ```
 
     This prompt asks GitHub Copilot to provide an explanation of how to update the EnumHelper class to use dictionaries instead of reflection. It also asks for the updated code that uses dictionaries for each enum value.
@@ -2117,12 +2100,12 @@ Use the following steps to complete this exercise:
 
 1. Use GitHub Copilot's suggested `EnumHelper` class to update your EnumHelper.cs file.
 
-1. Ensure that GitHub Copilot is using the enum values in the `LoanExtensionStatus.cs`, `LoanReturnStatus.cs`, and `MembershipRenewalStatus.cs` files.
+1. Ensure that your updated `EnumHelper` class is using the enum values from the `LoanExtensionStatus.cs`, `LoanReturnStatus.cs`, and `MembershipRenewalStatus.cs` files.
 
     Open each of the enum files and verify that the enum values in the dictionaries are correct. If there are discrepancies, have GitHub Copilot update the dictionaries for each enum individually. For example, you can use the following prompt for the `LoanExtensionStatus` enum:
 
     ```plaintext
-    @workspace #file:LoanExtensionStatus.cs #file:EnumHelper.cs Update the LoanExtensionStatus dictionary in the EnumHelper class use the description values in LoanExtensionStatus.cs. Provide the updated code for the LoanExtensionStatus dictionary in the EnumHelper class.
+    @workspace Use the description values in LoanExtensionStatus.cs to update the LoanExtensionStatus dictionary in the EnumHelper class. Provide the updated code for the LoanExtensionStatus dictionary in the EnumHelper class.
     ```
 
     If necessary, use the same approach for the `LoanReturnStatus` and `MembershipRenewalStatus` enums.
@@ -2177,7 +2160,7 @@ Use the following steps to complete this exercise:
 
 In this exercise, you used GitHub Copilot to refactor the EnumHelper class to use dictionaries instead of reflection. Using dictionaries improves performance by reducing the overhead of reflection. Eliminating reflection also improves code readability, maintainability, and security.
 
-### Exercise 2: Use GitHub Copilot to improve the data access classes with LINQ
+### Exercise 9: Use GitHub Copilot to improve the data access classes with LINQ
 
 LINQ (Language Integrated Query) is a powerful feature in C# that allows you to query collections, databases, and XML documents in a uniform way. LINQ provides a more concise and readable way to query data compared to traditional foreach loops.
 
@@ -2339,11 +2322,11 @@ Use the following steps to complete this section of the exercise:
     }
     ```
 
-1. Use the **Explain This** smart action to see an explanation of the LINQ queries.
+1. Use the **Explain** smart action to see an explanation of the LINQ queries.
 
-    The **Explain This** smart action provides a detailed explanation of the LINQ queries used in the code.
+    The **Explain** smart action provides a detailed explanation of the LINQ queries used in the code.
 
-    For example, you can use the **Explain This** smart action on the `GetPopulatedBook` method to see an explanation of the LINQ query used to populate the `Author` property of the `Book` object.
+    For example, you can use the **Explain** smart action on the `GetPopulatedBook` method to see an explanation of the LINQ query used to populate the `Author` property of the `Book` object.
 
     ```csharp
     Author = Authors!.Where(a => a.Id == b.AuthorId).Select(a => new Author {
@@ -2352,7 +2335,7 @@ Use the following steps to complete this section of the exercise:
     }).First()
     ```
 
-    The **Explain This** smart action provides a detailed explanation of the LINQ query used to populate the `Author` property of the `Book` object.
+    The **Explain** smart action provides a detailed explanation of the LINQ query used to populate the `Author` property of the `Book` object.
 
     For example, the explanation might look like this:
 
@@ -2445,6 +2428,8 @@ Use the following steps to complete this section of the exercise:
     }
     ```
 
+1. To accept the updated GetLoan method, select **Accept**.
+
 1. Select the `UpdateLoan` method.
 
     ```csharp
@@ -2532,6 +2517,8 @@ Use the following steps to complete this section of the exercise:
         }
     }
 
+1. To accept the updated UpdateLoan method, select **Accept**.
+
 1. Build your solution to ensure that there are no errors.
 
     You'll see warnings. You can ignore them for now.
@@ -2597,6 +2584,8 @@ Use the following steps to complete this section of the exercise:
     }
     ```
 
+1. To accept the updated SearchPatrons method, select **Accept**.
+
 1. Select the `GetPatron` method.
 
     The `GetPatron` method is designed to return the patron matching the specified `id`.
@@ -2657,6 +2646,8 @@ Use the following steps to complete this section of the exercise:
             .FirstOrDefault();
     }
     ```
+
+1. To accept the updated GetPatron method, select **Accept**.
 
 1. Select the `UpdatePatron` method.
 
@@ -2720,6 +2711,8 @@ Use the following steps to complete this section of the exercise:
         }
     }
     ```
+
+1. To accept the updated UpdatePatron method, select **Accept**.
 
 #### Task 4: Check your work
 
