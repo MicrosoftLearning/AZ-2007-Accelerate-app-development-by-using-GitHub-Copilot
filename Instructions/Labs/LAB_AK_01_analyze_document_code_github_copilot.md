@@ -43,11 +43,16 @@ Use the following steps to install the GitHub Copilot extensions:
 
 1. Open a browser window.
 
-1. To open the GitHub Enterprise portal, navigate to the following URL: `https://github.com/enterprises/Microsoft-APL/sso`
+1. To open the GitHub Enterprise portal, navigate to the following URL:
 
-1. Sign in to your GitHub account using the following credentials.
+    ```plaintext
+    https://github.com/enterprises/Microsoft-APL/sso
+    ```
+
+1. Sign in to your GitHub account using the following credentials:
 
     Email/Username: `@lab.CloudPortalCredential(1).Username`
+
     Password: `@lab.CloudPortalCredential(1).Password`
 
 1. Open Visual Studio Code.
@@ -62,17 +67,23 @@ Use the following steps to install the GitHub Copilot extensions:
 
 1. When you see the "Sign in to use GitHub Copilot notification, select **Sign in to GitHub**.
 
-    Since you're already signed in to your GitHub account in a browser window, a new Verify Session browser tab should open.
+    If you see a dialog saying that GitHub Copilot wants to sign in using GitHub, select **Allow**.
+
+    Since you're already signed in to your GitHub account in a browser window, a new Verify Session tab should open in your browser window.
 
 1. On the Verify Session page, select **Continue**.
 
 1. On the Authorize Visual Studio Code page, select **Authorize Visual Studio Code**.
 
-1. To open Visual Studio Code, select **Open**.
+1. To return to Visual Studio Code, select **Open**.
 
-1. Close Visual Studio Code.
+1. Close and then re-open Visual Studio Code.
 
-#### Exercise summary
+    Restarting Visual Studio Code helps to ensure that GitHub Copilot is integrated in the Visual Studio Code user interface as expected.
+
+1. Notice that the **Open Chat** button is now visible on the right side of the Command Center at the top if the Visual Studio Code window.
+
+#### Exercise 1 summary
 
 In this exercise, you installed the GitHub Copilot extension in Visual Studio Code. You also authorized Visual Studio Code to access your GitHub account. You're now ready to use GitHub Copilot to analyze and document the library application codebase.
 
@@ -92,11 +103,17 @@ Use the following steps to prepare the library application:
 
 1. Ensure that you have your web browser open, and then open a new browser tab.
 
-1. To download the zip file containing your code project, navigate to the following URL: `https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/GuidedProjectApp.zip`
+1. To download the zip file containing your code project, navigate to the following URL:
+
+    ```plaintext
+    https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/GuidedProjectApp.zip
+    ```
 
     The zip file containing your solution code, GuidedProjectApp.zip, should download automatically.
 
 1. Once the download is complete, close the browser tab.
+
+    Keep the browser page for you GitHub account open. You'll use it later in the lab.
 
 1. Open Windows File Explorer and navigate to the Downloads folder.
 
@@ -163,13 +180,15 @@ Use the following steps to complete this section of the exercise:
     - Use the keyboard shortcut: **Ctrl+Alt+I**.
     - Open the GitHub Copilot status menu, and then select **GitHub Copilot Chat**.
 
-1. Enter a prompt that uses GitHub Copilot's `@workspace` participant to generate a description of the project.
+1. Enter a prompt that uses GitHub Copilot's **@workspace** participant to generate a description of the project.
 
     For example, enter the following prompt in the Chat view:
 
     ```plaintext
     @workspace Describe this project
     ```
+
+    If you see a dialog box asking you to sign in to GitHub, select **Allow** and then follow the instructions to sign in using your GitHub account.
 
 1. Take a couple minutes to review the response.
 
@@ -203,11 +222,11 @@ Use the following steps to complete this section of the exercise:
 
 1. Use the Solution Explorer view to expand the project folders.
 
-1. Locate and open the `ConsoleApp.cs` file.
+1. Locate and open the **ConsoleApp.cs** file.
 
-    The ConsoleApp.cs file is located in the `src/Library.Console` folder.
+    The ConsoleApp.cs file is located in the src/Library.Console project.
 
-1. Enter a prompt in the Chat view that generates a description of the `ConsoleApp` class.
+1. Enter a prompt in the Chat view that generates a description of the ConsoleApp class.
 
     For example, enter the following prompt in the Chat view:
 
@@ -220,38 +239,38 @@ Use the following steps to complete this section of the exercise:
     You should see a response similar to the following description:
 
     ```markdown
-    The `ConsoleApp` class in `ConsoleApp.cs` is responsible for managing the console-based user interface of the library management system. It handles user interactions, processes user inputs, and coordinates actions with the underlying services and repositories.
+    The ConsoleApp class in ConsoleApp.cs is responsible for managing the console-based user interface of the library management system. It handles user interactions, processes user inputs, and coordinates actions with the underlying services and repositories.
 
     ### Fields
-    - `_currentState`: Tracks the current state of the console application.
-    - `matchingPatrons`: A list of patrons that match a search query.
-    - `selectedPatronDetails`: Holds details of the currently selected patron.
-    - `selectedLoanDetails`: Holds details of the currently selected loan.
-    - `_patronRepository`: An instance of `IPatronRepository` for accessing patron data.
-    - `_loanRepository`: An instance of `ILoanRepository` for accessing loan data.
-    - `_loanService`: An instance of `ILoanService` for performing loan-related operations.
-    - `_patronService`: An instance of `IPatronService` for performing patron-related operations.
+    - _currentState: Tracks the current state of the console application.
+    - matchingPatrons: A list of patrons that match a search query.
+    - selectedPatronDetails: Holds details of the currently selected patron.
+    - selectedLoanDetails: Holds details of the currently selected loan.
+    - _patronRepository: An instance of IPatronRepository for accessing patron data.
+    - _loanRepository: An instance of ILoanRepository for accessing loan data.
+    - _loanService: An instance of ILoanService for performing loan-related operations.
+    - _patronService: An instance of IPatronService for performing patron-related operations.
 
     ### Constructor
-    - `ConsoleApp(ILoanService loanService, IPatronService patronService, IPatronRepository patronRepository, ILoanRepository loanRepository)`: Initializes the `ConsoleApp` with the provided services and repositories.
+    - ConsoleApp(ILoanService loanService, IPatronService patronService, IPatronRepository patronRepository, ILoanRepository loanRepository): Initializes the ConsoleApp with the provided services and repositories.
 
     ### Methods
-    - `Run()`: The main entry point for running the console application.
-    - `PatronSearch()`: Handles the logic for searching patrons.
-    - `ReadPatronName()`: Reads the patron's name from the console input.
-    - `PrintPatronsList(List<Patron> matchingPatrons)`: Prints a list of matching patrons to the console.
-    - `PatronSearchResults()`: Handles the logic for displaying and selecting from the search results.
-    - `ReadInputOptions(CommonActions options, out int optionNumber)`: Reads input options from the console.
-    - `WriteInputOptions(CommonActions options)`: Writes the available input options to the console.
-    - `PatronDetails()`: Displays details of the selected patron.
-    - `LoanDetails()`: Displays details of the selected loan and handles actions like extending or returning the loan.
+    - Run(): The main entry point for running the console application.
+    - PatronSearch(): Handles the logic for searching patrons.
+    - ReadPatronName(): Reads the patron's name from the console input.
+    - PrintPatronsList(List<Patron> matchingPatrons): Prints a list of matching patrons to the console.
+    - PatronSearchResults(): Handles the logic for displaying and selecting from the search results.
+    - ReadInputOptions(CommonActions options, out int optionNumber): Reads input options from the console.
+    - WriteInputOptions(CommonActions options): Writes the available input options to the console.
+    - PatronDetails(): Displays details of the selected patron.
+    - LoanDetails(): Displays details of the selected loan and handles actions like extending or returning the loan.
 
     The class uses a state machine approach to manage different states of the console application, such as searching for patrons, displaying search results, showing patron details, and handling loan details.
     ```
 
-1. Open the `Program.cs` file.
+1. Open the **Program.cs** file.
 
-1. Enter a prompt in the Chat view that generates a description of the `Program.cs` file.
+1. Enter a prompt in the Chat view that generates a description of the Program.cs file.
 
     For example, enter the following prompt in the Chat view:
 
@@ -264,11 +283,11 @@ Use the following steps to complete this section of the exercise:
     You should see a response similar to the following description:
 
     ```markdown
-    The `Program.cs` file is the entry point for the console application. It sets up the dependency injection container, configures services, and starts the `ConsoleApp`.
+    The Program.cs file is the entry point for the console application. It sets up the dependency injection container, configures services, and starts the ConsoleApp.
     
     1. **Dependency Injection Setup**:
-        - Creates a `ServiceCollection` to register services.
-        - Builds a configuration object from the `appSettings.json` file.
+        - Creates a ServiceCollection to register services.
+        - Builds a configuration object from the appSettings.json file.
         - Registers various services and repositories with different lifetimes (singleton, scoped).
     
     2. **Service Registration**:
@@ -279,14 +298,14 @@ Use the following steps to complete this section of the exercise:
     
     3. **Service Provider**:
         - Builds the service provider from the registered services.
-        - Retrieves the `ConsoleApp` service and runs it asynchronously.
+        - Retrieves the ConsoleApp service and runs it asynchronously.
 
     This setup ensures that all dependencies are properly injected and configured before the application starts running.
     ```
 
 1. Expand the Library.Infrastructure project, and then expand the Data folder.
 
-1. Add the `JsonData.cs`, `JsonLoanRepository.cs`, and `JsonPatronRepository.cs` files to the Chat context.
+1. Add the **JsonData.cs**, **JsonLoanRepository.cs**, and **JsonPatronRepository.cs** files to the Chat context.
 
     You can use a drag-and-drop operation to add the files from the Solution Explorer to the Chat view. You can also use the **Attach Context** button (paper clip) in the Chat view to add files to the Chat context.
 
@@ -368,9 +387,9 @@ Use the following steps to complete this section of the exercise:
 
 1. Take a couple minutes to examine the JSON data files that are used to simulate library records.
 
-    The JSON data files are located in the `src/Library.Console/Json` folder.
+    The JSON data files are located in the src/Library.Console/Json folder.
 
-    The data files use ID properties to link entities. For example, a `Loan` object has a `PatronId` property that links to a `Patron` object with the same ID. The JSON files contain data for authors, books, book items, patrons, and loans.
+    The data files use ID properties to link entities. For example, a Loan object has a PatronId property that links to a Patron object with the same ID. The JSON files contain data for authors, books, book items, patrons, and loans.
 
     > [!NOTE]
     > Notice that Author names, book titles, and patron names have been anonymized for the purposes of this guided project.
@@ -393,10 +412,10 @@ Use the following steps to complete this section of the exercise:
 
 1. When prompted for a patron name, type **One** and then press Enter.
 
-    You should see a list of patrons that match the search query.
-
     > [!NOTE]
-    > The application uses a case-sensitive search process.
+    > The application uses a case-sensitive search process. You must enter "One" with a capital "O".
+
+    You should see a list of patrons that match the search query.
 
 1. At the "Input Options" prompt, type **2** and then press Enter.
 
@@ -416,7 +435,7 @@ Use the following steps to complete this section of the exercise:
 
 1. Verify that the message "Book was successfully returned." is displayed.
 
-    The message "Book was successfully returned." should be followed by the book details. Returned books are marked with `Returned: True`.
+    The message "Book was successfully returned." should be followed by the book details. Returned books are marked with **Returned: True**.
 
 1. To begin a new search, type **s** and then press Enter.
 
@@ -424,13 +443,13 @@ Use the following steps to complete this section of the exercise:
 
 1. At the "Input Options" prompt, type **2** and then press Enter.
 
-1. Verify that first book loan is marked `Returned: True`.
+1. Verify that first book loan is marked **Returned: True**.
 
 1. At the "Input Options" prompt, type **q** and then press Enter.
 
 1. Stop the debug session.
 
-#### Exercise summary
+#### Exercise 2 summary
 
 This exercise helped you understand the library application codebase and how the application interacts with the user. You used GitHub Copilot to generate explanations for the project structure, selected files, and data access classes. You also ran the application to see how the console interface works and how the application components interact.
 
@@ -442,18 +461,30 @@ Creating the GitHub repository for your code will enable you to share your work 
 
 Use the following steps to complete this section of the exercise:
 
-1. Ensure that you have your GitHub account open a browser window.
+1. Ensure that you have your GitHub account open in a browser window.
 
     If necessary, open a browser window and use the following information to login:
 
     URL: `https://github.com/enterprises/Microsoft-APL/sso`
 
     Email/Username: `@lab.CloudPortalCredential(1).Username`
+
     Password: `@lab.CloudPortalCredential(1).Password`
 
 1. Open your GitHub account menu, and then select **Your repositories**.
 
-1. Select **New** to create a new repository.You should see a message indicating that you don't have any repositories yet.
+    You should see a message indicating that you don't have any repositories yet.
+
+1. To construct Git that can be used to configure Git with the credentials associated with your GitHub account, open Notepad and then build the following Git commands:
+
+    ```bash
+    git config --global user.email "lab assigned email"
+    git config --global user.name "user name"
+    ```
+
+    Replace "lab assigned email" with the email defined in the lab environment: +++@lab.CloudPortalCredential(1).Username+++
+
+    Replace "user name" with your own name.
 
 1. Switch to the Visual Studio Code window.
 
@@ -461,16 +492,7 @@ Use the following steps to complete this section of the exercise:
 
     On the Terminal menu, select **New Terminal**.
 
-1. To configure Git using the credentials associated with your GitHub account, enter the following command in the terminal:
-
-    ```bash
-    git config --global user.email <lab assigned email>
-    git config --global user.name <user name>
-    ```
-
-    Use the email defined in the lab environment: @lab.CloudPortalCredential(1).Username
-
-    You can use your own name as the user name.
+1. To configure Git using the credentials associated with your GitHub account, enter the two commands that you constructed in Notepad.
 
 1. In Visual Studio Code, open the Source Control view.
 
@@ -483,6 +505,8 @@ Use the following steps to complete this section of the exercise:
     1. If necessary, select **Publish to GitHub** again.
 
 1. Accept the default name for the repository (AccelerateDevGitHubCopilotSelect) and select **Publish to GitHub private repository**.
+
+    You may be asked to authorize your GitHub account again. Follow the onscreen instructions to authorize your account in the browser if necessary. This can result in your repository being published using the "first commit" commit message.
 
 1. In the Source Control view, enter a commit message, such as "Initial commit", and then select **Publish Branch**.
 
@@ -508,7 +532,7 @@ Use the following steps to complete this section of the exercise:
 
 1. In the README.md editor, type **Coming soon** and then select **Commit changes**.
 
-1. In the `Commit changes` dialog, select **Commit changes**.
+1. In the Commit changes dialog, select **Commit changes**.
 
 #### Task 3: Pull the changes to your local repository
 
@@ -516,9 +540,9 @@ Use the following steps to complete this section of the exercise:
 
 1. Switch to Visual Studio Code and ensure that the Source Control view is open.
 
-1. Open the **Views and More Actions** menu, and then select **Pull**.
+1. Open the **More Actions** menu, and then select **Pull**.
 
-    The Views and More Actions menu can be opened using the ellipsis in the top-right corner of the Source Control view.
+    The More Actions menu can be opened using the ellipsis in the top-right corner of the Source Control view.
 
 1. Open the EXPLORER view (collapse the SOLUTION EXPLORER and use Visual Studio Code's default file/folder explorer), and then expand the **AccelerateDevGitHubCopilot** folder.
 
@@ -531,7 +555,7 @@ Use the following steps to complete this section of the exercise:
 
 You'll be using GitHub Copilot Chat to update your repository's README file in the next exercise.
 
-#### Exercise summary
+#### Exercise 3 summary
 
 This exercise helped you create a GitHub repository for the library application and an empty README file. You also pulled the changes to your local repository to ensure that you have the latest updates.
 
@@ -550,7 +574,7 @@ For this guided project exercise, your README file should include the following 
 
 #### Task 1: Use GitHub Copilot to generate project documentation
 
-In this section of the exercise, you'll use GitHub Copilot to create project documentation and add it to your `README.md` file.
+In this section of the exercise, you'll use GitHub Copilot to create project documentation and add it to your README.md file.
 
 Use the following steps to complete this section of the exercise:
 
@@ -570,9 +594,17 @@ Use the following steps to complete this section of the exercise:
 1. Review the response to ensure each section is formatted as markdown.
 
     > [!NOTE]
-    > You can update sections individually to provide more detailed information or if they aren't formatted correctly. You can also copy GitHub Copilot's response to the README file and then make corrections directly in the markdown file.
+    > You can update readme sections individually to provide more detailed information or if they aren't formatted correctly. You can also copy GitHub Copilot's response to the README file and then make corrections directly in the markdown file.
+
+1. With the markdown file open in the editor, open the GitHub Copilot status menu, and then select **Enable completions for markdown**.
 
 1. Copy the suggested documentation sections to the README.md file.
+
+    You can use GitHub Copilot to generate suggestions for markdown documentation. This feature can help you format the markdown file correctly. For example, you can open the inline chat and ask GitHub Copilot to correct the formatting of the markdown documentation.
+
+1. Adjust the formatting manually if needed, and then save the updated README.md file.
+
+    You should have a README file that includes the project title, description, project structure, key classes and interfaces, usage instructions, and license information.
 
     ```markdown
     # Library App
@@ -584,56 +616,56 @@ Use the following steps to complete this section of the exercise:
     - AccelerateDevGitHubCopilot.sln
     - README.md
     - src
-      - `Library.ApplicationCore/`
-        - `Entities/`
+      - Library.ApplicationCore/
+        - Entities/
           - `Author.cs`
           - `Book.cs`
           - `BookItem.cs`
           - `Loan.cs`
           - `Patron.cs`
-        - `Enums/`
+        - Enums/
           - `LoanExtensionStatus.cs`
           - `LoanReturnStatus.cs`
           - `MembershipRenewalStatus.cs`
-        - `Interfaces/`
+        - Interfaces/
           - `IPatronRepository.cs`
           - `IPatronService.cs`
           - `ILoanRepository.cs`
           - `ILoanService.cs`
         - `Library.ApplicationCore.csproj`
-        - `Services/`
+        - Services/
           - `PatronService.cs`
           - `LoanService.cs`
-      - `Library.Console/`
+      - Library.Console/
         - `appSettings.json`
         - `CommonActions.cs`
         - `ConsoleApp.cs`
         - `ConsoleState.cs`
         - `Library.Console.csproj`
         - `Program.cs`
-      - `Library.Infrastructure/`
-        - `Data/`
+      - Library.Infrastructure/
+        - Data/
           - `JsonData.cs`
           - `JsonLoanRepository.cs`
           - `JsonPatronRepository.cs`
         - `Library.Infrastructure.csproj`
     - tests
-      - `UnitTests/`
-        - `ApplicationCore/`
-          - `LoanService/`
+      - UnitTests/
+        - ApplicationCore/
+          - LoanService/
             - `ReturnLoan.cs`
             - `ExtendLoan.cs`
-          - `PatronService/`
+          - PatronService/
             - `RenewMembership.cs`
         - `UnitTests.csproj`
     
     ## Key Classes and Interfaces
     - **Entities**
-      - **Author**: Represents an author with properties like `Id` and `Name`.
-      - **Book**: Represents a book with properties like `Id`, `Title`, `AuthorId`, `Genre`, `ImageName`, and `ISBN`.
-      - **BookItem**: Represents a specific copy of a book with properties like `Id`, `BookId`, `AcquisitionDate`, and `Condition`.
-      - **Loan**: Represents a loan with properties like `Id`, `BookItemId`, `PatronId`, `LoanDate`, `DueDate`, and `ReturnDate`.
-      - **Patron**: Represents a library patron with properties like `Id`, `Name`, `MembershipStart`, `MembershipEnd`, and `Loans`.
+      - **Author**: Represents an author with properties like Id and Name.
+      - **Book**: Represents a book with properties like Id, Title, AuthorId, Genre, ImageName, and ISBN.
+      - **BookItem**: Represents a specific copy of a book with properties like Id, BookId, AcquisitionDate, and Condition.
+      - **Loan**: Represents a loan with properties like Id, BookItemId, PatronId, LoanDate, DueDate, and ReturnDate.
+      - **Patron**: Represents a library patron with properties like Id, Name, MembershipStart, MembershipEnd, and Loans.
     
     - **Enums**
       - **LoanExtensionStatus**: Enum for loan extension statuses.
@@ -641,14 +673,14 @@ Use the following steps to complete this section of the exercise:
       - **MembershipRenewalStatus**: Enum for membership renewal statuses.
     
     - **Interfaces**
-      - **IPatronRepository**: Interface for patron repository with methods like `GetPatron`, `SearchPatrons`, and `UpdatePatron`.
-      - **IPatronService**: Interface for patron service with method `RenewMembership`.
-      - **ILoanRepository**: Interface for loan repository with methods like `GetLoan` and `UpdateLoan`.
-      - **ILoanService**: Interface for loan service with methods like `ReturnLoan` and `ExtendLoan`.
+      - **IPatronRepository**: Interface for patron repository with methods like GetPatron, SearchPatrons, and UpdatePatron.
+      - **IPatronService**: Interface for patron service with method RenewMembership.
+      - **ILoanRepository**: Interface for loan repository with methods like GetLoan and UpdateLoan.
+      - **ILoanService**: Interface for loan service with methods like ReturnLoan and ExtendLoan.
     
     - **Services**
-      - **PatronService**: Implements `IPatronService` to handle patron-related operations.
-      - **LoanService**: Implements `ILoanService` to handle loan-related operations.
+      - **PatronService**: Implements IPatronService to handle patron-related operations.
+      - **LoanService**: Implements ILoanService to handle loan-related operations.
     
     - **Console**
       - **ConsoleApp**: Main console application class that handles user interactions and application flow.
@@ -657,21 +689,19 @@ Use the following steps to complete this section of the exercise:
     
     - **Infrastructure**
       - **JsonData**: Handles loading and saving data to JSON files.
-      - **JsonLoanRepository**: Implements `ILoanRepository` to manage loan data.
-      - **JsonPatronRepository**: Implements `IPatronRepository` to manage patron data.
+      - **JsonLoanRepository**: Implements ILoanRepository to manage loan data.
+      - **JsonPatronRepository**: Implements IPatronRepository to manage patron data.
     
     ## Usage
     1. Clone the repository.
     2. Open the solution file AccelerateDevGitHubCopilot.sln in Visual Studio.
     3. Build the solution to restore dependencies.
-    4. Run the `Library.Console` project to start the console application.
+    4. Run the Library.Console project to start the console application.
     5. Follow the on-screen instructions to search for patrons, view patron details, extend loans, return books, and renew memberships.
     
     ## License
     This project is licensed under the MIT License.
     ```
-
-1. Adjust the formatting manually if needed, and then save the updated README.md file.
 
 #### Task 2: Commit and push the README file updates
 
@@ -684,7 +714,7 @@ Use the following steps to complete this section of the exercise:
     You should see a commit message similar to the following message:
 
     ```plaintext
-    chore: Update README.md with project description and usage instructions
+    Update README.md with project description, structure, key classes, usage instructions, and license information
     ```
 
 1. Stage and Commit the file updates.
@@ -699,11 +729,13 @@ To check your work, complete the following steps:
 
 1. Use the **Code** tab to review the updated README.md file.
 
+    You may need to refresh the page in the browser to see the updated README file.
+
 1. Ensure that the project structure described in the README file aligns the folder structure of the repository.
 
 1. Review the commit history and locate the commit message generated by GitHub Copilot.
 
-#### Exercise summary
+#### Exercise 4 summary
 
 This exercise helped you create project documentation for the README file using GitHub Copilot. You used GitHub Copilot to generate the project description, project structure, key classes and interfaces, usage instructions, and license information. You also committed and pushed the README file updates to the GitHub repository.
 
@@ -740,8 +772,8 @@ Part 2 includes the following exercises:
 
 The book availability feature should include the following code updates:
 
-- Implement a new `CommonActions.SearchBooks` action that enables a librarian to select the option to search for a book.
-- Create a new `SearchBooks` method in ConsoleApp.cs. The `SearchBooks` method should read a user provided book title. Check if a book is available for loan, and display a message stating either "`book.title` is available for loan" or "`book.title` is on loan to another patron. The return due date is `loan.DueDate`.
+- Implement a new CommonActions.SearchBooks action that enables a librarian to select the option to search for a book.
+- Create a new SearchBooks method in ConsoleApp.cs. The SearchBooks method should read a user provided book title. Check if a book is available for loan, and display a message stating either "book.title is available for loan" or "book.title is on loan to another patron. The return due date is loan.DueDate.
 
 During this exercise, you'll complete the following tasks:
 
@@ -769,20 +801,20 @@ Use the following steps to complete this section of the exercise:
 
 In this section of the exercise, you use GitHub Copilot to help you implement a menu option named SearchBooks. Librarians will choose the SearchBooks action to check the availability status of a book.
 
-Complete the following steps to implement the new `SearchBooks` common action:
+Here are the file updates that you complete during this task:
 
-- Update the `CommonActions` enum: Add a new `SearchBooks` action to the `CommonActions` enum.
-- Update the `WriteInputOptions` method in ConsoleApp.cs: Add support for displaying the new `CommonActions.SearchBooks` option.
-- Update the `ReadInputOptions` method in ConsoleApp.cs: Add support for reading (selecting) the new `CommonActions.SearchBooks` option.
-- Update the `PatronDetails` method in ConsoleApp.cs: Add support for processing the new `CommonActions.SearchBooks` option when it's selected.
+- Update the CommonActions enum in CommonActions.cs: Add a new SearchBooks action to the CommonActions enum.
+- Update the WriteInputOptions method in ConsoleApp.cs: Add support for displaying the new CommonActions.SearchBooks option.
+- Update the ReadInputOptions method in ConsoleApp.cs: Add support for reading (selecting) the new CommonActions.SearchBooks option.
+- Update the PatronDetails method in ConsoleApp.cs: Add support for processing the new CommonActions.SearchBooks option when it's selected.
 
 Use the following steps to complete this section of the exercise:
 
 1. Open the SOLUTION EXPLORER view.
 
-1. Open the CommonActions.cs file, and then select the `CommonActions` enum.
+1. Open the CommonActions.cs file, and then select the **CommonActions** enum.
 
-    You need to add a new `SearchBooks` action to `CommonActions`.
+    You need to add a new SearchBooks action to CommonActions.
 
 1. Open the inline chat and then enter the following prompt:
 
@@ -790,13 +822,15 @@ Use the following steps to complete this section of the exercise:
     Update selection to include a new `SearchBooks` action.
     ```
 
-    GitHub Copilot should suggest a code update that adds the new `SearchBooks` action to the `CommonActions` enum.
+    GitHub Copilot should suggest a code update that adds the new SearchBooks action to the CommonActions enum.
 
 1. Review the suggested update and then select **Accept**.
 
     ```csharp
+
     public enum CommonActions
     {
+
         Repeat = 0,
         Select = 1,
         Quit = 2,
@@ -805,14 +839,16 @@ Use the following steps to complete this section of the exercise:
         ReturnLoanedBook = 16,
         ExtendLoanedBook = 32,
         SearchBooks = 64
+
     }
+
     ```
 
 1. Open the ConsoleApp.cs file.
 
-1. Find and then select the `WriteInputOptions` method.
+1. Find and then select the **WriteInputOptions** method.
 
-    You need to add support for the new `CommonActions.SearchBooks` option. Display the option to check if a book is available for loan.
+    You need to add support for the new CommonActions.SearchBooks option. Display the option to check if a book is available for loan.
 
 1. Open the inline chat and then enter the following prompt:
 
@@ -820,15 +856,17 @@ Use the following steps to complete this section of the exercise:
     Update selection to include an option for the `CommonActions.SearchBooks` action. Use the letter "b" and the message "to check for book availability".
     ```
 
-    GitHub Copilot should suggest a code update that adds a new `if` block for the `SearchBooks` action.
+    GitHub Copilot should suggest a code update that adds a new "if" block for the SearchBooks action.
 
 1. Review the suggested update and then select **Accept**.
 
     The suggested update should be similar to the following code snippet:
 
     ```csharp
+
     static void WriteInputOptions(CommonActions options)
     {
+
         Console.WriteLine("Input Options:");
         if (options.HasFlag(CommonActions.ReturnLoanedBook))
         {
@@ -858,12 +896,16 @@ Use the following steps to complete this section of the exercise:
         {
             Console.WriteLine("Or type a number to select a list item.");
         }
+
     }
+
     ```
 
-1. Scroll up slightly to find and then select the `ReadInputOptions` method.
+1. Scroll up slightly to find the **ReadInputOptions** method.
 
-    You need to add support for the new `CommonActions.SearchBooks` option. Include a case that handles the user selecting the `SearchBooks` action.
+1. Select the **ReadInputOptions** method.
+
+    You need to add support for the new CommonActions.SearchBooks option. Include a case that handles the user selecting the SearchBooks action.
 
 1. Open the inline chat and then enter the following prompt:
 
@@ -871,15 +913,17 @@ Use the following steps to complete this section of the exercise:
     Update selection to include an option for the `CommonActions.SearchBooks` action.
     ```
 
-    GitHub Copilot should suggest a code update that adds a new `case` that handles the user selecting the `SearchBooks` action.
+    GitHub Copilot should suggest a code update that adds a new "case" that handles the user selecting the SearchBooks action.
 
 1. Review the suggested update and then select **Accept**.
 
     The suggested update should be similar to the following code snippet:
 
     ```csharp
+
     static CommonActions ReadInputOptions(CommonActions options, out int optionNumber)
     {
+
         CommonActions action;
         optionNumber = 0;
         do
@@ -906,15 +950,17 @@ Use the following steps to complete this section of the exercise:
             }
         } while (action == CommonActions.Repeat);
         return action;
+
     }
+
     ```
 
-1. Scroll down to find and then select the `PatronDetails` method.
+1. Scroll down to find and then select the **PatronDetails** method.
 
     There are two things that you need to accomplish:
 
-    - You need to add `CommonActions.SearchBooks` to `options` before calling `ReadInputOptions`.
-    - You also need to add an `else if` to handle the `SearchBooks` action. The `else if` block should call a new method named `SearchBooks`.
+    - You need to add CommonActions.SearchBooks to options before calling ReadInputOptions.
+    - You also need to add an else if to handle the SearchBooks action. The else if block should call a new method named SearchBooks.
 
     You can address both of these together.
 
@@ -924,13 +970,15 @@ Use the following steps to complete this section of the exercise:
     Update selection to add `CommonActions.SearchBooks` to `options` before calling `ReadInputOptions`. Add an `else if` block to handle the `SearchBooks` action. The `else if` block should call a new method named `SearchBooks`.
     ```
 
-    GitHub Copilot should suggest a code update that adds `CommonActions.SearchBooks` to `options` before calling `ReadInputOptions`.
+    GitHub Copilot should suggest a code update that adds CommonActions.SearchBooks to options before calling ReadInputOptions.
 
 1. Review the suggested update and then select **Accept**.
 
     ```csharp
+
     async Task<ConsoleState> PatronDetails()
     {
+
         Console.WriteLine($"Name: {selectedPatronDetails.Name}");
         Console.WriteLine($"Membership Expiration: {selectedPatronDetails.MembershipEnd}");
         Console.WriteLine();
@@ -980,51 +1028,56 @@ Use the following steps to complete this section of the exercise:
         }
 
         throw new InvalidOperationException("An input option is not handled.");
+
     }
+
     ```
 
     > [!NOTE]
-    > Inline chat suggestions may also create stub code for the `SearchBooks` method.
+    > Inline chat suggestions may also create stub code for the SearchBooks method.
 
-#### Task 3: Develop the `SearchBooks` method
+#### Task 3: Develop the SearchBooks method
 
-The SearchBooks method should read a user provided book title, check if a book is available for loan, and display a message indicating the availability status of the book. The method should use the `Books.json` and `Loans.json` files to find the matching book title and determine the availability status of the book.
+The SearchBooks method should read a user provided book title, check if a book is available for loan, and display a message indicating the availability status of the book. The method should use the Books.json and Loans.json files to find the matching book title and determine the availability status of the book.
 
 Use the following steps to complete this section of the exercise:
 
-1. Take a minute to consider the process requirements for the `SearchBooks` method.
+1. Take a minute to consider the process requirements for the SearchBooks method.
 
     What does the method need to do? What should it return? Does it require parameters?
 
-    The `SearchBooks` method should implement the following process:
+    The SearchBooks method should implement the following process:
 
     1. Prompt the user for a book title.
     1. Read the user provided book title.
     1. Check if a book is available for loan
     1. Display a message stating one of the following options:
 
-        - "`book.title` is available for loan"
-        - "`book.title` is on loan to another patron. The return due date is `loan.DueDate`.
+        - "book.title is available for loan"
+        - "book.title is on loan to another patron. The return due date is loan.DueDate.
 
     To build the message options, your code will need to access the following JSON files:
 
-    - `Books.json` is needed to find the matching `Title` and `BookId`.
-    - `Loans.json` is needed to find the `ReturnDate` and `DueDate` for the matching `BookItemId`. The `BookItemId` is the same as the `BookId` in `Books.json`.
+    - Books.json is needed to find the matching Title and BookId.
+    - Loans.json is needed to find the ReturnDate and DueDate for the matching BookItemId. The BookItemId is the same as the BookId in Books.json.
 
-1. Ensure that you have the following `SearchBooks` method created in the ConsoleApp.cs file:
+1. Ensure that you have the following **SearchBooks** method created in the ConsoleApp.cs file:
 
     ```csharp
+
     async Task<ConsoleState> SearchBooks()
     {
 
         return ConsoleState.PatronDetails;
+
     }
+
     ```
 
     > [!NOTE]
     > Be sure to remove any code comments created by GitHub Copilot. Unnecessary and inaccurate comments can negatively influence GitHub Copilot's suggestions.
 
-1. Select the `SearchBooks` method.
+1. Select the **SearchBooks** method.
 
 1. Open the inline chat and then enter the following prompt:
 
@@ -1037,8 +1090,10 @@ Use the following steps to complete this section of the exercise:
 1. Review the suggested update and then select **Accept**.
 
     ```csharp
+
     async Task<ConsoleState> SearchBooks()
     {
+
         string? bookTitle = null;
         while (String.IsNullOrWhiteSpace(bookTitle))
         {
@@ -1049,13 +1104,15 @@ Use the following steps to complete this section of the exercise:
         // Perform book search logic here
 
         return ConsoleState.PatronDetails;
+
     }
+
     ```
 
-1. Select the `SearchBooks` method.
+1. Select the **SearchBooks** method.
 
     > [!NOTE]
-    > GitHub Copilot may create a separate method to handle user input of a book title. You can continue to develop the primary logic in the `SearchBooks` method.
+    > GitHub Copilot may create a separate method to handle user input of a book title. You can continue to develop the primary logic in the SearchBooks method.
 
 1. Open the Chat view.
 
@@ -1071,10 +1128,10 @@ Use the following steps to complete this section of the exercise:
 
     GitHub Copilot should propose updates similar to the following suggestions:
 
-    To update the `SearchBooks` method and `ConsoleApp` class to find a matching book title in the `Books.json` file and check if the book is available for loan, follow these steps:
+    To update the SearchBooks method and ConsoleApp class to find a matching book title in the Books.json file and check if the book is available for loan, follow these steps:
 
-    a. Add a method to search for books by title in the `JsonData` class.
-    b. Update the `SearchBooks` method in the `ConsoleApp` class to use this new method.
+    a. Add a method to search for books by title in the JsonData class.
+    b. Update the SearchBooks method in the ConsoleApp class to use this new method.
     c. Check the loan status of the book and display the appropriate message.
 
     Here is the updated code:
@@ -1082,22 +1139,28 @@ Use the following steps to complete this section of the exercise:
     Step 1: Add a method to search for books by title in the JsonData class
 
     ```csharp
+
     public class JsonData
     {
+
         // Existing code...
     
         public Book? SearchBookByTitle(string title)
         {
             return Books?.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
         }
+
     }
+
     ```
 
     Step 2: Update the SearchBooks method in the ConsoleApp class
 
     ```csharp
+
     public class ConsoleApp
     {
+
         // Existing fields...
     
         JsonData _jsonData;
@@ -1140,12 +1203,15 @@ Use the following steps to complete this section of the exercise:
         }
     
         // Existing methods...
+
     }
+
     ```
 
     Step 3: Update the Program.cs to pass JsonData to ConsoleApp
 
     ```csharp
+
     using Microsoft.Extensions.DependencyInjection;
     using Library.Infrastructure.Data;
     using Library.ApplicationCore;
@@ -1172,22 +1238,29 @@ Use the following steps to complete this section of the exercise:
     
     var consoleApp = servicesProvider.GetRequiredService<ConsoleApp>();
     consoleApp.Run().Wait();
+
     ```
 
-    With these changes, the `SearchBooks` method in the `ConsoleApp` class will now search for a book by title in the `Books.json` file and check its loan status in the `Loans.json` file. If the book is available for loan, it will display a message stating that the book is available. If the book is on loan, it will display a message stating that the book is on loan and provide the return due date.
+    With these changes, the SearchBooks method in the ConsoleApp class will now search for a book by title in the Books.json file and check its loan status in the Loans.json file. If the book is available for loan, it will display a message stating that the book is available. If the book is on loan, it will display a message stating that the book is on loan and provide the return due date.
 
-1. Add the suggested method to the end of the `JsonData` class.
+1. Add the suggested SearchBookByTitle method to the end of the **JsonData** class.
 
     ```csharp
+
     public Book? SearchBookByTitle(string title)
     {
         return Books?.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
     }
+
     ```
 
-1. Update the Program.cs file using the suggested updates.
+    > [!NOTE]
+    > GitHub Copilot may suggest using LINQ queries in the SearchBooks method to determine loan status, or it could suggest adding more methods to the `JsonData` class. The instructions that follow are based on GitHub Copilot suggestions that use LINQ queries in the SearchBooks method.
+
+1. Update the **Program.cs** file using the suggested updates.
 
     ```csharp
+
     using Microsoft.Extensions.DependencyInjection;
     using Library.Infrastructure.Data;
     using Library.ApplicationCore;
@@ -1214,40 +1287,59 @@ Use the following steps to complete this section of the exercise:
     
     var consoleApp = servicesProvider.GetRequiredService<ConsoleApp>();
     consoleApp.Run().Wait();
+
     ```
 
-1. Add the `JsonData _jsonData;` field declaration to the `ConsoleApp` class before the class constructor.
+1. Add the _jsonData field declaration to the ConsoleApp class before the class constructor.
 
-1. Add a `JsonData jsonData` parameter to the `ConsoleApp` class constructor and use it to initialize the `_jsonData` field inside the constructor.
+    ```csharp
+
+    JsonData _jsonData;
+
+    ```
+
+1. Add a JsonData jsonData parameter to the ConsoleApp class constructor and use it to initialize the _jsonData field inside the constructor.
 
     The updated class constructor should look like the following code snippet:
 
     ```csharp
+
     public ConsoleApp(ILoanService loanService, IPatronService patronService, IPatronRepository patronRepository, ILoanRepository loanRepository, JsonData jsonData)
     {
+
         _patronRepository = patronRepository;
         _loanRepository = loanRepository;
         _loanService = loanService;
         _patronService = patronService;
         _jsonData = jsonData;
+
     }
+
     ```
 
-1. Notice that JsonData isn't recognized in the `ConsoleApp` class.
+1. Notice that JsonData isn't recognized in the ConsoleApp class.
 
-    You need to add `using Library.Infrastructure.Data;` to the top of the `ConsoleApp.cs` file.
+    You need to add "using Library.Infrastructure.Data;" to the top of the ConsoleApp.cs file.
 
-1. Ensure that the `using Library.Infrastructure.Data;` statement is added to the top of the `ConsoleApp.cs` file.
-
-1. Use the code suggestions to update the `SearchBooks` method:
-
-    The suggested code should use a LINQ query to search for the book by title. If the book is found, another LINQ query is used to determine if the book is on loan. The code also includes logic to display the availability status of the book based on the search results. The logic used to display response messages can be implemented in several ways. An example is provided in the code snippet below.
-
-    The following code snippet shows one possible implementation of the `SearchBooks` method:
+1. Ensure that the following "using" statement is added to the top of the ConsoleApp.cs file.
 
     ```csharp
+
+    using Library.Infrastructure.Data;
+
+    ```
+
+1. Use the code suggestions to update the **SearchBooks** method:
+
+    The suggested code should use the SearchBookByTitle method (or a LINQ query) to search for the book by title. If the book is found, a LINQ query is used to determine if the book is on loan. The code also includes logic to display the availability status of the book based on the search results. The logic used to display response messages can be implemented in several ways. An example is provided in the code snippet below.
+
+    The following code snippet shows one possible implementation of the SearchBooks method:
+
+    ```csharp
+
     async Task<ConsoleState> SearchBooks()
     {
+
         string bookTitle = ReadBookTitle();
 
         Book? book = _jsonData.SearchBookByTitle(bookTitle);
@@ -1270,10 +1362,12 @@ Use the following steps to complete this section of the exercise:
         }
 
         return ConsoleState.PatronDetails;
+
     }
+
     ```
 
-1. Select the `SearchBooks` method.
+1. Select the **SearchBooks** method.
 
 1. Open the Chat view, and then enter the following prompt:
 
@@ -1290,7 +1384,9 @@ Use the following steps to complete this section of the exercise:
     ```
 
     ```csharp
+
     Loan? loan = _jsonData.Loans?.FirstOrDefault(l => l.BookItemId == book.Id && l.ReturnDate == null);
+
     ```
 
     ```markdown
@@ -1312,18 +1408,18 @@ Use the following steps to complete this section of the exercise:
 
     After executing the LINQ queries, the method evaluates the availability status of the book:
 
-      - If `loan` is `null`, the book has been returned. The method prints that the book is available for loan.
-      - If `loan` is not `null`, the book is currently on loan (no return date). The method prints that the book is on loan and provides the date when the book should be returned.
+      - If loan is null, the book has been returned. The method prints that the book is available for loan.
+      - If loan is not null, the book is currently on loan (no return date). The method prints that the book is on loan and provides the date when the book should be returned.
 
     ```
 
 1. Verify the logic implemented by the **Check if the Book is on Loan** query.
 
-    Null-Conditional Operator: The `?.` operator is a null-conditional operator. It ensures that if `_jsonData.Loans` is `null`, the entire expression will evaluate to `null` without throwing a `NullReferenceException`.
+    Null-Conditional Operator: The "?." operator is a null-conditional operator. It ensures that if _jsonData.Loans is null, the entire expression will evaluate to null without throwing a NullReferenceException.
 
-    Lambda Expression: The lambda expression `l => l.BookItemId == book.Id && l.ReturnDate == null` defines the condition for the `FirstOrDefault` method. It checks each `loan` object `l` to see if its `BookItemId` matches the `Id` of the `book` object and if its `ReturnDate` is `null`.
+    Lambda Expression: The lambda expression "l => l.BookItemId == book.Id && l.ReturnDate == null" defines the condition for the FirstOrDefault method. It checks each loan object "l" to see if its BookItemId matches the Id of the book object and if its ReturnDate is null.
 
-    This code attempts to find the first `loan` in the `_jsonData.Loans` collection where the `BookItemId` matches the `Id` of the given `book` and the `ReturnDate` is `null`. If no such `loan` is found or if `_jsonData.Loans` is `null`, `loan` will be set to `null`.
+    This code attempts to find the first loan in the _jsonData.Loans collection where the BookItemId matches the Id of the given book and the ReturnDate is null. If no such loan is found or if "_jsonData.Loans" is null, loan will be set to null.
 
     > [!NOTE]
     > Most modern libraries have multiple copies of the same book. This code assumes that there is only one copy of each book. If the library has multiple copies of the same book, the code will need to be updated to handle multiple loans for the same book. For the purposes of this training, we are assuming that there is only one copy of each book and that the logic provided is sufficient.
@@ -1334,13 +1430,13 @@ Use the following steps to complete this section of the exercise:
 
     To build the solution in the Solution Explorer view, right-click **AccelerateDevGitHubCopilot** and then select **Build**.
 
-#### Exercise summary
+#### Exercise 5 summary
 
-You used GitHub Copilot to help you implement a new feature for the library application. You created a new branch in the repository and then used GitHub Copilot to generate code suggestions that helped you implement the new feature more quickly and accurately. You added a new `SearchBooks` action to `CommonActions`, updated the `WriteInputOptions` and `ReadInputOptions` methods in `ConsoleApp.cs`, and created a new `SearchBooks` method to determine the availability status of a book.
+You used GitHub Copilot to help you implement a new feature for the library application. You created a new branch in the repository and then used GitHub Copilot to generate code suggestions that helped you implement the new feature more quickly and accurately. You added a new SearchBooks action to CommonActions, updated the WriteInputOptions and ReadInputOptions methods in ConsoleApp.cs, and created a new SearchBooks method to determine the availability status of a book.
 
 ### Exercise 6: Merge your changes into the main branch of the repository
 
-You completed the new feature that enables a librarian to determine the availability status of a book. Now you need to merge your changes into the main branch of the repository.
+You created a new feature that enables a librarian to determine the availability status of a book. Now you need verify that the feature works as expected and merge your changes into the main branch of the repository.
 
 During this exercise, you'll complete the following tasks:
 
@@ -1350,7 +1446,7 @@ During this exercise, you'll complete the following tasks:
 
 #### Task 1: Verify that your new feature works as expected
 
-Since you don't have automated tests, manual testing can be used to verify that the new feature works as expected. Using a data source that can be verified is important. In this case, you use the `Books.json` and `Loans.json` files to verify that the new feature reports the availability status of a book correctly.
+Since you don't have automated tests, manual testing can be used to verify that the new feature works as expected. Using a data source that can be verified is important. In this case, you use the Books.json and Loans.json files to verify that the new feature reports the availability status of a book correctly.
 
 Use the following steps to complete this section of the exercise:
 
@@ -1380,12 +1476,14 @@ Use the following steps to complete this section of the exercise:
 
 1. Verify that the application displays a message indicating that the book is on loan to another patron.
 
+    You may need to scroll up to see the message.
+
 1. Verify that **Book Nine** has been returned by **Patron One**.
 
     In the previous exercise, during a test of the Library application, you had **Patron One** return **Book Nine**. If the application shows that **Book Nine** hasn't been returned by **Patron One**, use the input options to select and return **Book Nine** before continuing.
 
     > [!NOTE]
-    > The `Library.Console.csproj` file ensures that the JSON data files are copied to the output directory when the application is built. However, performing Clean or Rebuild operations will essentially reset the data. Repeated Build operations do not reset the data in the output directory (`/bin/Debug/net8.0/`).
+    > The Library.Console.csproj file ensures that the JSON data files are copied to the output directory when the application is built. However, performing Clean or Rebuild operations will essentially reset the data. Repeated Build operations do not reset the data in the output directory ("/bin/Debug/net8.0/").
 
 1. At the "Input Options" prompt, type **b** and then press Enter.
 
@@ -1397,26 +1495,26 @@ Use the following steps to complete this section of the exercise:
 
 1. Stop the debug session.
 
-1. Open the `Loans.json` file.
+1. Open the **Loans.json** file.
 
-    The `Loans.json` file is used to track the loan status of each book. You can use the `Loans.json` file to verify that the availability status of Book One and Book Nine is correct.
+    The Loans.json file is used to track the loan status of each book. You can use the Loans.json file to verify that the availability status of Book One and Book Nine is correct.
 
-    The updated `Loans.json` file should be located in either the `Library.Console\bin\Debug\net8.0\Json` folder or `Library.Console\Json` folder.
+    The updated Loans.json file should be located in either the "Library.Console\bin\Debug\net8.0\Json" folder or "Library.Console\Json" folder.
 
-    - If you're using the Visual Studio Code debugger to run the app, the updated `Loans.json` file should be located in the `Library.Console\bin\Debug\net8.0\Json` folder.
+    - If you're using the Visual Studio Code debugger to run the app, the updated Loans.json file should be located in the "Library.Console\bin\Debug\net8.0\Json" folder.
 
-    - If you're using a `dotnet run` command from the `AccelerateDevGitHubCopilot\src\Library.Console>` folder to run the app, the updated `Loans.json` file should be located in the `Library.Console\Json` folder.
+    - If you're using a "dotnet run" command from the "AccelerateDevGitHubCopilot\src\Library.Console" folder to run the app, the updated Loans.json file should be located in the "Library.Console\Json" folder.
 
-1. Verify that loan ID 37 and loan ID 46 are both for Book One (`"BookItemId": 1`).
+1. Verify that loan ID 37 and loan ID 46 are both for Book One ("BookItemId": 1).
 
-    - Loan ID 37 should have a `ReturnDate` value (2024-01-17)
-    - Loan ID 46 shouldn't have a `ReturnDate` value. The `ReturnDate` value should be `null`.
+    - Loan ID 37 should have a ReturnDate value (2024-01-17)
+    - Loan ID 46 shouldn't have a ReturnDate value. The ReturnDate value should be null.
 
-    The `ReturnDate` value is used to determine whether the book is currently on loan. If the `ReturnDate` value is `null`, the book is considered to be on loan.
+    The ReturnDate value is used to determine whether the book is currently on loan. If the ReturnDate value is null, the book is considered to be on loan.
 
-1. Verify that loan ID 22 is for Book Nine (`"BookItemId": 9`) and that the `ReturnDate` value is set to today's date.
+1. Verify that loan ID 22 is for Book Nine ("BookItemId": 9) and that the ReturnDate value is set to today's date.
 
-    If you're running in the debugger and you cleaned the solution after making changes to the `Loans.json` file, those changes are lost. After you clean the solution, the `Loans.json` file is reset to the original data the next time you run the application. You can manually update the `Loans.json` file to test the availability status of Book One and Book Nine.
+    If you're running in the debugger and you cleaned the solution after making changes to the Loans.json file, those changes are lost. After you clean the solution, the Loans.json file is reset to the original data the next time you run the application. You can manually update the Loans.json file to test the availability status of Book One and Book Nine.
 
 #### Task 2: Sync your changes with the remote repository
 
@@ -1426,7 +1524,9 @@ Use the following steps to complete this section of the exercise:
 
 1. Select the Source Control view.
 
-1. Ensure that the `CommonActions.cs` and `ConsoleApp.cs` files listed under **Changes**.
+1. Ensure that the CommonActions.cs, ConsoleApp.cs, and JsonData.cs files listed under **Changes**.
+
+    If GitHub Copilot used LINQ queries to determine the availability status of a book directly within the SearchBooks method, you may not see JsonData.cs listed under **Changes**.
 
 1. Use GitHub Copilot to generate a message for the **Commit**.
 
@@ -1450,15 +1550,19 @@ Use the following steps to complete this section of the exercise:
 
 1. Ensure that **compare** is configured for the **book-availability** branch.
 
-    After you configure the branches, a comparison of the changes between **main** and **book-availability** is displayed. You should see the changes you made to the `CommonActions.cs` and `ConsoleApp.cs` files.
+    After you configure the branches, a comparison of the changes between **main** and **book-availability** is displayed. You should see the changes you made to the CommonActions.cs, ConsoleApp.cs, and JsonDaa.cs files.
 
 1. Select **Create pull request**.
 
 1. Enter a title for the pull request.
 
+    Members of an enterprise with a subscription to GitHub Copilot Enterprise, can use GitHub Copilot to generate a summary description for a pull request. The detailed summary helps reviewers understand your changes.
+
 1. Use GitHub Copilot to generate a summary of a pull request.
 
-    Members of an enterprise with a subscription to GitHub Copilot Enterprise, can use GitHub Copilot to generate a summary of a pull request. The summary to help reviewers understand your changes, or to quickly understand the changes in a pull request you're reviewing.
+    To generate the summary, select the Copilot actions button, and then select **Summary**.
+
+    You can use the Preview tab to review the pull request summary generated by GitHub Copilot.
 
 1. Ensure that the title and description reflect your code updates, and then select **Create pull request**.
 
@@ -1468,7 +1572,7 @@ Use the following steps to complete this section of the exercise:
 
 1. To merge your changes into the main branch, select **Merge pull request**, and then select **Confirm merge**.
 
-    Notice that you can delete the `book-availability` branch after merging the changes.
+    Notice that you can delete the book-availability branch after merging the changes.
 
 1. Open Visual Studio Code.
 
@@ -1478,9 +1582,9 @@ Use the following steps to complete this section of the exercise:
 
 1. Verify that the changes you made in the **book-availability** branch are now in the **main** branch.
 
-    The changes you made to the `CommonActions.cs` and `ConsoleApp.cs` files should be present in the `main` branch.
+    The changes you made to the CommonActions.cs and ConsoleApp.cs files should be present in the main branch.
 
-#### Exercise summary
+#### Exercise 6 summary
 
 In this exercise, you tested you code and then merged your changes into the main branch of the repository. You committed your changes to the local repository, synced them with the remote repository, and then created a pull request to merge your changes into the main branch of the repository. You used GitHub Copilot to generate a summary of the pull request to help reviewers understand your changes.
 
@@ -1490,9 +1594,9 @@ In this exercise, you tested you code and then merged your changes into the main
 
 #### Project overview
 
-Your colleague created a test project named `UnitTests`. The existing unit tests partially cover the service classes in the `Library.ApplicationCore` project. The `Library.ApplicationCore` project contains the business logic for a library management system. The `UnitTests` project uses the xUnit framework to write and run unit tests. The project also uses the NSubstitute library to create mock objects for testing.
+Your colleague created a test project named UnitTests. The existing unit tests partially cover the service classes in the Library.ApplicationCore project. The Library.ApplicationCore project contains the business logic for a library management system. The UnitTests project uses the xUnit framework to write and run unit tests. The project also uses the NSubstitute library to create mock objects for testing.
 
-You need to extend the `UnitTests` project to cover the data access classes in the `Library.Infrastructure` project.
+You need to extend the UnitTests project to cover the data access classes in the Library.Infrastructure project.
 
 #### Lab scenario (part 3)
 
@@ -1506,13 +1610,13 @@ GitHub Copilot can help you write unit tests for your code. There are several wa
 - **Generate test setup code**: Copilot can generate setup code for your unit tests. This code can help you set up the test environment before running your tests.
 - **Generate test teardown code**: Copilot can generate teardown code for your unit tests. This code can help you clean up the test environment after running your tests.
 
-In part 3 of this lab, you develop unit tests for the `Library.Infrastructure` project.
+In part 3 of this lab, you develop unit tests for the Library.Infrastructure project.
 
 Part includes the following exercise:
 
-- Use GitHub Copilot to evaluate and extend the `UnitTests` project.
+- Use GitHub Copilot to evaluate and extend the UnitTests project.
 
-### Exercise 7: Use GitHub Copilot to evaluate and extend the `UnitTests` project
+### Exercise 7: Use GitHub Copilot to evaluate and extend the UnitTests project
 
 In this exercise, you use GitHub Copilot to complete the following tasks:
 
@@ -1522,34 +1626,34 @@ In this exercise, you use GitHub Copilot to complete the following tasks:
 
 #### Task 1: Use GitHub Copilot to evaluate the existing UnitTests project
 
-The `UnitTests` project currently implements the following folder structure:
+The UnitTests project currently implements the following folder structure:
 
 - UnitTests\
   - ApplicationCore\
     - LoanService\
-      - `ExtendLoan.cs`
-      - `ReturnLoan.cs`
+      - ExtendLoan.cs
+      - ReturnLoan.cs
     - PatronService\
-      - `RenewMembership.cs`
+      - RenewMembership.cs
   - LoanFactory.cs
   - PatronFactory.cs
 
-This structure mirrors and supports the `Services` portion of the `ApplicationCore` project.
+This structure mirrors and supports the Services portion of the ApplicationCore project.
 
 - ApplicationCore\
   - Services\
-    - LoanService.cs: Contains the `ExtendLoan` and `ReturnLoan` methods.
-    - PatronService.cs: Contains the `RenewMembership` method.
+    - LoanService.cs: Contains the ExtendLoan and ReturnLoan methods.
+    - PatronService.cs: Contains the RenewMembership method.
 
-Evaluating the existing unit tests will help you to develop unit tests for the data access classes in the `Library.Infrastructure` project.
+Evaluating the existing unit tests will help you to develop unit tests for the data access classes in the Library.Infrastructure project.
 
 Use the following steps to complete this section of the exercise:
 
 1. Open the Chat view.
 
-1. Add the following files to the Chat context: `LoanFactory.cs`, `PatronFactory.cs`, `ExtendLoan.cs`, `ReturnLoan.cs`, `RenewMembership.cs`, `LoanService.cs`, `PatronService.cs`.
+1. Add the following files to the Chat context: **LoanFactory.cs**, **PatronFactory.cs**, **ExtendLoan.cs**, **ReturnLoan.cs**, **RenewMembership.cs**, **LoanService.cs**, **PatronService.cs**.
 
-    The files are located in the `tests/UnitTests`, `tests/UnitTests/ApplicationCore/LoanService`, `tests/UnitTests/ApplicationCore/PatronService`, and `src/Library.ApplicationCore/Services` folders.
+    The files are located in the "tests/UnitTests", "tests/UnitTests/ApplicationCore/LoanService", "tests/UnitTests/ApplicationCore/PatronService", and "src/Library.ApplicationCore/Services" folders.
 
 1. Enter the following prompt:
 
@@ -1563,8 +1667,8 @@ Use the following steps to complete this section of the exercise:
 
     You should see an explanation that's similar to the following description:
 
-    - Mocking dependencies: The tests use `NSubstitute` to create mock implementations of interfaces.
-    - Test organization: Tests are organized into separate files based on the methods being tested. For example, `ExtendLoan` and `ReturnLoan` methods are tested in separate files under the `LoanService` folder.
+    - Mocking dependencies: The tests use NSubstitute to create mock implementations of interfaces.
+    - Test organization: Tests are organized into separate files based on the methods being tested. For example, ExtendLoan and ReturnLoan methods are tested in separate files under the LoanService folder.
     - Assertions: Assertions are used to verify the expected outcome of each test.
     - Test scenarios: The tests cover various scenarios for each method, such as returning different statuses based on the input.
     - Isolation: Each test is isolated from others to prevent side effects.
@@ -1587,7 +1691,7 @@ Use the following steps to complete this section of the exercise:
     - Separation of Concerns: The separation of test data creation from the test logic itself keeps the tests clean and focused on the behavior being tested.
     - Immediate Feedback: Running unit tests provides immediate feedback on the correctness of the code.
 
-1. Add the following files to the Chat context: `ExtendLoan.cs`, `ReturnLoan.cs`, `RenewMembership.cs`, `LoanFactory.cs`, `PatronFactory.cs`, `LoanService.cs`, `PatronService.cs`.
+1. Add the following files to the Chat context: **ExtendLoan.cs**, **ReturnLoan.cs**, **RenewMembership.cs**, **LoanFactory.cs**, **PatronFactory.cs**, **LoanService.cs**, **PatronService.cs**.
 
 1. Enter the following prompt:
 
@@ -1595,7 +1699,7 @@ Use the following steps to complete this section of the exercise:
     @workspace How can I extend the `UnitTests` project to begin testing methods in the `Library.Infrastructure` project? Provide a process overview.
     ```
 
-    This prompt asks GitHub Copilot to provide a process overview for extending the `UnitTests` project to begin testing methods in the `Library.Infrastructure` project. Several files are included in the prompt to provide context for the response.
+    This prompt asks GitHub Copilot to provide a process overview for extending the UnitTests project to begin testing methods in the Library.Infrastructure project. Several files are included in the prompt to provide context for the response.
 
 1. Take a minute to review the response from GitHub Copilot.
 
@@ -1604,20 +1708,20 @@ Use the following steps to complete this section of the exercise:
     ```markdown
     1. Add Project Reference:
 
-      - Open the `UnitTests.csproj` file located at `tests/UnitTests/UnitTests.csproj`.
-      - Add a reference to the `Library.Infrastructure` project.
+      - Open the UnitTests.csproj file located at tests/UnitTests/UnitTests.csproj.
+      - Add a reference to the Library.Infrastructure project.
 
     2. Identify methods to test:
 
-      - Identify the methods in the `Library.Infrastructure` project that need to be tested. For example, if you want to test the `LoanService` class, identify the methods in the `LoanService` class that need to be tested.
+      - Identify the methods in the Library.Infrastructure project that need to be tested. For example, if you want to test the LoanService class, identify the methods in the LoanService class that need to be tested.
 
     3. Create Test Classes:
 
-      - Create new test classes in the `tests/UnitTests` directory to test the methods in the `Library.Infrastructure` project. For example, if you want to test `LoanService`, create a file named `LoanServiceTests.cs`.
+      - Create new test classes in the tests/UnitTests directory to test the methods in the Library.Infrastructure project. For example, if you want to test LoanService, create a file named LoanServiceTests.cs.
 
     4. Write Unit Tests:
 
-      - In the newly created test classes, write unit tests for the methods in the `Library.Infrastructure` project. Use the xUnit framework for writing tests and NSubstitute for mocking dependencies.
+      - In the newly created test classes, write unit tests for the methods in the Library.Infrastructure project. Use the xUnit framework for writing tests and NSubstitute for mocking dependencies.
 
     5. Run Tests:
 
@@ -1627,19 +1731,19 @@ Use the following steps to complete this section of the exercise:
 
 #### Task 2: Extend the UnitTests project to begin testing data access classes
 
-In this section of the exercise, you use GitHub Copilot to help you create unit tests for the `Library.Infrastructure` project.
+In this section of the exercise, you use GitHub Copilot to help you create unit tests for the Library.Infrastructure project.
 
-The `Library.Infrastructure` project contains data access classes that interact with the file system to load and save data. The project includes the following classes:
+The Library.Infrastructure project contains data access classes that interact with the file system to load and save data. The project includes the following classes:
 
 - JsonData: A class that loads and saves JSON data.
 - JsonLoanRepository: A class that implements the ILoanRepository interface and uses the JsonData class to load and save loan data.
 - JsonPatronRepository: A class that implements the IPatronRepository interface and uses the JsonData class to load and save patron data.
 
-You'll start by writing unit tests for the `JsonLoanRepository` class.
+You'll start by writing unit tests for the JsonLoanRepository class.
 
 Use the following steps to complete this section of the exercise:
 
-1. Add the following project file to the Chat context: `UnitTests.csproj`.
+1. Add the following project file to the Chat context: **UnitTests.csproj**.
 
 1. Enter the following prompt in the Chat view:
 
@@ -1647,13 +1751,14 @@ Use the following steps to complete this section of the exercise:
     @workspace Explain how to add a reference to the Library.Infrastructure project inside `UnitTests.csproj`.
     ```
 
-    This prompt asks GitHub Copilot to explain how to add a reference to the `Library.Infrastructure` project inside the `UnitTests.csproj` file.
+    This prompt asks GitHub Copilot to explain how to add a reference to the Library.Infrastructure project inside the UnitTests.csproj file.
 
 1. Use the GitHub Copilot response to update the UnitTests.csproj file.
 
     The updated UnitTests.csproj file should look similar to the following XML code:
 
     ```xml
+
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
@@ -1677,15 +1782,17 @@ Use the following steps to complete this section of the exercise:
         <ProjectReference Include="..\..\src\Library.Infrastructure\Library.Infrastructure.csproj" />
       </ItemGroup>
     </Project>
+
     ```
 
-1. Open the `JsonLoanRepository.cs` file.
+1. Open the **JsonLoanRepository.cs** file.
 
-    `JsonLoanRepository.cs` is located in the `src/Library.Infrastructure/Data/` folder.
+    JsonLoanRepository.cs is located in the "src/Library.Infrastructure/Data/" folder.
 
-1. Take a minute to review the `JsonLoanRepository.cs` file.
+1. Take a minute to review the **JsonLoanRepository.cs** file.
 
     ```csharp
+
     using Library.ApplicationCore;
     using Library.ApplicationCore.Entities;
     
@@ -1693,6 +1800,7 @@ Use the following steps to complete this section of the exercise:
     
     public class JsonLoanRepository : ILoanRepository
     {
+
         private readonly JsonData _jsonData;
     
         public JsonLoanRepository(JsonData jsonData)
@@ -1740,38 +1848,40 @@ Use the following steps to complete this section of the exercise:
                 await _jsonData.LoadData();
             }
         }
+
     }
+
     ```
 
-1. Notice the following details about the `JsonLoanRepository` class:
+1. Notice the following details about the **JsonLoanRepository** class:
 
-    - The `JsonLoanRepository` class contains two methods: `GetLoan` and `UpdateLoan`.
-    - The `JsonLoanRepository` class uses a `JsonData` object to load and save loan data.
+    - The JsonLoanRepository class contains two methods: GetLoan and UpdateLoan.
+    - The JsonLoanRepository class uses a JsonData object to load and save loan data.
 
-    You'll start by writing unit tests for the `GetLoan` method.
+    You'll start by writing unit tests for the GetLoan method.
 
-1. Create the following folder structure under the `UnitTests` project.
+1. Create the following folder structure under the **UnitTests** project.
 
     - Infrastructure\
         - JsonLoanRepository\
 
-    This folder structure mirrors the approach used for the `Library.ApplicationCore` unit tests.
+    This folder structure mirrors the approach used for the Library.ApplicationCore unit tests.
 
-1. Create a class file named `GetLoan` in the `JsonLoanRepository` folder.
+1. Create a class file named **GetLoan** in the JsonLoanRepository folder.
 
-1. Take a minute to consider the field and class constructor requirements for the `GetLoan` unit tests.
+1. Take a minute to consider the field and class constructor requirements for the GetLoan unit tests.
 
-    The `JsonLoanRepository.GetLoan` method receives a loan ID parameter when it's called. The method uses `_jsonData.EnsureDataLoaded` to get the latest JSON data, and `_jsonData.Loans` to search for a matching loan. If the method finds a matching loan ID, it returns a populated loan object (`populated`). If the method is unable to find a matching loan ID, it returns `null`.
+    The JsonLoanRepository.GetLoan method receives a loan ID parameter when it's called. The method uses "_jsonData.EnsureDataLoaded" to get the latest JSON data, and "_jsonData.Loans" to search for a matching loan. If the method finds a matching loan ID, it returns a populated loan object (populated). If the method is unable to find a matching loan ID, it returns null.
 
     For the GetLoan unit tests:
 
-    - You can use a mock loan repository object (`_mockLoanRepository`) to help test the case where a matching ID is found. Load the mock with the ID you want to find. The `ReturnLoanTest` class demonstrates how to mock the `ILoanRepository` interface and instantiate a mock loan repository object.
+    - You can use a mock loan repository object ("_mockLoanRepository") to help test the case where a matching ID is found. Load the mock with the ID you want to find. The ReturnLoanTest class demonstrates how to mock the ILoanRepository interface and instantiate a mock loan repository object.
 
-    - You can use a non-mock loan repository object (`_jsonLoanRepository`) to test the case where no matching ID is found. Just specify a loan ID that you know isn't in the file (anything over 100 should work).
+    - You can use a non-mock loan repository object ("_jsonLoanRepository") to test the case where no matching ID is found. Just specify a loan ID that you know isn't in the file (anything over 100 should work).
 
-    - You'll need a `JsonData` object to create a non-mock `JsonLoanRepository` object. Since the `UnitTests` project doesn't have access to the `JsonData` object created by the `ConsoleApp` project, you'll need to create one using the `IConfiguration` interface.
+    - You'll need a JsonData object to create a non-mock JsonLoanRepository object. Since the UnitTests project doesn't have access to the JsonData object created by the ConsoleApp project, you'll need to create one using the IConfiguration interface.
 
-1. Add the following files to the Chat context: `JsonLoanRepository.cs`, `ReturnLoan.cs`, `LoanService.cs`, `LoanFactory.cs`, `JsonData.cs`.
+1. Add the following files to the Chat context: **JsonLoanRepository.cs**, **ReturnLoan.cs**, **LoanService.cs**, **LoanFactory.cs**, **JsonData.cs**.
 
 1. Enter the following prompt:
 
@@ -1786,6 +1896,7 @@ Use the following steps to complete this section of the exercise:
     You should see a code suggestion that's similar to the following code snippet:
 
     ```csharp
+
     using NSubstitute;
     using Library.ApplicationCore;
     using Library.ApplicationCore.Entities;
@@ -1797,6 +1908,7 @@ Use the following steps to complete this section of the exercise:
     
     public class GetLoanTest
     {
+
         private readonly ILoanRepository _mockLoanRepository;
         private readonly JsonLoanRepository _jsonLoanRepository;
         private readonly IConfiguration _configuration;
@@ -1813,39 +1925,43 @@ Use the following steps to complete this section of the exercise:
         }
     
         // Add test methods here
+
     }
+
     ```
 
-1. Use the code suggestion provided by GitHub Copilot to update `GetLoan.cs`.
+1. Use the code suggestion provided by GitHub Copilot to update **GetLoan.cs**.
 
 1. Notice the following issues:
 
-    - There is a conflict between the namespace and the use of `JsonLoanRepository` in the code. You should update the namespace in GetLoans.cs to follow the pattern used in the `ReturnLoan.cs` and `RenewMembership.cs` files.
+    - There is a conflict between the namespace and the use of JsonLoanRepository in the code. You should update the namespace in GetLoans.cs to follow the pattern used in the ReturnLoan.cs and RenewMembership.cs files.
 
-    - If `ILoanRepository` isn't recognized in your code, you may need to add a `using` directive for `Library.ApplicationCore` to the top of the file.
+    - If ILoanRepository isn't recognized in your code, you may need to add a using directive for Library.ApplicationCore to the top of the file.
 
-    - If the `_configuration` object isn't instantiated correctly, you may need to update the code line containing `ConfigurationBuilder`. You can simplify the code to use `_configuration = new ConfigurationBuilder().Build();`.
+    - If the _configuration object isn't instantiated correctly, you may need to update the code line containing ConfigurationBuilder. You can simplify the code to use "_configuration = new ConfigurationBuilder().Build();".
 
-    - If a `using Library.ApplicationCore.Interfaces` is suggested by GitHub Copilot, you can delete it from the top of the file.
+    - If a "using Library.ApplicationCore.Interfaces" is suggested by GitHub Copilot, you can delete it from the top of the file.
 
-1. Update the `GetLoan.cs` file to match the following code snippet:
+1. Update the **GetLoan.cs** file to match the following code snippet:
 
     ```csharp
+
     using NSubstitute;
     using Library.ApplicationCore;
     using Library.ApplicationCore.Entities;
     using Library.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
-    
+
     namespace UnitTests.Infrastructure.JsonLoanRepositoryTests;
-    
+
     public class GetLoanTest
     {
+
         private readonly ILoanRepository _mockLoanRepository;
         private readonly JsonLoanRepository _jsonLoanRepository;
         private readonly IConfiguration _configuration;
         private readonly JsonData _jsonData;
-    
+
         public GetLoanTest()
         {
             _mockLoanRepository = Substitute.For<ILoanRepository>();
@@ -1853,41 +1969,44 @@ Use the following steps to complete this section of the exercise:
             _jsonData = new JsonData(_configuration);
             _jsonLoanRepository = new JsonLoanRepository(_jsonData);
         }
-    
+
     }
+
     ```
 
-1. Add the following files to the Chat context: `JsonLoanRepository.cs`, `ReturnLoan.cs`, `LoanService.cs`, `LoanFactory.cs`, `JsonData.cs`, `Loans.json`.
+1. Add the following files to the Chat context: **JsonLoanRepository.cs**, **ReturnLoan.cs**, **LoanService.cs**, **LoanFactory.cs**, **JsonData.cs**, **Loans.json**.
 
-1. Select the contents of the `GetLoan.cs` file, and then enter the following prompt in the Chat view:
+1. Select the contents of the GetLoan.cs file, and then enter the following prompt in the Chat view:
 
     ```plaintext
     @workspace Update the selection to include a unit test for the `JsonLoanRepository.GetLoan` method. The unit test should test the case where a loan ID is found in the data. Use `_mockLoanRepository` to arrange the expected return loan. Use `_jsonLoanRepository` to return an actual loan. Asserts should verify that the return loan ID matches the expected loan ID. Use a loan ID that exists in the `Loans.json` file.
     ```
 
-    This prompt asks GitHub Copilot to suggest a unit test for the `JsonLoanRepository.GetLoan` method. The unit test should test the case where a loan ID is found in the data. The test should use `_mockLoanRepository` to arrange the expected return loan, `_jsonLoanRepository` to return an actual loan, and asserts to verify that the return loan ID matches the expected loan ID. The loan ID should exist in the `Loans.json` file.
+    This prompt asks GitHub Copilot to suggest a unit test for the JsonLoanRepository.GetLoan method. The unit test should test the case where a loan ID is found in the data. The test should use "_mockLoanRepository" to arrange the expected return loan, "_jsonLoanRepository" to return an actual loan, and asserts to verify that the return loan ID matches the expected loan ID. The loan ID should exist in the Loans.json file.
 
 1. Take a minute to review the response from GitHub Copilot.
 
     You should see a code suggestion that's similar to the following code snippet:
 
     ```csharp
+
     using NSubstitute;
     using Library.ApplicationCore;
     using Library.ApplicationCore.Entities;
     using Library.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
     using Xunit;
-    
+
     namespace UnitTests.Infrastructure.JsonLoanRepositoryTests;
-    
+
     public class GetLoanTest
     {
+
         private readonly ILoanRepository _mockLoanRepository;
         private readonly JsonLoanRepository _jsonLoanRepository;
         private readonly IConfiguration _configuration;
         private readonly JsonData _jsonData;
-    
+
         public GetLoanTest()
         {
             _mockLoanRepository = Substitute.For<ILoanRepository>();
@@ -1895,7 +2014,7 @@ Use the following steps to complete this section of the exercise:
             _jsonData = new JsonData(_configuration);
             _jsonLoanRepository = new JsonLoanRepository(_jsonData);
         }
-    
+
         [Fact(DisplayName = "JsonLoanRepository.GetLoan: Returns loan when loan ID is found")]
         public async Task GetLoan_ReturnsLoanWhenLoanIdIsFound()
         {
@@ -1904,41 +2023,44 @@ Use the following steps to complete this section of the exercise:
             var expectedLoan = new Loan { Id = loanId, BookItemId = 101, PatronId = 202, LoanDate = DateTime.Now, DueDate = DateTime.Now.AddDays(14) };
             _mockLoanRepository.GetLoan(loanId).Returns(expectedLoan);
             await _jsonData.EnsureDataLoaded(); // Ensure data is loaded
-    
+
             // Act
             var actualLoan = await _jsonLoanRepository.GetLoan(loanId);
-    
+
             // Assert
             Assert.NotNull(actualLoan);
             Assert.Equal(expectedLoan.Id, actualLoan?.Id);
         }
     }
+
     ```
 
-1. Use the code suggestion provided by GitHub Copilot to update `GetLoan.cs`.
+1. Use the code suggestion provided by GitHub Copilot to update **GetLoan.cs**.
 
-    The `JsonLoanRepository.GetLoan` method calls `_jsonData.EnsureDataLoaded` to ensure that the JSON data is loaded. You can delete the code line that calls `_jsonData.EnsureDataLoaded` in the test method if it's included.
+    The JsonLoanRepository.GetLoan method calls "_jsonData.EnsureDataLoaded" to ensure that the JSON data is loaded. You can delete the code line that calls "_jsonData.EnsureDataLoaded" in the test method if it's included.
 
-    If the `Loan` class isn't recognized in your code, ensure that you have a `using Library.ApplicationCore.Entities` statement at the top of the GetLoan.cs file. The `Loan` class is located in the `Library.ApplicationCore.Entities` namespace.
+    If the Loan class isn't recognized in your code, ensure that you have a "using Library.ApplicationCore.Entities" statement at the top of the GetLoan.cs file. The Loan class is located in the Library.ApplicationCore.Entities namespace.
 
-1. Build the `AccelerateDevGitHubCopilot` solution to ensure there are no errors.
+1. Build the AccelerateDevGitHubCopilot solution to ensure there are no errors.
 
 1. Use GitHub Copilot's autocompletion feature to create a test for the case where the loan ID isn't found.
 
-    Create a blank line after the `GetLoan_ReturnsLoanWhenLoanIdIsFound` method.
+    Create a blank line after the GetLoan_ReturnsLoanWhenLoanIdIsFound method.
 
     Accept the autocompletion suggestions to create a new test method.
 
 1. Take a minute to review the response from GitHub Copilot.
 
-    GitHub Copilot's autocompletion feature will probably mock an expected loan even though it isn't needed. You can delete the code that mocks an expected loan, but you need a loan ID that doesn't exist in the `Loans.json` file.
+    GitHub Copilot's autocompletion feature will probably mock an expected loan even though it isn't needed. You can delete the code that mocks an expected loan, but you need a loan ID that doesn't exist in the Loans.json file.
 
     You should see a code suggestion that's similar to one of the following code snippets:
 
     ```csharp
+
     [Fact(DisplayName = "JsonLoanRepository.GetLoan: Returns null when loan ID is not found")]
     public async Task GetLoan_ReturnsNullWhenLoanIdIsNotFound()
     {
+
         // Arrange
         var loanId = 999; // Use a loan ID that does not exist in the Loans.json file
         var expectedLoan = new Loan { Id = loanId, BookItemId = 101, PatronId = 202, LoanDate = DateTime.Now, DueDate = DateTime.Now.AddDays(14) };
@@ -1949,36 +2071,39 @@ Use the following steps to complete this section of the exercise:
 
         // Assert
         Assert.Null(actualLoan);
+
     }
 
     ```
 
-1. Accept the autocompletion suggestion that assigns a `loanId` value that isn't in the data set.
+1. Accept the autocompletion suggestion that assigns a loanId value that isn't in the data set.
 
-    If none of the suggestions assign `loanId` numbers that aren't in the data set, you can use the **Ctrl+Enter** keyboard shortcut to list additional suggestions.
+    If none of the suggestions assign loanId numbers that aren't in the data set, you can use the **Ctrl+Enter** keyboard shortcut to list additional suggestions.
 
 1. Notice that the unit tests require access to the JSON data files.
 
-    The `JsonLoanRepository.GetLoan` method uses a `JsonData` object to load and save loan data.
+    The JsonLoanRepository.GetLoan method uses a JsonData object to load and save loan data.
 
-    The JSON data files are located in the `Library.Console\Json` folder. You need to update the `UnitTests.csproj` file to include these files in the test project.
+    The JSON data files are located in the "Library.Console\Json" folder. You need to update the UnitTests.csproj file to include these files in the test project.
 
-1. Add the following XML snippet to the `UnitTests.csproj` file:
+1. Add the following XML snippet to the **UnitTests.csproj** file:
 
     ```xml
+
     <ItemGroup>
         <None Include="..\..\src\Library.Console\Json\**\*">
             <Link>Json\%(RecursiveDir)%(FileName)%(Extension)</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
+
     ```
 
     This ensures that the JSON data files are copied to the output directory when the tests are run.
 
 #### Task 3: Check your work
 
-There are several ways to run the unit tests for the `JsonLoanRepository` class. You can use Visual Studio Code's Test Explorer, the integrated terminal, or the `dotnet test` command.
+There are several ways to run the unit tests for the JsonLoanRepository class. You can use Visual Studio Code's Test Explorer, the integrated terminal, or the "dotnet test" command.
 
 Use the following steps to complete this section of the exercise:
 
@@ -1996,7 +2121,7 @@ Use the following steps to complete this section of the exercise:
 
     The Test Explorer is a tree view that shows all the test cases in your workspace. You can run/debug your test cases and view the test results using Test Explorer.
 
-1. Expand **UnitTests** and the underlying nodes to locate `GetLoanTest`.
+1. Expand **UnitTests** and the underlying nodes to locate **GetLoanTest**.
 
 1. Run the **JsonLoanRepository.GetLoan: Returns loan when loan ID is found** test case.
 
@@ -2014,9 +2139,9 @@ Use the following steps to complete this section of the exercise:
 
     You should see a green checkmark to the left of both tests.
 
-#### Exercise summary
+#### Exercise 7 summary
 
-In this exercise, you used GitHub Copilot to evaluate the existing `UnitTests` project and extend the project to begin testing the data access classes in the `Library.Infrastructure` project. You added a reference to the `Library.Infrastructure` project in the `UnitTests.csproj` file and created unit tests for the `JsonLoanRepository` class. You used GitHub Copilot to help you write the unit tests for the `GetLoan` method in the `JsonLoanRepository` class. You ran the unit tests using Visual Studio Code's Test Explorer and verified that the tests passed.
+In this exercise, you used GitHub Copilot to evaluate the existing UnitTests project and extend the project to begin testing the data access classes in the Library.Infrastructure project. You added a reference to the Library.Infrastructure project in the UnitTests.csproj file and created unit tests for the JsonLoanRepository class. You used GitHub Copilot to help you write the unit tests for the GetLoan method in the JsonLoanRepository class. You ran the unit tests using Visual Studio Code's Test Explorer and verified that the tests passed.
 
 ## Part 4: Refactor and improve code sections using GitHub Copilot tools
 
@@ -2054,23 +2179,25 @@ Use the following steps to complete this exercise:
 1. Use the Solution Explorer view to open the EnumHelper.cs file.
 
     ```csharp
+
     using System.ComponentModel;
     using System.Reflection;
-    
+
     namespace Library.ApplicationCore.Enums;
-    
+
     public static class EnumHelper
     {
+
         public static string GetDescription(Enum value)
         {
             if (value == null)
                 return string.Empty;
     
             FieldInfo fieldInfo = value.GetType().GetField(value.ToString())!;
-    
+
             DescriptionAttribute[] attributes =
                 (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
-    
+
             if (attributes != null && attributes.Length > 0)
             {
                 return attributes[0].Description;
@@ -2080,10 +2207,12 @@ Use the following steps to complete this exercise:
                 return value.ToString();
             }
         }
+
     }
+
     ```
 
-1. Open the Chat view, and then add the following files to the Chat context: `EnumHelper.cs`, `LoanExtensionStatus.cs`, `LoanReturnStatus.cs`, `MembershipRenewalStatus.cs`.
+1. Open the Chat view, and then add the following files to the Chat context: **EnumHelper.cs**, **LoanExtensionStatus.cs**, **LoanReturnStatus.cs**, **MembershipRenewalStatus.cs**.
 
 1. Enter the following prompt:
 
@@ -2098,24 +2227,26 @@ Use the following steps to complete this exercise:
     The explanation should be similar to the following description:
 
     ```markdown
-    To refactor the `EnumHelper` class to use dictionaries for each enum, you need to create a dictionary for each enum type that maps the enum values to their descriptions. This will eliminate the need for reflection at runtime.
+    To refactor the EnumHelper class to use dictionaries for each enum, you need to create a dictionary for each enum type that maps the enum values to their descriptions. This will eliminate the need for reflection at runtime.
 
-    Here's how you can update the `EnumHelper` class:
+    Here's how you can update the EnumHelper class:
 
     1. Create dictionaries for each enum type.
     2. Populate these dictionaries with the enum values and their corresponding descriptions.
-    3. Update the `GetDescription` method to use these dictionaries.
+    3. Update the GetDescription method to use these dictionaries.
 
     Below is the updated code for the EnumHelper class:
 
     ```
 
     ```csharp
+
     using System.ComponentModel;
     using System.Collections.Generic;
-    
+
     namespace Library.ApplicationCore.Enums
     {
+
         public static class EnumHelper
         {
             private static readonly Dictionary<MembershipRenewalStatus, string> MembershipRenewalStatusDescriptions = new()
@@ -2126,7 +2257,7 @@ Use the following steps to complete this exercise:
                 { MembershipRenewalStatus.LoanNotReturned, "Cannot renew membership due to an outstanding loan." },
                 { MembershipRenewalStatus.Error, "Cannot renew membership due to an error." }
             };
-    
+
             private static readonly Dictionary<LoanReturnStatus, string> LoanReturnStatusDescriptions = new()
             {
                 { LoanReturnStatus.Success, "Book was successfully returned." },
@@ -2134,7 +2265,7 @@ Use the following steps to complete this exercise:
                 { LoanReturnStatus.AlreadyReturned, "Cannot return book as the book is already returned." },
                 { LoanReturnStatus.Error, "Cannot return book due to an error." }
             };
-    
+
             private static readonly Dictionary<LoanExtensionStatus, string> LoanExtensionStatusDescriptions = new()
             {
                 { LoanExtensionStatus.Success, "Book loan extension was successful." },
@@ -2144,12 +2275,12 @@ Use the following steps to complete this exercise:
                 { LoanExtensionStatus.LoanReturned, "Cannot extend book loan as the book is already returned." },
                 { LoanExtensionStatus.Error, "Cannot extend book loan due to an error." }
             };
-    
+
             public static string GetDescription(Enum value)
             {
                 if (value == null)
                     return string.Empty;
-    
+
                 return value switch
                 {
                     MembershipRenewalStatus status => MembershipRenewalStatusDescriptions[status],
@@ -2159,7 +2290,9 @@ Use the following steps to complete this exercise:
                 };
             }
         }
+
     }
+
     ```
 
     ```markdown
@@ -2171,26 +2304,28 @@ Use the following steps to complete this exercise:
     > [!NOTE]
     > If GitHub Copilot doesn't populate the dictionaries with the correct descriptions, ensure that the GitHub Copilot extension isn't requesting a restart. If it is, restart the extension and try the prompt again.
 
-1. Use GitHub Copilot's suggested `EnumHelper` class to update your EnumHelper.cs file.
+1. Use GitHub Copilot's suggested EnumHelper class to update your EnumHelper.cs file.
 
-1. Ensure that your updated `EnumHelper` class is using the enum values from the `LoanExtensionStatus.cs`, `LoanReturnStatus.cs`, and `MembershipRenewalStatus.cs` files.
+1. Ensure that your updated EnumHelper class is using the enum values from the LoanExtensionStatus.cs, LoanReturnStatus.cs, and MembershipRenewalStatus.cs files.
 
-    Open each of the enum files and verify that the enum values in the dictionaries are correct. If there are discrepancies, have GitHub Copilot update the dictionaries for each enum individually. For example, you can use the following prompt for the `LoanExtensionStatus` enum:
+    Open each of the enum files and verify that the enum values in the dictionaries are correct. If there are discrepancies, have GitHub Copilot update the dictionaries for each enum individually. For example, you can use the following prompt for the LoanExtensionStatus enum:
 
     ```plaintext
     @workspace Use the description values in LoanExtensionStatus.cs to update the LoanExtensionStatus dictionary in the EnumHelper class. Provide the updated code for the LoanExtensionStatus dictionary in the EnumHelper class.
     ```
 
-    If necessary, use the same approach for the `LoanReturnStatus` and `MembershipRenewalStatus` enums.
+    If necessary, use the same approach for the LoanReturnStatus and MembershipRenewalStatus enums.
 
-1. Take a minute to review the `GetDescription` method.
+1. Take a minute to review the **GetDescription** method.
 
     ```csharp
+
     public static string GetDescription(Enum value)
     {
+
         if (value == null)
             return string.Empty;
-    
+
         return value switch
         {
             MembershipRenewalStatus status => MembershipRenewalStatusDescriptions[status],
@@ -2198,16 +2333,20 @@ Use the following steps to complete this exercise:
             LoanExtensionStatus status => LoanExtensionStatusDescriptions[status],
             _ => value.ToString()
         };
+
     }
+
     ```
 
-    This code uses pattern matching to determine the type of the enum and retrieve the description from the appropriate dictionary. The `switch` statement checks the type of the enum `value` and returns the corresponding description from the dictionary. If the enum value is not found in the dictionary, the method returns the enum value as a string.
+    This code uses pattern matching to determine the type of the enum and retrieve the description from the appropriate dictionary. The switch statement checks the type of the enum value and returns the corresponding description from the dictionary. If the enum value is not found in the dictionary, the method returns the enum value as a string.
 
     If you ask GitHub Copilot to refactor this code and eliminate the lambda expressions, it becomes easier to read:
 
     ```csharp
+
     public static string GetDescription(Enum value)
     {
+
         if (value == null)
             return string.Empty;
 
@@ -2222,14 +2361,16 @@ Use the following steps to complete this exercise:
             default:
                 return value.ToString();
         }
+
     }
+
     ```
 
 1. Build your solution to ensure that there are no errors.
 
     You'll see warnings. You can ignore them for now.
 
-#### Exercise summary
+#### Exercise 8 summary
 
 In this exercise, you used GitHub Copilot to refactor the EnumHelper class to use dictionaries instead of reflection. Using dictionaries improves performance by reducing the overhead of reflection. Eliminating reflection also improves code readability, maintainability, and security.
 
@@ -2251,13 +2392,15 @@ Use the following steps to complete this section of the exercise:
 
 1. Open the JsonData.cs file.
 
-1. Select the `GetPopulatedPatron` method.
+1. Select the **GetPopulatedPatron** method.
 
-    The `GetPopulatedPatron` method is designed to create a fully populated `Patron` object. It copies the basic properties of the `Patron` and populates its `Loans` collection with detailed `Loan` objects.
+    The GetPopulatedPatron method is designed to create a fully populated Patron object. It copies the basic properties of the Patron and populates its Loans collection with detailed Loan objects.
 
-    ```cs
+    ```csharp
+
     public Patron GetPopulatedPatron(Patron p)
     {
+
         Patron populated = new Patron
         {
             Id = p.Id,
@@ -2277,7 +2420,9 @@ Use the following steps to complete this section of the exercise:
         }
 
         return populated;
+
     }
+
     ```
 
 1. Open an inline chat, and then enter a prompt that refactor's the method using LINQ.
@@ -2291,8 +2436,10 @@ Use the following steps to complete this section of the exercise:
     The suggested update should look similar to the following code:
 
     ```csharp
+
     public Patron GetPopulatedPatron(Patron p)
     {
+
         return new Patron
         {
             Id = p.Id,
@@ -2305,41 +2452,43 @@ Use the following steps to complete this section of the exercise:
                 .Select(GetPopulatedLoan)
                 .ToList()
         };
+
     }
+
     ```
 
-    First off, a LINQ query is used to replace the `foreach (Loan loan in Loans!)` loop. With the LINQ code in place, you can use an object initializer to assign object properties to the new `Patron` object. This alleviates the need for a separate `populated` instance of the `Patron` object. Overall, the updated code is shorter and more readable.
+    First off, a LINQ query is used to replace the "foreach (Loan loan in Loans!)" loop. With the LINQ code in place, you can use an object initializer to assign object properties to the new Patron object. This alleviates the need for a separate populated instance of the Patron object. Overall, the updated code is shorter and more readable.
 
-    The code uses the input patron `p` to assign some basic properties to the new `Patron` object. Then it populates the `Loans` collection with loans that are associated with the input Patron, transforming each loan using the `GetPopulatedLoan` method.
+    The code uses the input patron "p" to assign some basic properties to the new Patron object. Then it populates the Loans collection with loans that are associated with the input Patron, transforming each loan using the GetPopulatedLoan method.
 
-    You can break down the LINQ code line that populates the `Loans` collection:
+    You can break down the LINQ code line that populates the Loans collection:
 
-    - `Loans!`: The `Loans!` expression accesses the `Loans` collection. The `!` operator is a null-forgiving operator, indicating that the developer is confident that `Loans` is not null. You should ensure that `Loans` is properly initialized before calling the `GetPopulatedPatron` method.
-    - `.Where(loan => loan.PatronId == p.Id)`: This code filters the loans to include only those that belong to the input patron `p`.
-    - `.Select(GetPopulatedLoan)`: This code transforms each filtered loan using the `GetPopulatedLoan` method.
-    - `.ToList()`: Converts the result to a `List<Loan>`.
+    - `Loans!`: The "Loans!" expression accesses the Loans collection. The "!" operator is a null-forgiving operator, indicating that the developer is confident that Loans is not null. You should ensure that Loans is properly initialized before calling the GetPopulatedPatron method.
+    - `.Where(loan => loan.PatronId == p.Id)`: This code filters the loans to include only those that belong to the input patron "p".
+    - `.Select(GetPopulatedLoan)`: This code transforms each filtered loan using the GetPopulatedLoan method.
+    - `.ToList()`: Converts the result to a List of Loan objects.
 
 1. To accept the suggested update, select **Accept**.
 
-    Now that you've seen how to refactor the `GetPopulatedPatron` method, you can refactor the `GetPopulatedLoan`, `GetPopulatedBookItem`, and `GetPopulatedBook` methods to use LINQ as well.
+    Now that you've seen how to refactor the GetPopulatedPatron method, you can refactor the GetPopulatedLoan, GetPopulatedBookItem, and GetPopulatedBook methods to use LINQ as well.
 
-1. Refactor the `GetPopulatedLoan`, `GetPopulatedBookItem`, and `GetPopulatedBook` methods using the same approach.
+1. Refactor the **GetPopulatedLoan**, **GetPopulatedBookItem**, and **GetPopulatedBook** methods using the same approach.
 
     For example, use the following prompts to refactor the three methods:
 
-    For the `GetPopulatedLoan` method:
+    For the **GetPopulatedLoan** method:
 
     ```plaintext
     #selection refactor selection to `return new Loan` using LINQ. Use `GetPopulatedBookItem` for the `BookItem` property. Use `Single` for BookItem and Patron properties.
     ```
 
-    For the `GetPopulatedBookItem` method:
+    For the **GetPopulatedBookItem** method:
 
     ```plaintext
     #selection refactor selection to `return new BookItem` using LINQ. Use `GetPopulatedBook` and `Single` for the `BookItem` property.
     ```
 
-    For the `GetPopulatedBook` method:
+    For the **GetPopulatedBook** method:
 
     ```plaintext
     #selection refactor selection to `return new Book` using LINQ. Use `Where` and `Select` for `Author` property. Use `First` author.
@@ -2350,8 +2499,10 @@ Use the following steps to complete this section of the exercise:
     You updated code should look similar to the following code:
 
     ```csharp
+
     public Loan GetPopulatedLoan(Loan l)
     {
+
         return new Loan
         {
             Id = l.Id,
@@ -2392,23 +2543,27 @@ Use the following steps to complete this section of the exercise:
                 Name = a.Name
             }).First()
         };
+
     }
+
     ```
 
 1. Use the **Explain** smart action to see an explanation of the LINQ queries.
 
     The **Explain** smart action provides a detailed explanation of the LINQ queries used in the code.
 
-    For example, you can use the **Explain** smart action on the `GetPopulatedBook` method to see an explanation of the LINQ query used to populate the `Author` property of the `Book` object.
+    For example, you can use the **Explain** smart action on the GetPopulatedBook method to see an explanation of the LINQ query used to populate the Author property of the Book object.
 
     ```csharp
+
     Author = Authors!.Where(a => a.Id == b.AuthorId).Select(a => new Author {
         Id = a.Id,
         Name = a.Name
     }).First()
+
     ```
 
-    The **Explain** smart action provides a detailed explanation of the LINQ query used to populate the `Author` property of the `Book` object.
+    The **Explain** smart action provides a detailed explanation of the LINQ query used to populate the Author property of the Book object.
 
     For example, the explanation might look like this:
 
@@ -2430,19 +2585,21 @@ Use the following steps to complete this section of the exercise:
 
 #### Task 2: Refactor the methods in JsonLoanRepository.cs to use LINQ
 
-The JsonLoanRepository class includes the `GetLoan` and `UpdateLoan` data access methods. You'll refactor these two methods, replacing foreach loops with LINQ to improve code readability and maintainability.
+The JsonLoanRepository class includes the GetLoan and UpdateLoan data access methods. You'll refactor these two methods, replacing foreach loops with LINQ to improve code readability and maintainability.
 
 Use the following steps to complete this section of the exercise:
 
-1. Open the `JsonLoanRepository.cs` file.
+1. Open the **JsonLoanRepository.cs** file.
 
-1. Select the `GetLoan` method.
+1. Select the **GetLoan** method.
 
-    The `GetLoan` method is designed to retrieve a loan by its ID.
+    The GetLoan method is designed to retrieve a loan by its ID.
 
     ```csharp
+
     public async Task<Loan?> GetLoan(int id)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         foreach (Loan loan in _jsonData.Loans!)
@@ -2455,7 +2612,9 @@ Use the following steps to complete this section of the exercise:
         }
 
         return null;
+
     }
+
     ```
 
 1. Open the inline chat, and then enter a prompt that refactors the method using LINQ.
@@ -2471,8 +2630,10 @@ Use the following steps to complete this section of the exercise:
     The suggested update should look similar to the following code:
 
     ```csharp
+
     public async Task<Loan?> GetLoan(int id)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         Loan? loan = _jsonData.Loans!
@@ -2481,16 +2642,20 @@ Use the following steps to complete this section of the exercise:
             .FirstOrDefault();
 
         return loan;
+
     }
+
     ```
 
-    The updated code uses LINQ to filter the loans collection to include only the loan with the specified ID. Notice that `loan` should be declared as nullable (`Loan? loan`). It then transforms the loan using the `GetPopulatedLoan` method and returns the first result. If no matching loan is found, `FirstOrDefault` returns `null`. The method then returns this loan object, which may be null if no loan with the specified `id` exists. This approach ensures that the returned loan is fully populated with all necessary related data, providing a comprehensive view of the loan record.
+    The updated code uses LINQ to filter the loans collection to include only the loan with the specified ID. Notice that loan should be declared as nullable (`Loan? loan`). It then transforms the loan using the GetPopulatedLoan method and returns the first result. If no matching loan is found, FirstOrDefault returns null. The method then returns this loan object, which may be null if no loan with the specified "id" exists. This approach ensures that the returned loan is fully populated with all necessary related data, providing a comprehensive view of the loan record.
 
     This code could be further simplified:
 
     ```csharp
+
     public async Task<Loan?> GetLoan(int id)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         return _jsonData.Loans!
@@ -2499,15 +2664,18 @@ Use the following steps to complete this section of the exercise:
             .FirstOrDefault();
 
     }
+
     ```
 
 1. To accept the updated GetLoan method, select **Accept**.
 
-1. Select the `UpdateLoan` method.
+1. Select the **UpdateLoan** method.
 
     ```csharp
+
     public async Task UpdateLoan(Loan loan)
     {
+
         Loan? existingLoan = null;
         foreach (Loan l in _jsonData.Loans!)
         {
@@ -2530,7 +2698,9 @@ Use the following steps to complete this section of the exercise:
 
             await _jsonData.LoadData();
         }
+
     }
+
     ```
 
 1. Open the inline chat, and then enter a prompt that refactors the method using LINQ.
@@ -2546,8 +2716,10 @@ Use the following steps to complete this section of the exercise:
     The suggested update should look similar to the following code:
 
     ```csharp
+
     public async Task UpdateLoan(Loan loan)
     {
+
         Loan? existingLoan = _jsonData.Loans!.FirstOrDefault(l => l.Id == loan.Id);
 
         if (existingLoan != null)
@@ -2562,7 +2734,9 @@ Use the following steps to complete this section of the exercise:
 
             await _jsonData.LoadData();
         }
+
     }
+
     ```
 
     The updated code uses LINQ to find the existing loan in the loans collection. It then updates the existing loan with the new loan data. The method then saves the updated loans collection and reloads the data. This approach ensures that the loan data is updated correctly and that the changes are persisted to the data store.
@@ -2570,8 +2744,10 @@ Use the following steps to complete this section of the exercise:
     You can also add the code to ensure the data is loaded before the method is executed:
 
     ```csharp
+
     public async Task UpdateLoan(Loan loan)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         Loan? existingLoan = _jsonData.Loans!.FirstOrDefault(l => l.Id == loan.Id);
@@ -2588,7 +2764,10 @@ Use the following steps to complete this section of the exercise:
 
             await _jsonData.LoadData();
         }
+
     }
+
+    ```
 
 1. To accept the updated UpdateLoan method, select **Accept**.
 
@@ -2598,19 +2777,21 @@ Use the following steps to complete this section of the exercise:
 
 #### Task 3: Refactor the methods in JsonPatronRepository to use LINQ
 
-The `JsonPatronRepository` class includes the `SearchPatrons`, `GetPatron`, and `UpdatePatron` methods, and it's a great candidate for optimization. You'll refactor these methods, replacing foreach loops with LINQ to improve code readability and maintainability.
+The JsonPatronRepository class includes the SearchPatrons, GetPatron, and UpdatePatron methods, and it's a great candidate for optimization. You'll refactor these methods, replacing foreach loops with LINQ to improve code readability and maintainability.
 
 Use the following steps to complete this section of the exercise:
 
-1. Open the `JsonPatronRepository.cs` file.
+1. Open the **JsonPatronRepository.cs** file.
 
-1. Select the `SearchPatrons` method.
+1. Select the **SearchPatrons** method.
 
-    The `SearchPatrons` method is designed to search for patrons by name.
+    The SearchPatrons method is designed to search for patrons by name.
 
     ```csharp
+
     public async Task<List<Patron>> SearchPatrons(string searchInput)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         List<Patron> searchResults = new List<Patron>();
@@ -2626,7 +2807,9 @@ Use the following steps to complete this section of the exercise:
         searchResults = _jsonData.GetPopulatedPatrons(searchResults);
 
         return searchResults;
+
     }
+
     ```
 
 1. Open the inline chat, and then enter a prompt that refactors the method using LINQ.
@@ -2642,8 +2825,10 @@ Use the following steps to complete this section of the exercise:
     The suggested update should look similar to the following code:
 
     ```csharp
+
     public async Task<List<Patron>> SearchPatrons(string searchInput)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         List<Patron> searchResults = _jsonData.Patrons!
@@ -2654,18 +2839,22 @@ Use the following steps to complete this section of the exercise:
         searchResults = _jsonData.GetPopulatedPatrons(searchResults);
 
         return searchResults;
+
     }
+
     ```
 
 1. To accept the updated SearchPatrons method, select **Accept**.
 
-1. Select the `GetPatron` method.
+1. Select the **GetPatron** method.
 
-    The `GetPatron` method is designed to return the patron matching the specified `id`.
+    The GetPatron method is designed to return the patron matching the specified "id".
 
     ```csharp
+
     public async Task<Patron?> GetPatron(int id)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         foreach (Patron patron in _jsonData.Patrons!)
@@ -2677,7 +2866,9 @@ Use the following steps to complete this section of the exercise:
             }
         }
         return null;
+
     }
+
     ```
 
 1. Open the inline chat, and then enter a prompt that refactors the method using LINQ.
@@ -2693,8 +2884,10 @@ Use the following steps to complete this section of the exercise:
     The suggested update should look similar to the following code:
 
     ```csharp
+
     public async Task<Patron?> GetPatron(int id)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         var patron = _jsonData.Patrons!
@@ -2703,33 +2896,40 @@ Use the following steps to complete this section of the exercise:
             .FirstOrDefault();
 
         return patron;
+
     }
+
     ```
 
     This code could be simplified further:
 
     ```C#
+
     public async Task<Patron?> GetPatron(int id)
     {
+
         await _jsonData.EnsureDataLoaded();
 
         return _jsonData.Patrons!
             .Where(p => p.Id == id)
             .Select(p => _jsonData.GetPopulatedPatron(p))
             .FirstOrDefault();
+
     }
+
     ```
 
 1. To accept the updated GetPatron method, select **Accept**.
 
-1. Select the `UpdatePatron` method.
+1. Select the **UpdatePatron** method.
 
-    The `UpdatePatron` method is designed to update the patron with the specified `id`.
+    The UpdatePatron method is designed to update the patron with the specified "id".
 
     ```csharp
 
     public async Task UpdatePatron(Patron patron)
     {
+
         await _jsonData.EnsureDataLoaded();
         var patrons = _jsonData.Patrons!;
         Patron existingPatron = null;
@@ -2751,7 +2951,9 @@ Use the following steps to complete this section of the exercise:
             await _jsonData.SavePatrons(patrons);
             await _jsonData.LoadData();
         }
+
     }
+
     ```
 
 1. Open the inline chat, and then enter a prompt that refactors the method using LINQ.
@@ -2767,8 +2969,10 @@ Use the following steps to complete this section of the exercise:
     The suggested update should look similar to the following code:
 
     ```csharp
+
     public async Task UpdatePatron(Patron patron)
     {
+
         await _jsonData.EnsureDataLoaded();
         var patrons = _jsonData.Patrons!;
         var existingPatron = patrons.FirstOrDefault(p => p.Id == patron.Id);
@@ -2782,7 +2986,9 @@ Use the following steps to complete this section of the exercise:
             await _jsonData.SavePatrons(patrons);
             await _jsonData.LoadData();
         }
+
     }
+
     ```
 
 1. To accept the updated UpdatePatron method, select **Accept**.
@@ -2791,7 +2997,7 @@ Use the following steps to complete this section of the exercise:
 
 Use the following steps to check your work:
 
-1. To clean the solution, right-click `AccelerateAppDevGitHubCopilot`, and then select **Clean**.
+1. To clean the solution, right-click **AccelerateAppDevGitHubCopilot**, and then select **Clean**.
 
     This action removes any build artifacts from the previous build. Cleaning the solution will effectively reset the JSON data files to their original values during (in the output directory).
 
@@ -2799,7 +3005,7 @@ Use the following steps to check your work:
 
 1. Run the application.
 
-    You can run the application from the Solution Explorer view by right-clicking the `Library.Console` project, selecting **Debug**, and then selecting **Start New Instance**.
+    You can run the application from the Solution Explorer view by right-clicking the **Library.Console** project, selecting **Debug**, and then selecting **Start New Instance**.
 
 1. When prompted for a patron name, type **One** and then press Enter.
 
@@ -2809,7 +3015,7 @@ Use the following steps to check your work:
 
 1. At the "Input Options" prompt, type **r** and then press Enter.
 
-1. Verify that the message "Book was successfully returned." is displayed.
+1. Verify that the message **"Book was successfully returned."** is displayed.
 
 1. To begin a new search, type **s** and then press Enter.
 
@@ -2817,12 +3023,12 @@ Use the following steps to check your work:
 
 1. At the "Matching Patrons" prompt, type **2** and then press Enter.
 
-1. Verify that first book loan is marked `Returned: True`.
+1. Verify that first book loan is marked **Returned: True**.
 
 1. At the "Input Options" prompt, type **q** and then press Enter.
 
 1. Stop the application.
 
-#### Exercise summary
+#### Exercise 9 summary
 
 In this exercise, you refactored the data access methods in the JsonData, JsonLoanRepository, and JsonPatronRepository classes to use LINQ. These changes improve code readability, maintainability, and performance.
