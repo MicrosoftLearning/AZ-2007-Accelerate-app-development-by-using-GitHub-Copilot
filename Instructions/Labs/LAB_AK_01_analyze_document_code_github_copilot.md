@@ -830,7 +830,6 @@ Use the following steps to complete this section of the exercise:
 
     public enum CommonActions
     {
-
         Repeat = 0,
         Select = 1,
         Quit = 2,
@@ -839,7 +838,6 @@ Use the following steps to complete this section of the exercise:
         ReturnLoanedBook = 16,
         ExtendLoanedBook = 32,
         SearchBooks = 64
-
     }
 
     ```
@@ -866,7 +864,6 @@ Use the following steps to complete this section of the exercise:
 
     static void WriteInputOptions(CommonActions options)
     {
-
         Console.WriteLine("Input Options:");
         if (options.HasFlag(CommonActions.ReturnLoanedBook))
         {
@@ -896,7 +893,6 @@ Use the following steps to complete this section of the exercise:
         {
             Console.WriteLine("Or type a number to select a list item.");
         }
-
     }
 
     ```
@@ -923,7 +919,6 @@ Use the following steps to complete this section of the exercise:
 
     static CommonActions ReadInputOptions(CommonActions options, out int optionNumber)
     {
-
         CommonActions action;
         optionNumber = 0;
         do
@@ -931,7 +926,6 @@ Use the following steps to complete this section of the exercise:
             Console.WriteLine();
             WriteInputOptions(options);
             string? userInput = Console.ReadLine();
-
             action = userInput switch
             {
                 "q" when options.HasFlag(CommonActions.Quit) => CommonActions.Quit,
@@ -943,14 +937,12 @@ Use the following steps to complete this section of the exercise:
                 _ when int.TryParse(userInput, out optionNumber) => CommonActions.Select,
                 _ => CommonActions.Repeat
             };
-
             if (action == CommonActions.Repeat)
             {
                 Console.WriteLine("Invalid input. Please try again.");
             }
         } while (action == CommonActions.Repeat);
         return action;
-
     }
 
     ```
@@ -978,7 +970,6 @@ Use the following steps to complete this section of the exercise:
 
     async Task<ConsoleState> PatronDetails()
     {
-
         Console.WriteLine($"Name: {selectedPatronDetails.Name}");
         Console.WriteLine($"Membership Expiration: {selectedPatronDetails.MembershipEnd}");
         Console.WriteLine();
@@ -989,7 +980,6 @@ Use the following steps to complete this section of the exercise:
             Console.WriteLine($"{loanNumber}) {loan.BookItem!.Book!.Title} - Due: {loan.DueDate} - Returned: {(loan.ReturnDate != null).ToString()}");
             loanNumber++;
         }
-
         CommonActions options = CommonActions.SearchPatrons | CommonActions.Quit | CommonActions.Select | CommonActions.RenewPatronMembership | CommonActions.SearchBooks;
         CommonActions action = ReadInputOptions(options, out int selectedLoanNumber);
         if (action == CommonActions.Select)
@@ -1026,9 +1016,7 @@ Use the following steps to complete this section of the exercise:
         {
             return await SearchBooks();
         }
-
         throw new InvalidOperationException("An input option is not handled.");
-
     }
 
     ```
@@ -1067,9 +1055,7 @@ Use the following steps to complete this section of the exercise:
 
     async Task<ConsoleState> SearchBooks()
     {
-
         return ConsoleState.PatronDetails;
-
     }
 
     ```
@@ -1093,18 +1079,14 @@ Use the following steps to complete this section of the exercise:
 
     async Task<ConsoleState> SearchBooks()
     {
-
         string? bookTitle = null;
         while (String.IsNullOrWhiteSpace(bookTitle))
         {
             Console.Write("Enter a book title to search for: ");
             bookTitle = Console.ReadLine();
         }
-
         // Perform book search logic here
-
         return ConsoleState.PatronDetails;
-
     }
 
     ```
@@ -1142,14 +1124,11 @@ Use the following steps to complete this section of the exercise:
 
     public class JsonData
     {
-
         // Existing code...
-    
         public Book? SearchBookByTitle(string title)
         {
             return Books?.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
         }
-
     }
 
     ```
@@ -1160,11 +1139,8 @@ Use the following steps to complete this section of the exercise:
 
     public class ConsoleApp
     {
-
         // Existing fields...
-    
         JsonData _jsonData;
-    
         public ConsoleApp(ILoanService loanService, IPatronService patronService, IPatronRepository patronRepository, ILoanRepository loanRepository, JsonData jsonData)
         {
             _patronRepository = patronRepository;
@@ -1173,23 +1149,17 @@ Use the following steps to complete this section of the exercise:
             _patronService = patronService;
             _jsonData = jsonData;
         }
-    
         // Existing methods...
-    
         async Task<ConsoleState> SearchBooks()
         {
             string bookTitle = ReadBookTitle();
-    
             Book? book = _jsonData.SearchBookByTitle(bookTitle);
-    
             if (book == null)
             {
                 Console.WriteLine($"No book found with title: {bookTitle}");
                 return ConsoleState.PatronDetails;
             }
-    
             Loan? loan = _jsonData.Loans?.FirstOrDefault(l => l.BookItemId == book.Id && l.ReturnDate == null);
-    
             if (loan == null)
             {
                 Console.WriteLine($"{book.Title} is available for loan.");
@@ -1198,12 +1168,9 @@ Use the following steps to complete this section of the exercise:
             {
                 Console.WriteLine($"{book.Title} is on loan to another patron. The return due date is {loan.DueDate}.");
             }
-    
             return ConsoleState.PatronDetails;
         }
-    
         // Existing methods...
-
     }
 
     ```
@@ -1216,26 +1183,19 @@ Use the following steps to complete this section of the exercise:
     using Library.Infrastructure.Data;
     using Library.ApplicationCore;
     using Microsoft.Extensions.Configuration;
-    
     var services = new ServiceCollection();
-    
     var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appSettings.json")
     .Build();
-    
     services.AddSingleton<IConfiguration>(configuration);
-    
     services.AddScoped<IPatronRepository, JsonPatronRepository>();
     services.AddScoped<ILoanRepository, JsonLoanRepository>();
     services.AddScoped<ILoanService, LoanService>();
     services.AddScoped<IPatronService, PatronService>();
-    
     services.AddSingleton<JsonData>();
     services.AddSingleton<ConsoleApp>();
-    
     var servicesProvider = services.BuildServiceProvider();
-    
     var consoleApp = servicesProvider.GetRequiredService<ConsoleApp>();
     consoleApp.Run().Wait();
 
@@ -1265,26 +1225,19 @@ Use the following steps to complete this section of the exercise:
     using Library.Infrastructure.Data;
     using Library.ApplicationCore;
     using Microsoft.Extensions.Configuration;
-    
     var services = new ServiceCollection();
-    
     var configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appSettings.json")
-    .Build();
-    
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appSettings.json")
+        .Build();
     services.AddSingleton<IConfiguration>(configuration);
-    
     services.AddScoped<IPatronRepository, JsonPatronRepository>();
     services.AddScoped<ILoanRepository, JsonLoanRepository>();
     services.AddScoped<ILoanService, LoanService>();
     services.AddScoped<IPatronService, PatronService>();
-    
     services.AddSingleton<JsonData>();
     services.AddSingleton<ConsoleApp>();
-    
     var servicesProvider = services.BuildServiceProvider();
-    
     var consoleApp = servicesProvider.GetRequiredService<ConsoleApp>();
     consoleApp.Run().Wait();
 
@@ -1306,13 +1259,11 @@ Use the following steps to complete this section of the exercise:
 
     public ConsoleApp(ILoanService loanService, IPatronService patronService, IPatronRepository patronRepository, ILoanRepository loanRepository, JsonData jsonData)
     {
-
         _patronRepository = patronRepository;
         _loanRepository = loanRepository;
         _loanService = loanService;
         _patronService = patronService;
         _jsonData = jsonData;
-
     }
 
     ```
@@ -1339,19 +1290,14 @@ Use the following steps to complete this section of the exercise:
 
     async Task<ConsoleState> SearchBooks()
     {
-
         string bookTitle = ReadBookTitle();
-
         Book? book = _jsonData.SearchBookByTitle(bookTitle);
-
         if (book == null)
         {
             Console.WriteLine($"No book found with title: {bookTitle}");
             return ConsoleState.PatronDetails;
         }
-
         Loan? loan = _jsonData.Loans?.FirstOrDefault(l => l.BookItemId == book.Id && l.ReturnDate == null);
-
         if (loan == null)
         {
             Console.WriteLine($"{book.Title} is available for loan.");
@@ -1360,9 +1306,7 @@ Use the following steps to complete this section of the exercise:
         {
             Console.WriteLine($"{book.Title} is on loan to another patron. The return due date is {loan.DueDate}.");
         }
-
         return ConsoleState.PatronDetails;
-
     }
 
     ```
@@ -1795,19 +1739,14 @@ Use the following steps to complete this section of the exercise:
 
     using Library.ApplicationCore;
     using Library.ApplicationCore.Entities;
-    
     namespace Library.Infrastructure.Data;
-    
     public class JsonLoanRepository : ILoanRepository
     {
-
         private readonly JsonData _jsonData;
-    
         public JsonLoanRepository(JsonData jsonData)
         {
             _jsonData = jsonData;
         }
-    
         public async Task<Loan?> GetLoan(int id)
         {
             await _jsonData.EnsureDataLoaded();
@@ -1822,7 +1761,6 @@ Use the following steps to complete this section of the exercise:
             }
             return null;
         }
-    
         public async Task UpdateLoan(Loan loan)
         {
             Loan? existingLoan = null;
@@ -1834,7 +1772,6 @@ Use the following steps to complete this section of the exercise:
                     break;
                 }
             }
-    
             if (existingLoan != null)
             {
                 existingLoan.BookItemId = loan.BookItemId;
@@ -1842,13 +1779,10 @@ Use the following steps to complete this section of the exercise:
                 existingLoan.LoanDate = loan.LoanDate;
                 existingLoan.DueDate = loan.DueDate;
                 existingLoan.ReturnDate = loan.ReturnDate;
-    
                 await _jsonData.SaveLoans(_jsonData.Loans!);
-    
                 await _jsonData.LoadData();
             }
         }
-
     }
 
     ```
@@ -1903,17 +1837,13 @@ Use the following steps to complete this section of the exercise:
     using Library.ApplicationCore.Interfaces;
     using Library.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
-    
     namespace UnitTests.Infrastructure.JsonLoanRepository;
-    
     public class GetLoanTest
     {
-
         private readonly ILoanRepository _mockLoanRepository;
         private readonly JsonLoanRepository _jsonLoanRepository;
         private readonly IConfiguration _configuration;
         private readonly JsonData _jsonData;
-    
         public GetLoanTest()
         {
             _mockLoanRepository = Substitute.For<ILoanRepository>();
@@ -1923,9 +1853,7 @@ Use the following steps to complete this section of the exercise:
             _jsonData = new JsonData(_configuration);
             _jsonLoanRepository = new JsonLoanRepository(_jsonData);
         }
-    
         // Add test methods here
-
     }
 
     ```
@@ -1951,17 +1879,13 @@ Use the following steps to complete this section of the exercise:
     using Library.ApplicationCore.Entities;
     using Library.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
-
     namespace UnitTests.Infrastructure.JsonLoanRepositoryTests;
-
     public class GetLoanTest
     {
-
         private readonly ILoanRepository _mockLoanRepository;
         private readonly JsonLoanRepository _jsonLoanRepository;
         private readonly IConfiguration _configuration;
         private readonly JsonData _jsonData;
-
         public GetLoanTest()
         {
             _mockLoanRepository = Substitute.For<ILoanRepository>();
@@ -1969,7 +1893,6 @@ Use the following steps to complete this section of the exercise:
             _jsonData = new JsonData(_configuration);
             _jsonLoanRepository = new JsonLoanRepository(_jsonData);
         }
-
     }
 
     ```
@@ -1996,17 +1919,13 @@ Use the following steps to complete this section of the exercise:
     using Library.Infrastructure.Data;
     using Microsoft.Extensions.Configuration;
     using Xunit;
-
     namespace UnitTests.Infrastructure.JsonLoanRepositoryTests;
-
     public class GetLoanTest
     {
-
         private readonly ILoanRepository _mockLoanRepository;
         private readonly JsonLoanRepository _jsonLoanRepository;
         private readonly IConfiguration _configuration;
         private readonly JsonData _jsonData;
-
         public GetLoanTest()
         {
             _mockLoanRepository = Substitute.For<ILoanRepository>();
@@ -2014,7 +1933,6 @@ Use the following steps to complete this section of the exercise:
             _jsonData = new JsonData(_configuration);
             _jsonLoanRepository = new JsonLoanRepository(_jsonData);
         }
-
         [Fact(DisplayName = "JsonLoanRepository.GetLoan: Returns loan when loan ID is found")]
         public async Task GetLoan_ReturnsLoanWhenLoanIdIsFound()
         {
@@ -2023,10 +1941,8 @@ Use the following steps to complete this section of the exercise:
             var expectedLoan = new Loan { Id = loanId, BookItemId = 101, PatronId = 202, LoanDate = DateTime.Now, DueDate = DateTime.Now.AddDays(14) };
             _mockLoanRepository.GetLoan(loanId).Returns(expectedLoan);
             await _jsonData.EnsureDataLoaded(); // Ensure data is loaded
-
             // Act
             var actualLoan = await _jsonLoanRepository.GetLoan(loanId);
-
             // Assert
             Assert.NotNull(actualLoan);
             Assert.Equal(expectedLoan.Id, actualLoan?.Id);
@@ -2060,18 +1976,14 @@ Use the following steps to complete this section of the exercise:
     [Fact(DisplayName = "JsonLoanRepository.GetLoan: Returns null when loan ID is not found")]
     public async Task GetLoan_ReturnsNullWhenLoanIdIsNotFound()
     {
-
         // Arrange
         var loanId = 999; // Use a loan ID that does not exist in the Loans.json file
         var expectedLoan = new Loan { Id = loanId, BookItemId = 101, PatronId = 202, LoanDate = DateTime.Now, DueDate = DateTime.Now.AddDays(14) };
         _mockLoanRepository.GetLoan(loanId).Returns(expectedLoan);
-
         // Act
         var actualLoan = await _jsonLoanRepository.GetLoan(loanId);
-
         // Assert
         Assert.Null(actualLoan);
-
     }
 
     ```
@@ -2182,22 +2094,16 @@ Use the following steps to complete this exercise:
 
     using System.ComponentModel;
     using System.Reflection;
-
     namespace Library.ApplicationCore.Enums;
-
     public static class EnumHelper
     {
-
         public static string GetDescription(Enum value)
         {
             if (value == null)
                 return string.Empty;
-    
             FieldInfo fieldInfo = value.GetType().GetField(value.ToString())!;
-
             DescriptionAttribute[] attributes =
                 (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
             if (attributes != null && attributes.Length > 0)
             {
                 return attributes[0].Description;
@@ -2207,7 +2113,6 @@ Use the following steps to complete this exercise:
                 return value.ToString();
             }
         }
-
     }
 
     ```
@@ -2243,10 +2148,8 @@ Use the following steps to complete this exercise:
 
     using System.ComponentModel;
     using System.Collections.Generic;
-
     namespace Library.ApplicationCore.Enums
     {
-
         public static class EnumHelper
         {
             private static readonly Dictionary<MembershipRenewalStatus, string> MembershipRenewalStatusDescriptions = new()
@@ -2257,7 +2160,6 @@ Use the following steps to complete this exercise:
                 { MembershipRenewalStatus.LoanNotReturned, "Cannot renew membership due to an outstanding loan." },
                 { MembershipRenewalStatus.Error, "Cannot renew membership due to an error." }
             };
-
             private static readonly Dictionary<LoanReturnStatus, string> LoanReturnStatusDescriptions = new()
             {
                 { LoanReturnStatus.Success, "Book was successfully returned." },
@@ -2265,7 +2167,6 @@ Use the following steps to complete this exercise:
                 { LoanReturnStatus.AlreadyReturned, "Cannot return book as the book is already returned." },
                 { LoanReturnStatus.Error, "Cannot return book due to an error." }
             };
-
             private static readonly Dictionary<LoanExtensionStatus, string> LoanExtensionStatusDescriptions = new()
             {
                 { LoanExtensionStatus.Success, "Book loan extension was successful." },
@@ -2275,12 +2176,10 @@ Use the following steps to complete this exercise:
                 { LoanExtensionStatus.LoanReturned, "Cannot extend book loan as the book is already returned." },
                 { LoanExtensionStatus.Error, "Cannot extend book loan due to an error." }
             };
-
             public static string GetDescription(Enum value)
             {
                 if (value == null)
                     return string.Empty;
-
                 return value switch
                 {
                     MembershipRenewalStatus status => MembershipRenewalStatusDescriptions[status],
@@ -2290,7 +2189,6 @@ Use the following steps to complete this exercise:
                 };
             }
         }
-
     }
 
     ```
@@ -2322,10 +2220,8 @@ Use the following steps to complete this exercise:
 
     public static string GetDescription(Enum value)
     {
-
         if (value == null)
             return string.Empty;
-
         return value switch
         {
             MembershipRenewalStatus status => MembershipRenewalStatusDescriptions[status],
@@ -2333,7 +2229,6 @@ Use the following steps to complete this exercise:
             LoanExtensionStatus status => LoanExtensionStatusDescriptions[status],
             _ => value.ToString()
         };
-
     }
 
     ```
@@ -2346,10 +2241,8 @@ Use the following steps to complete this exercise:
 
     public static string GetDescription(Enum value)
     {
-
         if (value == null)
             return string.Empty;
-
         switch (value)
         {
             case MembershipRenewalStatus status:
@@ -2361,7 +2254,6 @@ Use the following steps to complete this exercise:
             default:
                 return value.ToString();
         }
-
     }
 
     ```
@@ -2400,7 +2292,6 @@ Use the following steps to complete this section of the exercise:
 
     public Patron GetPopulatedPatron(Patron p)
     {
-
         Patron populated = new Patron
         {
             Id = p.Id,
@@ -2410,7 +2301,6 @@ Use the following steps to complete this section of the exercise:
             MembershipEnd = p.MembershipEnd,
             Loans = new List<Loan>()
         };
-
         foreach (Loan loan in Loans!)
         {
             if (loan.PatronId == p.Id)
@@ -2418,9 +2308,7 @@ Use the following steps to complete this section of the exercise:
                 populated.Loans.Add(GetPopulatedLoan(loan));
             }
         }
-
         return populated;
-
     }
 
     ```
@@ -2439,7 +2327,6 @@ Use the following steps to complete this section of the exercise:
 
     public Patron GetPopulatedPatron(Patron p)
     {
-
         return new Patron
         {
             Id = p.Id,
@@ -2452,7 +2339,6 @@ Use the following steps to complete this section of the exercise:
                 .Select(GetPopulatedLoan)
                 .ToList()
         };
-
     }
 
     ```
@@ -2502,7 +2388,6 @@ Use the following steps to complete this section of the exercise:
 
     public Loan GetPopulatedLoan(Loan l)
     {
-
         return new Loan
         {
             Id = l.Id,
@@ -2515,7 +2400,6 @@ Use the following steps to complete this section of the exercise:
             Patron = Patrons!.Single(p => p.Id == l.PatronId)
         };
     }
-
     public BookItem GetPopulatedBookItem(BookItem bi)
     {
         return new BookItem
@@ -2527,7 +2411,6 @@ Use the following steps to complete this section of the exercise:
             Book = GetPopulatedBook(Books!.Single(b => b.Id == bi.BookId))
         };
     }
-
     public Book GetPopulatedBook(Book b)
     {
         return new Book
@@ -2543,7 +2426,6 @@ Use the following steps to complete this section of the exercise:
                 Name = a.Name
             }).First()
         };
-
     }
 
     ```
@@ -2599,9 +2481,7 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<Loan?> GetLoan(int id)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         foreach (Loan loan in _jsonData.Loans!)
         {
             if (loan.Id == id)
@@ -2610,9 +2490,7 @@ Use the following steps to complete this section of the exercise:
                 return populated;
             }
         }
-
         return null;
-
     }
 
     ```
@@ -2633,16 +2511,12 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<Loan?> GetLoan(int id)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         Loan? loan = _jsonData.Loans!
             .Where(l => l.Id == id)
             .Select(l => _jsonData.GetPopulatedLoan(l))
             .FirstOrDefault();
-
         return loan;
-
     }
 
     ```
@@ -2655,14 +2529,11 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<Loan?> GetLoan(int id)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         return _jsonData.Loans!
             .Where(l => l.Id == id)
             .Select(l => _jsonData.GetPopulatedLoan(l))
             .FirstOrDefault();
-
     }
 
     ```
@@ -2675,7 +2546,6 @@ Use the following steps to complete this section of the exercise:
 
     public async Task UpdateLoan(Loan loan)
     {
-
         Loan? existingLoan = null;
         foreach (Loan l in _jsonData.Loans!)
         {
@@ -2685,7 +2555,6 @@ Use the following steps to complete this section of the exercise:
                 break;
             }
         }
-
         if (existingLoan != null)
         {
             existingLoan.BookItemId = loan.BookItemId;
@@ -2693,12 +2562,9 @@ Use the following steps to complete this section of the exercise:
             existingLoan.LoanDate = loan.LoanDate;
             existingLoan.DueDate = loan.DueDate;
             existingLoan.ReturnDate = loan.ReturnDate;
-
             await _jsonData.SaveLoans(_jsonData.Loans!);
-
             await _jsonData.LoadData();
         }
-
     }
 
     ```
@@ -2719,9 +2585,7 @@ Use the following steps to complete this section of the exercise:
 
     public async Task UpdateLoan(Loan loan)
     {
-
         Loan? existingLoan = _jsonData.Loans!.FirstOrDefault(l => l.Id == loan.Id);
-
         if (existingLoan != null)
         {
             existingLoan.BookItemId = loan.BookItemId;
@@ -2729,12 +2593,9 @@ Use the following steps to complete this section of the exercise:
             existingLoan.LoanDate = loan.LoanDate;
             existingLoan.DueDate = loan.DueDate;
             existingLoan.ReturnDate = loan.ReturnDate;
-
             await _jsonData.SaveLoans(_jsonData.Loans!);
-
             await _jsonData.LoadData();
         }
-
     }
 
     ```
@@ -2747,11 +2608,8 @@ Use the following steps to complete this section of the exercise:
 
     public async Task UpdateLoan(Loan loan)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         Loan? existingLoan = _jsonData.Loans!.FirstOrDefault(l => l.Id == loan.Id);
-
         if (existingLoan != null)
         {
             existingLoan.BookItemId = loan.BookItemId;
@@ -2759,12 +2617,9 @@ Use the following steps to complete this section of the exercise:
             existingLoan.LoanDate = loan.LoanDate;
             existingLoan.DueDate = loan.DueDate;
             existingLoan.ReturnDate = loan.ReturnDate;
-
             await _jsonData.SaveLoans(_jsonData.Loans!);
-
             await _jsonData.LoadData();
         }
-
     }
 
     ```
@@ -2791,9 +2646,7 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<List<Patron>> SearchPatrons(string searchInput)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         List<Patron> searchResults = new List<Patron>();
         foreach (Patron patron in _jsonData.Patrons)
         {
@@ -2803,11 +2656,8 @@ Use the following steps to complete this section of the exercise:
             }
         }
         searchResults.Sort((p1, p2) => String.Compare(p1.Name, p2.Name));
-
         searchResults = _jsonData.GetPopulatedPatrons(searchResults);
-
         return searchResults;
-
     }
 
     ```
@@ -2828,18 +2678,13 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<List<Patron>> SearchPatrons(string searchInput)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         List<Patron> searchResults = _jsonData.Patrons!
             .Where(patron => patron.Name.Contains(searchInput))
             .OrderBy(patron => patron.Name)
             .ToList();
-
         searchResults = _jsonData.GetPopulatedPatrons(searchResults);
-
         return searchResults;
-
     }
 
     ```
@@ -2854,9 +2699,7 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<Patron?> GetPatron(int id)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         foreach (Patron patron in _jsonData.Patrons!)
         {
             if (patron.Id == id)
@@ -2866,7 +2709,6 @@ Use the following steps to complete this section of the exercise:
             }
         }
         return null;
-
     }
 
     ```
@@ -2887,16 +2729,12 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<Patron?> GetPatron(int id)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         var patron = _jsonData.Patrons!
             .Where(p => p.Id == id)
             .Select(p => _jsonData.GetPopulatedPatron(p))
             .FirstOrDefault();
-
         return patron;
-
     }
 
     ```
@@ -2907,14 +2745,11 @@ Use the following steps to complete this section of the exercise:
 
     public async Task<Patron?> GetPatron(int id)
     {
-
         await _jsonData.EnsureDataLoaded();
-
         return _jsonData.Patrons!
             .Where(p => p.Id == id)
             .Select(p => _jsonData.GetPopulatedPatron(p))
             .FirstOrDefault();
-
     }
 
     ```
@@ -2929,7 +2764,6 @@ Use the following steps to complete this section of the exercise:
 
     public async Task UpdatePatron(Patron patron)
     {
-
         await _jsonData.EnsureDataLoaded();
         var patrons = _jsonData.Patrons!;
         Patron existingPatron = null;
@@ -2951,7 +2785,6 @@ Use the following steps to complete this section of the exercise:
             await _jsonData.SavePatrons(patrons);
             await _jsonData.LoadData();
         }
-
     }
 
     ```
@@ -2972,7 +2805,6 @@ Use the following steps to complete this section of the exercise:
 
     public async Task UpdatePatron(Patron patron)
     {
-
         await _jsonData.EnsureDataLoaded();
         var patrons = _jsonData.Patrons!;
         var existingPatron = patrons.FirstOrDefault(p => p.Id == patron.Id);
@@ -2986,7 +2818,6 @@ Use the following steps to complete this section of the exercise:
             await _jsonData.SavePatrons(patrons);
             await _jsonData.LoadData();
         }
-
     }
 
     ```
