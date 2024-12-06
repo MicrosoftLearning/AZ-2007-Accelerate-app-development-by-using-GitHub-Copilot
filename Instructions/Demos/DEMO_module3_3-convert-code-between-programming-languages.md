@@ -45,7 +45,7 @@ Suppose you're just getting started on the `QuarterlyIncomeReport` project. You 
 
 1. Open the `main.py` Python file.
 
-    This Python file contains a function that generates sales data. You want to convert this Python code to C#.
+    The Python file contains a function that generates sales data. You want to convert this Python code to C#.
 
 1. Select the entire file contents.
 
@@ -123,7 +123,11 @@ Suppose you're just getting started on the `QuarterlyIncomeReport` project. You 
 
     Notice that the output from the C# application is essentially the same as the output from the Python application.
 
-When you use GitHub Copilot to convert code between programming languages, try the conversion in both the Chat view and the inline chat. Although both tools share the same AI model, their results may differ. Trying both tools can help you to determine which tool is best for your specific use case.
+When you use GitHub Copilot to convert code between programming languages, try using both the Chat view and the inline chat. Although both tools share the same AI model, their results may differ. Trying both tools can help you to determine which tool is best for your specific use case.
 
 > [!NOTE]
 > Programming languages often have an associated "programming style", and some languages may have unique features or code libraries. When you’re converting large sections of code from one programming language to another, it’s important to fully understand the target programming language and the intension of the code. GitHub Copilot suggestions should always be reviewed before accepting.
+
+### Summary
+
+In this demo, you used GitHub Copilot to convert Python code to C#. You used the Chat view and the inline chat to convert the Python code to C#. You then ran the C# application to verify that the output was the same as the output from the Python application. By using GitHub Copilot to convert code between programming languages, you can quickly adapt code from one language to another. Remember to review the converted code to ensure that it meets your requirements and that it follows the programming style of the target language.

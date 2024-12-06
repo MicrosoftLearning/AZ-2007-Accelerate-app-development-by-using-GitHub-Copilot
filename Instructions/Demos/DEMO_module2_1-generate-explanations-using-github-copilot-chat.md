@@ -52,9 +52,9 @@ Use the following steps to complete this section of the demo:
     - MainWindow.xaml
     - MainWindow.xaml.cs
 
-1. On the Visual Studio Code activity bar, select **Chat**.
+1. On Visual Studio Code's top menu bar, select **Open Chat**.
 
-    The Visual Studio Code activity bar is the vertical bar on the far left side of the Visual Studio Code window. Hover the mouse pointer over the activity bar icons to see their names. The Chat icon looks like a speech bubble.
+    The Open Chat button is located on the menu bar at the top of the Visual Studio Code window, just to the right of the Searchbox. It displays a small GitHub Copilot logo.
 
 1. Use the following command to ask Copilot Chat to explain the `APL2007M2Sample1` project:
 
@@ -85,11 +85,9 @@ Use the following steps to complete this section of the demo:
 
 1. Take a minute to review the response in the Chat view.
 
-    The response should be similar to the following information:
-
     Notice that GitHub Copilot Chat generates a detailed explanation of the `MainWindow.xaml.cs` file. The explanation includes information about the file's purpose, structure, and key components. You may also see a section that describes potential issues and improvements.
 
-    Once again, GitHub Copilot Chat suggests a follow-up question. Although GitHub Copilot Chat suggests great follow-up questions, we suggest that you continue on to the next section of this demo.
+    Once again, GitHub Copilot Chat suggests a follow-up question.
 
     > [!IMPORTANT]
     > GitHub Copilot Chat maintains a history of your chat conversation. As you continue to ask questions, it refines its responses accordingly. The context of your questions, especially in regard to your code project, influences GitHub Copilot Chat's subsequent responses. This helps it to provide more accurate and relevant responses. It also means the response you receive for a particular question is likely to vary based on your conversation history.
@@ -98,7 +96,7 @@ Use the following steps to complete this section of the demo:
 
 Even experienced developers encounter code that's difficult to understand. Rather than spending time trying to decipher complex code, you can ask GitHub Copilot Chat to provide an explanation. Chat view, inline chat, and smart actions can each be used to generate explanations for selected code lines or sections.
 
-In this section of the demo, you use the **Explain This** smart action to generate an explanation of selected code lines.
+In this section of the demo, you use the **Explain** smart action to generate an explanation of selected code lines.
 
 1. Ensure that you have the `MainWindow.xaml.cs` file open in the editor.
 
@@ -128,9 +126,9 @@ In this section of the demo, you use the **Explain This** smart action to genera
     }
     ```
 
-1. Select the following code lines, and then use the **Explain This** smart action to generate an explanation.
+1. Select the following code lines, and then use the **Explain** smart action to generate an explanation.
 
-    To select the **Explain This** smart action, right-click the selected code lines, select **Copilot**, and then select **Explain This** from the context menu.
+    To select the **Explain** smart action, right-click the selected code lines, select **Copilot**, and then select **Explain** from the context menu.
 
     ```csharp
 
@@ -166,7 +164,7 @@ Use the following steps to complete this section of the demo:
 
     Error messages don't always explain how to fix coding issues. When the solution isn't obvious, you can ask GitHub Copilot Chat to explain an error and suggest ways to fix it.
 
-1. Select the code line containing the error, and then press `Ctrl` + `I` to open an inline chat.
+1. Select the code line containing the error, and then press **Ctrl+I** to open an inline chat.
 
 1. To generate an explanation for the error, enter the following prompt:
 
@@ -188,8 +186,6 @@ Use the following steps to complete this section of the demo:
 
     After you make this change, the error should be resolved.
 
-1. Save your changes to the `MainWindow.xaml.cs` file.
-
 ### New feature or functionality explanations
 
 GitHub Copilot Chat can explain how to add new features or functionality to your project.
@@ -198,7 +194,7 @@ Consider the APL2007M2Sample1 project. Your code downloads web pages and calcula
 
 Use the following steps to complete this section of the demo:
 
-1. Select the code lines that include the `ProcessUrlAsync` and `SumPageSizesAsync` methods.
+1. Select the code lines that include the `SumPageSizesAsync` and `ProcessUrlAsync` methods.
 
 1. In the Chat view, to have GitHub Copilot Chat explain how to handle exceptions thrown during the download process, enter the following question:
 
@@ -210,11 +206,11 @@ Use the following steps to complete this section of the demo:
 
     Copilot Chat generates a response that's similar to the following explanation:
 
-    The response provides a detailed explanation of how to handle exceptions thrown during the download process. You also get a code snippet that implements the suggested exception handling code. You can copy the code snippet or insert it into your code project at the location of the cursor. The response also includes another "How can I" suggestion. In a work environment, you could use GitHub Copilot Chat to investigate further improvements.
+    The response provides a detailed explanation of how to handle exceptions thrown during the download process. You also get a code snippet that implements the suggested exception handling code. You can copy the code snippet or insert it into your code project at the location of the cursor.
 
-    Rather than copying or inserting the code snippet from the Chat view, the next step investigates using the inline chat to implement the suggested exception handling code.  
+    Rather than copying or inserting the code snippet from the Chat view, the next step investigates using the inline chat to implement the suggested exception handling code.
 
-1. To ask inline chat how to implement exception handling, select the `ProcessUrlAsync` method, press `Ctrl` + `I`, and then enter the following prompt:
+1. To ask inline chat how to implement exception handling, select the `ProcessUrlAsync` method, press **Ctrl+I**, and then enter the following prompt:
 
     ```plaintext
     How can I handle exceptions thrown during the download process?
@@ -225,8 +221,6 @@ Use the following steps to complete this section of the demo:
 1. To accept the proposed error handling code, select **Accept**.
 
     Notice that the proposed `try-catch` block is implemented.
-
-1. Save your changes to the `MainWindow.xaml.cs` file.
 
 ### Summary
 

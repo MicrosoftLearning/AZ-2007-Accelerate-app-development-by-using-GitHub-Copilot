@@ -39,7 +39,7 @@ Use the following steps to complete this section of the demo:
 
 1. Open a new instance of Visual Studio Code, and then open the Chat view.
 
-    You can open the Chat view by selecting the **Open Chat** button at the top of the Visual Studio Code window.
+    You can open the Chat view by selecting **Open Chat** from the Visual Studio Code Command Center or using the **Ctrl+Alt+I** keyboard shortcut.
 
 1. In the Chat view, enter the following prompt:
 
@@ -47,15 +47,15 @@ Use the following steps to complete this section of the demo:
     @workspace /new console application named APL2007M3. Use C# LangVersion 12 and NET8.0. Only .cs and .csproj files. Enable ImplicitUsings and Nullable
     ```
 
-    GitHub Copilot uses this prompt to create the workspace for a new console application. The application uses `C#` and `.NET8.0`. The code project is named `APL2007M3`, and includes the `.cs` and `.csproj` files. The `APL2007M3.csproj` file specifies C# `LangVersion 12` and enables `ImplicitUsings` and `Nullable`.
-
 1. In the Chat view, select **Create Workspace**.
 
-    You're prompted to select a parent folder for the workspace. Selecting the Desktop folder is a good choice for this exercise. The Desktop folder is easy to find. Remember to clean up when you complete this training.
+    GitHub Copilot uses your prompt to create the workspace for a new console application. The application uses `C#` and `.NET8.0`. The code project is named `APL2007M3`, and includes the `.cs` and `.csproj` files. The `APL2007M3.csproj` file specifies C# `LangVersion 12` and enables `ImplicitUsings` and `Nullable`.
 
 1. In the Select Folder dialog, navigate to your Desktop folder, select **Desktop**, and then select **Select as Parent Folder**.
 
-    After GitHub Copilot creates the application files, it opens your new application folder in the Explorer view.
+    You're prompted to select a parent folder for the new workspace. Selecting the Desktop folder is a good choice for this demo. The Desktop folder is easy to find. Remember to clean up when you complete this training.
+
+1. When prompted to open the new project, select **Open**.
 
 1. In the Explorer view, select **Program.cs**.
 
@@ -86,13 +86,13 @@ Use the following steps to complete this section of the demo:
     }
     ```
 
-Your setup requirements are complete and you're ready to begin the exercise.
+Your setup requirements are complete and you're ready to continue the demo.
 
 ### Use GitHub Copilot to generate code line completions from a comment
 
 GitHub Copilot generates code completion suggestions based on the comment and the existing context of your app. You can use comments to describe code snippets, methods, data structures, and other code elements.
 
-Use the following steps to complete this section of the exercise:
+Use the following steps to complete this section of the demo:
 
 1. In the **Program.cs** file, create two empty code lines below the `Main` method.
 
@@ -108,8 +108,6 @@ Use the following steps to complete this section of the exercise:
 
     > [!NOTE]
     > If GitHub Copilot generates suggestions for a method rather than a data structure, type **public str** and wait for the code completion suggestion to update. GitHub Copilot uses the additional information to improve its suggestions.
-
-    ![Screenshot showing the code completion for a comment that describes a data structure.](../media/code-line-completion-comment-data-structure.png)
 
     Notice the data types used to declare the fields of the data structure. GitHub Copilot selects data types and variable names based on your existing code and the code comment. GitHub Copilot tries to determine how the application uses variables and defines the data types accordingly.
 
@@ -151,12 +149,12 @@ Use the following steps to complete this section of the exercise:
 
     Notice that the `GenerateSalesData` method is designed to return an array of `SalesData` objects. The method generates 1,000 records of test data, with random values assigned to each field of the `SalesData` data structure.
 
-    ![Screenshot showing the code completion for a comment that describes a method.](../media/code-line-completion-comment-method.png)
-
     You should always review the suggestions proposed by GitHub Copilot and GitHub Copilot Chat, even when they appear to be correct.
 
     > [!NOTE]
-    > If GitHub Copilot suggests a single code line rather than a completed `GenerateSalesData` method, press **Ctrl** + **Enter** to open the GitHub Copilot Suggestions tab. Review the suggestions on the new tab. On the next step, use the "Accept suggestion #" button to accept the suggestion. GitHub Copilot presents suggestions incrementally on occasion. Although you can accept the code completions incrementally, it's better to use the GitHub Copilot Suggestions tab to review full suggestion before making a decision to accept or discard.
+    > If GitHub Copilot suggests a single code line rather than a completed `GenerateSalesData` method, press **Ctrl+Enter** to open the GitHub Copilot Suggestions tab. Review the suggestions on the new tab. On the next step, use the "Accept suggestion #" button to accept the suggestion. GitHub Copilot presents suggestions incrementally on occasion. Although you can accept the code completions incrementally, it's better to use the GitHub Copilot Suggestions tab to review full suggestion before making a decision to accept or discard.
+
+1. Scroll through the code completion suggestions and select the best match for the requirements.
 
 1. To accept the code completion, press the Tab key.
 
@@ -166,6 +164,27 @@ Use the following steps to complete this section of the exercise:
 
     ```C#
     salesData[i].DateSold = new DateOnly(2023, random.Next(1, 13), random.Next(1, 29));
+    ```
+
+1. If necessary, adjust the other code lines to match the following code snippet:
+
+    ```C#
+    public SalesData[] GenerateSalesData()
+    {
+        SalesData[] salesData = new SalesData[1000];
+        Random random = new Random();
+
+        for (int i = 0; i < salesData.Length; i++)
+        {
+            salesData[i].dateSold = new DateOnly(2023, random.Next(1, 13), random.Next(1, 29));
+            salesData[i].departmentName = "Department " + random.Next(1, 11);
+            salesData[i].productID = random.Next(1, 101);
+            salesData[i].quantitySold = random.Next(1, 101);
+            salesData[i].unitPrice = random.NextDouble() * 100;
+        }
+
+        return salesData;
+    }
     ```
 
 The ability to generate code from code comments is a powerful feature of GitHub Copilot. With just two comments, you were able to generate a data structure and a method that generates test data.
@@ -180,7 +199,7 @@ GitHub Copilot can generate code line completions based on the code you enter. Y
 > [!NOTE]
 > GitHub Copilot generates suggested code completions based on the code you enter and the context defined by the code within your app. The more code you have in your app, assuming it's good quality code, the more context GitHub Copilot has available. As the volume and quality of existing code increases, so does the quality and reliability of the code line completions suggested by GitHub Copilot. GitHub Copilot is very good at generating code line completions for common programming tasks and patterns, especially when a sequence of related components needs to be generated.
 
-In this portion of the exercise, you work on the `QuarterlySalesReport` method.
+In this portion of the demo, you work on the `QuarterlySalesReport` method.
 
 Here are the tasks you need to complete:
 
@@ -188,7 +207,7 @@ Here are the tasks you need to complete:
 - Use GitHub Copilot to generate code line completions that process sales data for the quarterly report.
 - Run the app and review the quarterly sales report.
 
-Use the following steps to complete this section of the exercise:
+Use the following steps to complete this section of the demo:
 
 1. Update the method constructor for `QuarterlySalesReport` as follows:
 
@@ -215,8 +234,6 @@ Use the following steps to complete this section of the exercise:
 1. To generate a code line completion, type `foreach (` and then wait for GitHub Copilot to suggest code line completion options.
 
 1. Review the code completion suggested by GitHub Copilot.
-
-    ![Screenshot showing the code completion for a foreach loop.](../media/code-line-completion-foreach-loop.png)
 
     The suggested code completion isn't what you wanted.
 
@@ -254,10 +271,8 @@ Use the following steps to complete this section of the exercise:
 
 1. Take a minute to review the suggested code completions.
 
-    > [!IMPORTANT]
-    > The code completions that you receive are likely to be different from the suggestions shown in the following screenshot. Although GitHub Copilot only has a method name and parameter to work with, that may be enough to generate useful suggestions. You should see suggestions that calculate sales by quarter. Rejecting the suggestions and trying again can provide different results.
-
-    ![Screenshot showing a code completion suggestion that processes data for a report.](../media/code-line-completion-report-analysis-1.png)
+    > [!NOTE]
+    > Although GitHub Copilot only has a method name and parameter to work with, that may be enough to generate useful suggestions. You should see suggestions that calculate sales by quarter. Rejecting the suggestions and trying again can provide different results.
 
     You can cycle through the suggestions by selecting `>` or `<`.
 
@@ -293,7 +308,7 @@ Use the following steps to complete this section of the exercise:
     Console.WriteLine("----------------------");
     foreach (KeyValuePair<string, double> quarter in quarterlySales)
     {
-        Console.WriteLine("{0}: ${1}", quarter.Key, quarter.Value);
+        Console.WriteLine(entry.Key + ": $" + entry.Value);
     }
 
     ```
@@ -309,8 +324,6 @@ Use the following steps to complete this section of the exercise:
     With the context provided by the `QuarterlySalesReport` method, GitHub Copilot can easily generate a code completion for the `GetQuarter` method that determines the quarter based on the month of the sale.
 
 1. Take a minute to review the suggested code line completion for the `GetQuarter` method.
-
-    ![Screenshot showing the code completion for the GetQuarter method.](../media/code-line-completion-report-analysis-2.png)
 
 1. To accept the code completion suggested, press the Tab key.
 
@@ -359,7 +372,7 @@ Use the following steps to complete this section of the exercise:
         // call the GenerateSalesData method
         SalesData[] salesData = report.GenerateSalesData();
 
-        // call the DisplayReport method
+        // call the QuarterlySalesReport method
         report.QuarterlySalesReport(salesData);
     }
 
@@ -380,7 +393,7 @@ Use the following steps to complete this section of the exercise:
                 // call the GenerateSalesData method
                 SalesData[] salesData = report.GenerateSalesData();
     
-                // call the DisplayReport method
+                // call the QuarterlySalesReport method
                 report.QuarterlySalesReport(salesData);
             }
     
@@ -406,7 +419,7 @@ Use the following steps to complete this section of the exercise:
                     salesData[i].departmentName = "Department " + random.Next(1, 11);
                     salesData[i].productID = random.Next(1, 101);
                     salesData[i].quantitySold = random.Next(1, 101);
-                    salesData[i].unitPrice = random.Next(1, 101) + random.NextDouble();
+                    salesData[i].unitPrice = random.NextDouble() * 100;
                 }
     
                 return salesData;
@@ -439,7 +452,7 @@ Use the following steps to complete this section of the exercise:
                 Console.WriteLine("----------------------");
                 foreach (KeyValuePair<string, double> quarter in quarterlySales)
                 {
-                    Console.WriteLine("{0}: ${1}", quarter.Key, quarter.Value);
+                    Console.WriteLine(entry.Key + ": $" + entry.Value);
                 }
             }
     
@@ -467,7 +480,7 @@ Use the following steps to complete this section of the exercise:
     
     ```
 
-    Remember that this code was created, almost entirely, using code line completions generated by GitHub Copilot.
+    This code was created, almost entirely, using code line completions generated by GitHub Copilot. However, your review of code suggestions is important, and corrections were required. You should always review the code completions suggested by GitHub Copilot to ensure that the code meets your requirements.
 
 1. To review the report output, run the app.
 
@@ -481,7 +494,7 @@ Use the following steps to complete this section of the exercise:
 
 1. Review the output in the Terminal window.
 
-    You should see output similar to the following output:
+    Although the quarterly results are based on random numeric values, you should see a report that's formatted similar to the following output:
 
     ```output
 
@@ -496,4 +509,6 @@ Use the following steps to complete this section of the exercise:
 
     There's still work required to complete the `QuarterlyIncomeReport` class. In the next unit, you use GitHub Copilot Chat to extend and update your app.
 
-In this exercise, you used GitHub Copilot to generate code line completions in your Visual Studio Code environment. You used code comments to generate a data structure and a method that generates test data. You also used code line completions to generate the code that processes sales data for a quarterly income report.
+### Summary
+
+In this demo, you used GitHub Copilot to generate code line completions in your Visual Studio Code environment. You used code comments to generate a data structure and a method that generates test data. You also used code line completions to generate the code that processes sales data for a quarterly income report.

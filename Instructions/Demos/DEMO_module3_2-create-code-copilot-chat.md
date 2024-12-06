@@ -93,17 +93,6 @@ To create and update the data structure, complete the following steps:
 
 1. Open the **APL2007M3SalesReport-InlineChat** project folder in Visual Studio Code.
 
-    1. Open Visual Studio Code on your PC.
-    1. In Visual Studio Code, on the **File** menu, select **Open Folder**.
-    1. Navigate to the Windows Desktop folder, open the **SampleApps** folder, and locate the **APL2007M3SalesReport-InlineChat** folder.
-    1. Select **APL2007M3SalesReport-InlineChat** and then select **Select Folder**.
-
-    The Visual Studio Code EXPLORER view should show a APL2007M3SalesReport-InlineChat code project containing the following files:
-
-    - APL2007M3SalesReport-InlineChat.csproj
-    - APL2007M3SalesReport-InlineChat.sln
-    - Program.cs
-
 1. Ensure that the application runs and produces a report that resembles the following output:
 
     ```plaintext
@@ -121,7 +110,7 @@ To create and update the data structure, complete the following steps:
 
 1. Position the cursor on a blank line below the `SalesData` data structure.
 
-1. To open the inline chat interface, press **Ctrl** + **I** on the keyboard.
+1. To open the inline chat interface, press **Ctrl+I** on the keyboard.
 
 1. Enter the following prompt:
 
@@ -140,18 +129,18 @@ To create and update the data structure, complete the following steps:
     ```csharp
     public struct ProdDepartments
     {
-        public static string[] DepartmentNames = { "Men's Clothing", "Women's Clothing", "Children's Clothing", "Accessories", "Footwear", "Outerwear", "Sportswear", "Undergarments" };
-        public static string[] DepartmentAbbreviations = { "MENS", "WOMN", "CHLD", "ACCS", "FOOT", "OUTR", "SPRT", "UNDR" };
+        public static string[] DepartmentNames =  ["Men's Clothing", "Women's Clothing", "Children's Clothing", "Accessories", "Footwear", "Outerwear", "Sportswear", "Undergarments"];
+        public static string[] DepartmentAbbreviations =  ["MENS", "WOMN", "CHLD", "ACCS", "FOOT", "OUTR", "SPRT", "UNDR" ];
     }
     ```
 
 1. To accept the suggestion, press the tab key or select **Accept**.
 
-    You can also use the inline chat feature to document the new code. Select the code, press **Ctrl** + **I** to open inline chat, enter `/doc`, review the suggested inline documentation, and then accept the update.
+    You can also use the inline chat feature to document the new code. Select the code, press **Ctrl+I** to open inline chat, enter `/doc`, review the suggested inline documentation, and then accept the update.
 
 1. Position the cursor on a blank line below the `ProdDepartments` data structure.
 
-1. To open the inline chat interface, press **Ctrl** + **I** on the keyboard.
+1. To open the inline chat interface, press **Ctrl+I** on the keyboard.
 
 1. Enter the following prompt:
 
@@ -168,13 +157,13 @@ To create and update the data structure, complete the following steps:
     ```csharp
     public struct ManufacturingSites
     {
-        public static string[] manSites = { "US1", "US2", "US3", "UK1", "UK2", "UK3", "JP1", "JP2", "JP3", "CA1" };
+        public static string[] manSites = [ "US1", "US2", "US3", "UK1", "UK2", "UK3", "JP1", "JP2", "JP3", "MX1" ];
     }
     ```
 
 1. To accept the suggestion, press the tab key or select **Accept**.
 
-1. Select the `SalesData` data structure, and then press **Ctrl** + **I** to open the inline chat interface.
+1. Select the `SalesData` data structure, and then press **Ctrl+I** to open the inline chat interface.
 
     You need to add fields for `baseCost` and `volumeDiscount` to the `SalesData` data structure (a `double` and an `int`). You also need to change the data type for `productID` from `int` to `string`.
 
@@ -221,7 +210,7 @@ You need to implement the following updates:
     - a 3-character code representing the manufacturing site. Randomly select a manufacturing site from the `ManufacturingSites` data structure.
 
 - unitPrice: Raise the lower bound of the price range to 25 and the upper bound to 300. Assume that size and color don't affect the unit price.
-- baseCost: Assign a value to baseCost that represents manufacturing costs. Values can be generated using randomly generated discount off the unitPrice (5 to 20 percent). Not realistic, but acceptable for this exercise.
+- baseCost: Assign a value to baseCost that represents manufacturing costs. Values can be generated using randomly generated discount off the unitPrice (5 to 20 percent). Not realistic, but acceptable for this demonstration.
 - volumeDiscount: Assign a value to volumeDiscount that represents a percentage discount awarded to the retail buyer. The value assigned to volumeDiscount should be the integer component of 10 percent of the quantitySold (10% of 19 units = 1% volumeDiscount).
 
 To update the `GenerateSalesData` method, complete the following steps:
@@ -230,7 +219,7 @@ To update the `GenerateSalesData` method, complete the following steps:
 
 1. Select the code line used to assign the `departmentName` value.
 
-1. To open the inline chat interface, press **Ctrl** + **I** on the keyboard.
+1. To open the inline chat interface, press **Ctrl+I** on the keyboard.
 
 1. Enter the following prompt:
 
@@ -270,7 +259,7 @@ To update the `GenerateSalesData` method, complete the following steps:
 
     You should have a blank code line before and after the variable declarations.
 
-    Variable declarations aren't required for inline chat to generate code update suggestion from a prompt, but they do help anchor GitHub Copilot to a specific line of code where the update belongs.
+    Variable declarations aren't required for inline chat to generate code update suggestions from a prompt, but they do help anchor GitHub Copilot to a specific line of code where the update belongs.
 
 1. Select the `int indexOfDept = 0;` code line, open the inline chat, and then enter the following prompt:
 
@@ -282,8 +271,6 @@ To update the `GenerateSalesData` method, complete the following steps:
 
     You should see a suggestion that assigns the array index number corresponding to the selected departmentName to indexOfDept.
 
-    ![Screenshot of Inline chat suggestion for the indexOfDept assignment.](../media/inline-chat-code-suggestion-3.png)
-
     If you don't get the expected suggestion, you can select **Discard** to reject the suggestion and try again. The following prompt provides additional context for the assignment:
 
     ```output
@@ -293,7 +280,7 @@ To update the `GenerateSalesData` method, complete the following steps:
     This prompt specifies creating an integer variable named `indexOfDept` as well as how to assign a value. You could run this prompt without creating/selecting the variable declaration, but GitHub Copilot can occasionally lose its anchor point when you open the inline chat without any code selected.
 
     > [!NOTE]
-    > The **Toggle Change** button (the +/- icon located to the right of the **Accept** and **Discard** buttons) can be used to show/hide the code deleted by the suggested update. This can be useful when you want to see the original code and the suggested code update.
+    > The **Toggle Changes** button (accessible from the **More Actions** dropdown menu to the right of the **Accept** and **Discard** buttons) can be used to show/hide the code deleted by the suggested update. This can be useful when you want to see the original code and the suggested code update.
 
 1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
 
@@ -306,8 +293,6 @@ To update the `GenerateSalesData` method, complete the following steps:
 1. Review the suggestions provided by GitHub Copilot.
 
     You should see a suggestion that assigns the array index number corresponding to the selected departmentName to indexOfDept.
-
-    ![Screenshot of Inline chat suggestion for the deptAbb assignment.](../media/inline-chat-code-suggestion-4.png)
 
 1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
 
@@ -335,9 +320,7 @@ To update the `GenerateSalesData` method, complete the following steps:
 
 1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
 
-    In this case, you should see a suggestion that assigns a randomly selected product size to the `sizeCode` variable. GitHub Copilot could suggest creating either one or two code lines to satisfy this prompt. Either way, it will probably suggest creating a string array of product sizes and then use `random` to assign one of the sizes to `sizeCode`.
-
-    ![Screenshot of Inline chat suggestion for the sizeCode assignment.](../media/inline-chat-code-suggestion-5.png)
+    In this case, you should see a suggestion that assigns a randomly selected product size to the `sizeCode` variable. GitHub Copilot could suggest using one or several code lines to satisfy this prompt. Either way, it will probably suggest creating a string array of product sizes and then use `random` to assign one of the sizes to `sizeCode`.
 
 1. Select the `string colorCode = "";` code line, open the inline chat, and then enter the following prompt:
 
@@ -379,8 +362,6 @@ To update the `GenerateSalesData` method, complete the following steps:
 
     You should see a suggestion that constructs the productID value using the variables you assigned earlier. The suggestion should include the necessary code to format the productID as "`DDDD-###-SS-CC-MMM`".
 
-    ![Screenshot of Inline chat suggestion for the productID assignment.](../media/inline-chat-code-suggestion-6.png)
-
 1. Manually update the `unitPrice` assignment to use a range of 25 to 300 as follows:
 
     ```csharp
@@ -406,6 +387,8 @@ To update the `GenerateSalesData` method, complete the following steps:
 1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
 
 1. Create a blank line after the `baseCost` assignment and accept the code line completion that appears.
+
+    GitHub Copilot should provide a suggestion that assigns a value to `volumeDiscount`.
 
 1. Select the code line used to assign a value to `salesData[i].volumeDiscount`, open the inline chat, and then enter the following prompt:
 
@@ -531,8 +514,6 @@ To update the `QuarterlySalesReport` method, complete the following steps:
 
     You should see a suggestion that includes the necessary code to calculate quarterly profit and profit percentage. The suggestion should include the necessary code to calculate the profit and profit percentage for each quarter.
 
-    ![Screenshot of Inline chat suggestion for logical ordering and currency formatting in the QuarterlySalesReport method.](../media/inline-chat-code-suggestion-7.png)
-
 1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
 
 1. Save your changes.
@@ -567,8 +548,6 @@ To update the `QuarterlySalesReport` method, complete the following steps:
 
     You should see a suggestion that includes the necessary code to calculate quarterly profit and profit percentage. The suggestion should include the necessary code to calculate the profit and profit percentage for each quarter.
 
-    ![Screenshot of Inline chat suggestion for the quarterly profit calculation.](../media/inline-chat-code-suggestion-8.png)
-
 1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
 
 1. Continue to select **Accept** for the remaining suggestions.
@@ -602,12 +581,6 @@ To update the `QuarterlySalesReport` method, complete the following steps:
 1. Take a minute to review the suggestions provided by GitHub Copilot.
 
     You should see a suggestion that includes the necessary code to calculate quarterly profit and profit percentage. The suggestion should include the necessary code to calculate the profit and profit percentage for each quarter.
-
-    ![Screenshot of Inline chat suggestion for the QuarterlySalesReport method, part 1 of 2.](../media/inline-chat-code-suggestion-9a.png)
-
-    The code suggestion continues with the following information.
-
-    ![Screenshot of Inline chat suggestion for the QuarterlySalesReport method, part 2 of 2.](../media/inline-chat-code-suggestion-9b.png)
 
 1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
 
@@ -668,4 +641,6 @@ To update the `QuarterlySalesReport` method, complete the following steps:
 
     ```
 
-In this exercise, you used the inline chat feature to update the `GenerateSalesData` and `QuarterlySalesReport` methods. You added new fields to the `SalesData` data structure and then updated the `GenerateSalesData` method to generate data for the new fields. You also updated the `QuarterlySalesReport` method to include calculations for quarterly profit and profit percentage. You also added calculations for quarterly sales, profit, and profit percentage by department.
+### Summary
+
+In this demo, you used the inline chat feature to update the `GenerateSalesData` and `QuarterlySalesReport` methods. You added new fields to the `SalesData` data structure and then updated the `GenerateSalesData` method to generate data for the new fields. You also updated the `QuarterlySalesReport` method to include calculations for quarterly profit and profit percentage. You also added calculations for quarterly sales, profit, and profit percentage by department.
