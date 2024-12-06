@@ -8,6 +8,19 @@ demo:
 
 ## Instructions
 
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
+
 GitHub Copilot Chat uses conversational AI assistance and smart commands to help you with coding-related tasks. One example is the ability to explain unfamiliar and complex code.
 
 You can use GitHub Copilot Chat to generate explanations for a number of reasons. For example:
@@ -17,34 +30,11 @@ You can use GitHub Copilot Chat to generate explanations for a number of reasons
 - GitHub Copilot Chat can explain errors in your code and suggest ways to fix them.
 - GitHub Copilot Chat can explain how to add features to your project and provide code snippets that demonstrate how to implement the new code.
 
-### Prepare sample apps in your Visual Studio Code environment
+### Workspace and project file explanations
 
-This module includes practice activities that use GitHub Copilot Chat and prepared code samples. The activities are designed for an environment that includes the following resources:
+GitHub Copilot Chat can help you understand new projects or specific project files. You can use a combination `@workspace`, `/explain`, and `#file` in the Chat view or a Quick Chat window to generate an explanation of your project or specific project files.
 
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code.
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
-
-> [!NOTE]
-> If you have not already installed Visual Studio Code and the required extensions, complete those installations before continuing.
-
-To prepare for the module 2 demonstrations, complete the following steps:
-
-1. To download a zip file containing the sample apps, select the following link: [SampleApps](https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/SampleApps.zip).
-
-1. Unzip the download files.
-
-    Unzip the files in your development environment. Consider using your PC as your development environment so that you have access to your code after completing this module. If you aren't using your PC as your development environment, you can unzip the files in a sandbox or hosted environment.
-
-    1. On your local machine, navigate to your downloads folder.
-    1. Right-click **SampleApps.zip**, and then select **Extract all**.
-    1. Select **Show extracted files when complete**, and then select **Extract**.
-    1. Make note of the extracted folder location.
-
-1. Copy the extracted **SampleApps** folder to your Windows Desktop folder.
-
-    The **SampleApps** folder contains a collection of sample apps, including the **APL2007M2Sample1** code project that you use in this demo.
+Use the following steps to complete this section of the demo:
 
 1. Open the **APL2007M2Sample1** folder in Visual Studio Code.
 
@@ -61,14 +51,6 @@ To prepare for the module 2 demonstrations, complete the following steps:
     - App.xaml.cs
     - MainWindow.xaml
     - MainWindow.xaml.cs
-
-You're now ready to use GitHub Copilot Chat to complete the module 2 demonstrations.
-
-### Workspace and project file explanations
-
-GitHub Copilot Chat can help you understand new projects or specific project files. You can use a combination `@workspace`, `/explain`, and `#file` in the Chat view or a Quick Chat window to generate an explanation of your project or specific project files.
-
-Use the following steps to complete this section of the demo:
 
 1. On the Visual Studio Code activity bar, select **Chat**.
 

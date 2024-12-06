@@ -1,8 +1,25 @@
 ---
-title: Exercise - Improve code reliability and performance by using GitHub Copilot Chat
-durationInMinutes: 16
+demo:
+    title: 'Demo: Improve code reliability and performance by using GitHub Copilot Chat'
+    module: 'Module 5: Implement code improvements using GitHub Copilot tools'
 ---
 
+# Demo: Improve code reliability and performance by using GitHub Copilot Chat
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 Code reliability and performance are closely related aspects of software quality. They are interdependent in the following ways:
 
@@ -10,9 +27,9 @@ Code reliability and performance are closely related aspects of software quality
 - Deficiencies in one can lead to problems with the other.
 
 > [!IMPORTANT]
-> This training isn't about best practices for developing reliable or high-performing code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code reliability and performance in a sample application. The suggestions do not represent best practices or comprehensive solutions for code reliability and performance. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
+> Explain to the students that this demo isn't about best practices for developing reliable or high-performing code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code reliability and performance in a sample application. The suggestions do not represent best practices or comprehensive solutions for code reliability and performance. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
 
-## Code reliability and performance
+#### Code reliability and performance
 
 Developers should strive for a balance between code reliability and performance. A successful balance produces the following mutually beneficial results:
 
@@ -21,7 +38,7 @@ Developers should strive for a balance between code reliability and performance.
 
 The following sections provide an overview of code reliability and performance, along with factors that developers should consider when working on improvements in these areas.
 
-### Examine code reliability
+##### Examine code reliability
 
 Code reliability refers to the likelihood that software functions correctly under specific conditions and for a certain period of time. Improving code reliability helps to ensure that your software performs as expected and meets user requirements.
 
@@ -47,7 +64,7 @@ There are other factors that affect code reliability. Some of theses factors are
 
 Improving the reliability of your code can help you to reduce the likelihood of bugs, errors, and unexpected behaviors.
 
-### Examine code performance
+##### Examine code performance
 
 Code performance refers to how efficiently a program or application runs, particularly in terms of speed, memory usage, and overall resource consumption. To ensure or improve code performance, developers can take several actions:
 
@@ -74,16 +91,6 @@ When developers focus on these areas, they can significantly improve the perform
 
 GitHub Copilot Chat can help you improve the performance of your code by providing suggestions for optimizing algorithms, reducing unnecessary computations, using multithreading and asynchronous programming, and minimizing I/O operations.
 
-## Improve code reliability and performance using GitHub Copilot Chat
-
-In this exercise, you use GitHub Copilot Chat to generate suggestions that help you improve code reliability and performance in a sample application.
-
-### Prepare sample apps in your Visual Studio Code environment
-
-You use the **APL2007M5BankAccount-Reliability** project during this exercise. It's located in the **SampleApps** folder that you downloaded in the previous unit. You should be able to find the SampleApps folder on your Windows Desktop.
-
-Open the **APL2007M5BankAccount-Reliability** sample app in Visual Studio Code.
-
 ### Develop prompts for GitHub Copilot Chat
 
 The prompts you write for GitHub Copilot Chat should provide a clearly defined context and intent. Consider the following suggestions when developing your prompts:
@@ -92,9 +99,11 @@ The prompts you write for GitHub Copilot Chat should provide a clearly defined c
 - Use chat participants and chat variables to help specify context. You can use the `#file:` and `#selection` chat variables to identify the specific code you are focused on. You can also include the full workspace (`@workspace`) when appropriate. Refer to the file or code selection in the natural language portion of your prompt.
 - The intent should be clear, concise, and specific. Your prompt should specify the type of improvement you want to achieve.
 
-During this portion of the exercise, you review the **APL2007M5BankAccount-Reliability** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code reliability and performance.
+During this portion of the demo, you review the **APL2007M5BankAccount-Reliability** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code reliability and performance.
 
-Use the following steps to complete this portion of the exercise:
+Use the following steps to complete this portion of the demo:
+
+1. Open the **APL2007M5BankAccount-Reliability** sample app in Visual Studio Code.
 
 1. Open the Solution Explorer view.
 

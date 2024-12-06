@@ -1,15 +1,32 @@
 ---
-title: Exercise - Improve code quality by using GitHub Copilot Chat 
-durationInMinutes: 16
+demo:
+    title: 'Demo: Improve code quality by using GitHub Copilot Chat'
+    module: 'Module 5: Implement code improvements using GitHub Copilot tools'
 ---
 
+# Demo: Improve code quality by using GitHub Copilot Chat
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 The term "code quality" refers to the overall quality of the codebase, including readability, maintainability, and modularity. Code quality is a measure of how "well-structured" your code is and how easily it can be understood, maintained, and extended.
 
 > [!IMPORTANT]
-> This training isn't about best practices for developing high-quality code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code quality in a sample application. The suggestions do not represent best practices or comprehensive solutions for developing high-quality code. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
+> Explain to the students that this demo isn't about best practices for developing high-quality code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code quality in a sample application. The suggestions do not represent best practices or comprehensive solutions for developing high-quality code. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
 
-## Code refactoring and high-quality code
+#### Code refactoring and high-quality code
 
 Code refactoring is the process of restructuring existing code without changing its external behavior. The goal of code refactoring is to improve the internal structure of the codebase, making it easier to understand, maintain, and extend. Code refactoring can help you produce high-quality code by enhancing readability, reducing complexity, improving modularity, and increasing reusability. Each of these factors helps to create a more manageable and maintainable codebase.
 
@@ -38,42 +55,11 @@ Code quality is not the only factor that developers consider during code reviews
 
 Improving code quality is often considered a precursor to adding new features or enhancements. You should consider improvements to code quality before working on code reliability, performance, or security.
 
-## Improve code quality using GitHub Copilot Chat
-
-In this exercise, you'll use GitHub Copilot Chat to generate suggestions that help you improve code quality in a sample application.
-
-### Prepare sample apps in your Visual Studio Code environment
-
-This module includes practice activities that use GitHub Copilot, GitHub Copilot Chat, and prepared code samples. The activities are designed for an environment that includes the following tools and resources:
-
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
-
-> [!NOTE]
-> If you have not already installed Visual Studio Code and the required extensions, complete those installations before continuing.
-
-To prepare for the exercises in this module, complete the following steps:
-
-1. To download a zip file containing the sample apps, select the following link: [SampleApps](https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/SampleApps.zip).
-
-1. Unzip the download files.
-
-    Unzip the files in your development environment. Consider using your PC as your development environment so that you have access to your code after completing this module. If you aren't using your PC as your development environment, you can unzip the files in a sandbox or hosted environment.
-
-    1. On your local machine, navigate to your downloads folder.
-    1. Right-click **SampleApps.zip**, and then select **Extract all**.
-    1. Select **Show extracted files when complete**, and then select **Extract**.
-    1. Make note of the extracted folder location.
-
-1. Copy the extracted **SampleApps** folder to your Windows Desktop folder.
-
-    The **SampleApps** folder contains a collection of sample apps, including the **APL2007M5BankAccount** project that you use in this exercise.
-
-1. Open the **APL2007M5BankAccount** sample app in Visual Studio Code.
+In this demonstration, you'll use GitHub Copilot Chat to generate suggestions that help you improve code quality in a sample application.
 
 ### Develop prompts for GitHub Copilot Chat
+
+Reiterate the importance of creating good prompts.
 
 The prompts you write for GitHub Copilot Chat should provide a clearly defined *context* and *intent*. The *intent* portion of the prompt describes the goal that you what to achieve. For example, you may ask GitHub Copilot to "refactor to improve code modularity". The *context* portion of the prompt tells GitHub Copilot what resources to consider. For example, you may want GitHub Copilot to consider the entire workspace, but focus on a specific file or code section. Consider the following suggestions when developing your prompts:
 
@@ -81,9 +67,11 @@ The prompts you write for GitHub Copilot Chat should provide a clearly defined *
 - Use chat participants and chat variables to help specify context. You can use the `#file:` and `#selection` chat variables to identify the specific code you are focused on. You can also include the full workspace (`@workspace`) when appropriate. Suppose you want to refactor a method in a specific file. You can use the `#file:` chat variable to tell GitHub Copilot which file to look at. You can select the method in the editor and use the `#selection` chat variable to tell GitHub Copilot what code to you want to refactor. You can also use the `@workspace` chat variable to tell GitHub Copilot to consider the entire workspace. Reinforce the specified context by referring to the selection or file in the natural language portion of your prompt. For example, you might say, "how can I improve the readability of the selected code?"
 - The intent should be clear and specific, and should specify the code quality aspect that you want to improve. For example, you might ask GitHub Copilot Chat to "How can I improve the modularity of the selected code".
 
-During this portion of the exercise, you review the **APL2007M5BankAccount** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code readability, maintainability, and modularity.
+During this portion of the demo, you review the **APL2007M5BankAccount** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code readability, maintainability, and modularity.
 
-Use the following steps to complete this portion of the exercise:
+Use the following steps to complete this portion of the demo:
+
+1. Open the **APL2007M5BankAccount** sample app in Visual Studio Code.
 
 1. Open the **Program.cs** file and review the code.
 

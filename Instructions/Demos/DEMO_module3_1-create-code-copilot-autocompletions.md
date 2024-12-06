@@ -1,8 +1,25 @@
 ---
-title: Exercise - Create code by using code line completions
-durationInMinutes: 14
+demo:
+    title: 'Demo: Create code by using code line completions'
+    module: 'Module 3: Develop code features using GitHub Copilot tools'
 ---
 
+# Demo: Create code by using code line completions
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 GitHub Copilot can provide code completion suggestions for numerous programming languages and a wide variety of frameworks, but works especially well for Python, JavaScript, TypeScript, Ruby, Go, C# and C++. Code line completions are generated based on the context of the code you're writing. You can accept, reject, or partially accept the suggestions provided by GitHub Copilot.
 
@@ -12,25 +29,17 @@ GitHub Copilot provides two ways to generate code line completions:
 
 - **From code**: You can generate code line completions by starting a code line, or by pressing Enter after a completed code line. GitHub Copilot provides code completion suggestions based on the code you write.
 
-In this exercise, you use GitHub Copilot to generate code line completions in your Visual Studio Code environment.
+In this demonstration, you use GitHub Copilot to generate code line completions in your Visual Studio Code environment.
 
-### Prepare a sample app in your Visual Studio Code environment
+### Create a console app in your Visual Studio Code environment
 
-This module includes practice activities that use GitHub Copilot, GitHub Copilot Chat, and prepared code samples. The activities are designed for an environment that includes the following resources:
+In this demonstration, you create a console app using GitHub Copilot tools.
 
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code.
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
-
-> [!NOTE]
-> If you have not already installed Visual Studio Code and the required extensions, complete those installations before continuing.
-
-To prepare for the exercises in this module, complete the following steps:
+Use the following steps to complete this section of the demo:
 
 1. Open a new instance of Visual Studio Code, and then open the Chat view.
 
-    You can open the Chat view by selecting **Chat** from Visual Studio Code's activity bar.
+    You can open the Chat view by selecting the **Open Chat** button at the top of the Visual Studio Code window.
 
 1. In the Chat view, enter the following prompt:
 

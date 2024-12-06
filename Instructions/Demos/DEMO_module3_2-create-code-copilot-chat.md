@@ -1,8 +1,25 @@
 ---
-title: Exercise - Create code by using GitHub Copilot Inline Chat 
-durationInMinutes: 18
+demo:
+    title: 'Demo: Create code by using GitHub Copilot Inline Chat'
+    module: 'Module 3: Develop code features using GitHub Copilot tools'
 ---
 
+# Demo: Create code by using GitHub Copilot Inline Chat
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 The GitHub Copilot Chat extension for Visual Studio Code includes three chat interfaces:
 
@@ -14,49 +31,13 @@ The Chat view and Quick Chat window enable interactive multi-turn conversations 
 
 The inline chat interface is designed to provide contextual help and code suggestions while you're coding.
 
-In this exercise, you use GitHub Copilot's inline chat feature to update existing code and generate new code features.
+In this demonstration, you use GitHub Copilot's inline chat feature to generate new code features. The demonstration is a continuation of the project scenario in the previous demonstration. Use the prepared sample app, `APL2007M3SalesReport-InlineChat`, to start the demo. During the demo you'll update the `SalesData` data structure and the `GenerateSalesData` method. You'll also update the `QuarterlySalesReport` method to include additional calculations and display options.
 
-### Prepare sample apps in your Visual Studio Code environment
+#### Review the coding tasks and project goals
 
-A sample application is used in this exercise to ensure that exercise instructions align to the source code you're working on. The sample app for this exercise represents the code developed during the previous exercise.
+This demonstration focuses on using GitHub Copilot to accelerate the following tasks:
 
-To download the sample apps for this module and prepare the sample app for this exercise, complete the following steps:
-
-1. To download a zip file containing the sample apps, select the following link: [SampleApps](https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/SampleApps.zip).
-
-1. Unzip the download files.
-
-    Unzip the files in your development environment. Consider using your PC as your development environment so that you have access to your code after completing this module. If you aren't using your PC as your development environment, you can unzip the files in a sandbox or hosted environment.
-
-    1. On your local machine, navigate to your downloads folder.
-    1. Right-click **SampleApps.zip**, and then select **Extract all**.
-    1. Select **Show extracted files when complete**, and then select **Extract**.
-    1. Make note of the extracted folder location.
-
-1. Copy the extracted **SampleApps** folder to your Windows Desktop folder.
-
-    The **SampleApps** folder contains a collection of sample apps, including the **APL2007M3SalesReport-InlineChat** code project that you use in this exercise.
-
-1. Open the **APL2007M3SalesReport-InlineChat** folder in Visual Studio Code.
-
-    1. Open Visual Studio Code on your PC.
-    1. In Visual Studio Code, on the **File** menu, select **Open Folder**.
-    1. Navigate to the Windows Desktop folder, open the **SampleApps** folder, and locate the **APL2007M3SalesReport-InlineChat** folder.
-    1. Select **APL2007M3SalesReport-InlineChat** and then select **Select Folder**.
-
-    The Visual Studio Code EXPLORER view should show a APL2007M3SalesReport-InlineChat code project containing the following files:
-
-    - APL2007M3SalesReport-InlineChat.csproj
-    - APL2007M3SalesReport-InlineChat.sln
-    - Program.cs
-
-You're now ready to continue this exercise.
-
-### Review the coding tasks and project goals
-
-This exercise focuses on the following tasks:
-
-1. Update the `SalesData` data structure and `GenerateSalesData` method to produce a data sample that resembles "actual" data.
+1. You will update the `SalesData` data structure and `GenerateSalesData` method to produce a data sample that resembles "actual" data.
 
     - dateSold: no changes are required.
     - departmentName: The string values should be randomly selected from a list of 8 departments. For each department name, create a 4-character abbreviation that can be included in the productID.
@@ -74,14 +55,14 @@ This exercise focuses on the following tasks:
     - volumeDiscount: Add a field for a volume discount percentage. The value assigned to volumeDiscount should be the integer component of 10 percent of the quantitySold (10% of 19 units = 1% volumeDiscount).
     - Increase the number of records generated to 10,000.
 
-1. Update the `QuarterlySalesReport` method as follows:
+1. You will update the `QuarterlySalesReport` method as follows:
 
     1. When displaying the sales results, list the results in a logical order. For example, when listing total sale by quarter, the quarters should be listed in order from Q1 to Q4.
     1. Display currency values using regional settings.
     1. Include calculations for quarterly profit and profit percentage
     1. Include calculations for quarterly sales, profit, and profit percentage by department.
 
-### Consider your approach to developing prompts for GitHub Copilot Chat
+#### Explain your approach to developing prompts for GitHub Copilot Chat
 
 GitHub Copilot's inline chat feature uses the prompt you submit to understand the task or problem you're trying to solve. The prompts should be specific and concise. Good prompts produce better responses.
 
@@ -97,7 +78,7 @@ When you develop prompts for GitHub Copilot, consider the following best practic
 
 Projects generally begin with the features or parameters that are either fixed or known. Selecting a data source or creating sample data is often a good place to start.
 
-In this exercise, you use data structures to help you create simulated sales data. The data provides useful context for GitHub Copilot when you update the `QuarterlySalesReport` method.
+In this section of the demo, you use data structures to help create simulated sales data. The data provides useful context for GitHub Copilot when you update the `QuarterlySalesReport` method.
 
 > [!NOTE]
 > In an actual business project, you'd probably use historical data rather generating simulated data. In this training, generating simulated data provides an opportunity to practice using the GitHub Copilot tools. Simulating data isn't suggested as a best practice for business projects.
@@ -110,9 +91,18 @@ Your project goals indicate that you need to work on the following data structur
 
 To create and update the data structure, complete the following steps:
 
-1. Locate the SampleApps folder that contains the sample apps for this training.
-
 1. Open the **APL2007M3SalesReport-InlineChat** project folder in Visual Studio Code.
+
+    1. Open Visual Studio Code on your PC.
+    1. In Visual Studio Code, on the **File** menu, select **Open Folder**.
+    1. Navigate to the Windows Desktop folder, open the **SampleApps** folder, and locate the **APL2007M3SalesReport-InlineChat** folder.
+    1. Select **APL2007M3SalesReport-InlineChat** and then select **Select Folder**.
+
+    The Visual Studio Code EXPLORER view should show a APL2007M3SalesReport-InlineChat code project containing the following files:
+
+    - APL2007M3SalesReport-InlineChat.csproj
+    - APL2007M3SalesReport-InlineChat.sln
+    - Program.cs
 
 1. Ensure that the application runs and produces a report that resembles the following output:
 

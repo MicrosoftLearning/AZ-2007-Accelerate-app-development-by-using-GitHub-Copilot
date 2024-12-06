@@ -1,13 +1,25 @@
-
-
-
-Develop code features using GitHub Copilot tools
-
 ---
-title: Exercise - Convert code from one programming language to another
-durationInMinutes: 8
+demo:
+    title: 'Demo: Convert code from one programming language to another'
+    module: 'Module 3: Develop code features using GitHub Copilot tools'
 ---
 
+# Demo: Convert code from one programming language to another
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 GitHub Copilot can help you to convert code from one programming language to another. For example, you can ask GitHub Copilot to convert a function or code snippet to another programming language.
 
@@ -19,11 +31,11 @@ You can complete the following types of code conversions by using GitHub Copilot
 
 Each of the chat interfaces (Chat view, Quick Chat window, and inline chat) can be used to convert code between programming languages. Your choice of chat interface depends on your preference and the complexity of the code that you want to convert.
 
-## Convert code between programming languages by using the Chat view
-
 Suppose you're just getting started on the `QuarterlyIncomeReport` project. You discuss the project goals with a colleague. They mention that they have a Python file that could provide some of the features that you're looking for. They point you the repository for the Python code. You decide to open the Python code project in Visual Studio Code and use the Chat view to convert the Python code to C#.
 
-1. Open the SamplePython project.
+## Convert code between programming languages by using the Chat view
+
+1. Open the **APL2007M3Python** project folder in Visual Studio Code.
 
     This project contains a Python version of the `QuarterlyIncomeReport` project that you've worked on during this module. You can have GitHub Copilot explain the code to you using the Chat view or Explain This smart action.
 
@@ -33,7 +45,7 @@ Suppose you're just getting started on the `QuarterlyIncomeReport` project. You 
 
 1. Open the `main.py` Python file.
 
-    The Python file contains a function that generates sales data. You want to convert this Python code to C#.
+    This Python file contains a function that generates sales data. You want to convert this Python code to C#.
 
 1. Select the entire file contents.
 

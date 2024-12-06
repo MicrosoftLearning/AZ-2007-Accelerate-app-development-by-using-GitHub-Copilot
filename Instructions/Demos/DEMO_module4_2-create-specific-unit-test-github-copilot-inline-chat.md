@@ -1,20 +1,37 @@
 ---
-title: Exercise - Create unit tests for specific conditions by using GitHub Copilot
-durationInMinutes: 8
+demo:
+    title: 'Demo: Create unit tests for specific conditions by using GitHub Copilot'
+    module: 'Module 4: Develop unit tests using GitHub Copilot tools'
 ---
 
+# Demo: Create unit tests for specific conditions by using GitHub Copilot
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 The GitHub Copilot extensions can help you to create unit tests for specific conditions in your code. For example, you can use GitHub Copilot Chat to test the behavior of a method when it receives specific input.
 
-In this exercise, you use the GitHub Copilot extensions to create unit tests for specific conditions.
+In this demonstration, you use the GitHub Copilot extensions to create unit tests for specific conditions.
 
 ### Create unit tests using GitHub Copilot
 
 You can create unit tests using GitHub Copilot autocompletion suggestions. Using autocompletion suggestions can help you to quickly generate unit tests for your code.
 
-In this section of the exercise, you use GitHub Copilot to create unit tests for the `IsPrime` method of the `PrimeService` class.
+In this section of the demo, you use GitHub Copilot to create unit tests for the `IsPrime` method of the `PrimeService` class.
 
-Use the following steps to complete this section of the exercise:
+Use the following steps to complete this section of the demo:
 
 1. Locate the SampleApps folder that contains the sample apps for this training.
 

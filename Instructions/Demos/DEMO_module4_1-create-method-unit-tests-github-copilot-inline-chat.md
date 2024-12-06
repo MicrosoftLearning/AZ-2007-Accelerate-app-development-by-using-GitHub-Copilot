@@ -1,64 +1,39 @@
 ---
-title: Exercise - Create unit tests by using GitHub Copilot Chat
-durationInMinutes: 12
+demo:
+    title: 'Demo: Create unit tests by using GitHub Copilot Chat'
+    module: 'Module 4: Develop unit tests using GitHub Copilot tools'
 ---
 
+# Demo: Create unit tests by using GitHub Copilot Chat
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 Visual Studio Code and the C# Dev Kit provide a rich set of features to help you create and manage unit tests for your C# projects. You can enable testing for your project, add test framework packages, run and manage unit tests, and generate unit test cases using the C# Dev Kit.
 
 GitHub Copilot can help you generate unit tests for your code by providing inline chat suggestions.
 
-In this exercise, you create unit tests for a code project by using GitHub Copilot Chat in Visual Studio Code.
-
-### Prepare sample apps in your Visual Studio Code environment
-
-This module includes practice activities that use GitHub Copilot, GitHub Copilot Chat, and prepared code samples. The activities are designed for an environment that includes the following resources:
-
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
-
-> [!NOTE]
-> If you have not already installed Visual Studio Code and the required extensions, complete those installations before continuing.
-
-To prepare for the exercises in this module, complete the following steps:
-
-1. To download a zip file containing the sample apps, select the following link: [SampleApps](https://raw.githubusercontent.com/MicrosoftLearning/APL-2007-Accelerate-app-development-by-using-GitHub-Copilot/master/LearnModuleExercises/Downloads/SampleApps.zip).
-
-1. Unzip the download files.
-
-    Unzip the files in your development environment. Consider using your PC as your development environment so that you have access to your code after completing this module. If you aren't using your PC as your development environment, you can unzip the files in a sandbox or hosted environment.
-
-    1. On your local machine, navigate to your downloads folder.
-    1. Right-click **SampleApps.zip**, and then select **Extract all**.
-    1. Select **Show extracted files when complete**, and then select **Extract**.
-    1. Make note of the extracted folder location.
-
-1. Copy the extracted **SampleApps** folder to your Windows Desktop folder.
-
-    The **SampleApps** folder contains a collection of sample apps, including the **APL2007M4PrimeService** code project that you use in this exercise.
-
-1. Open the **APL2007M4PrimeService** folder in Visual Studio Code.
-
-1. Expand the Numbers folder, and then take a minute to review the code in the PrimeService.cs file.
-
-    It's important to understand the code that you're testing. The `PrimeService` class has a single public method `IsPrime(int candidate)`. This method checks if a given integer candidate is a prime number (an integer greater than 1 that has no positive divisors other than 1 and itself). The method returns `true` if the candidate is a prime number and `false` if it's not. The method follows these steps to determine if a number is prime:
-
-    - If the `candidate` is less than 2, it's not a prime number, so the method returns `false`.
-    - If the `candidate` is 2 or more, it checks for any divisors from 2 up to the square root of the `candidate`. The reason for only checking up to the square root is that a larger factor of the number would be a multiple of smaller factor that has already been checked.
-    - If the `candidate` can be divided evenly (with a remainder of 0) by any of these potential divisors, it's not a prime number, so the method returns `false`.
-    - If no such divisor is found, then the `candidate` is a prime number, so the method returns `true`.
-
-    This method provides a few options for unit testing.
-
-You're now ready to complete the exercise.
+In this demonstration, you create unit tests for a code project by using GitHub Copilot Chat in Visual Studio Code.
 
 ### Create an xUnit test project for your unit tests
 
-Unit test projects are typically created in a folder that's separate from the project that you're testing. This separation helps to keep the test code separate from the production code. In this exercise, you create an xUnit test project for the APL2007M4PrimeService project.
+Unit test projects are typically created in a folder that's separate from the project that you're testing. This separation helps to keep the test code separate from the production code. In this demo, you create an xUnit test project for the APL2007M4PrimeService project.
 
 To create a new xUnit test project, complete the following steps:
+
+1. Open the **APL2007M4PrimeService** folder in Visual Studio Code.
 
 1. Open the Solution Explorer view in Visual Studio Code.
 

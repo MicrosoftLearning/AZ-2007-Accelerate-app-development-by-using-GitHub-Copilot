@@ -1,21 +1,38 @@
 ---
-title: Exercise - Improve code security by using GitHub Copilot Chat
-durationInMinutes: 15
+demo:
+    title: 'Demo: Improve code security by using GitHub Copilot Chat'
+    module: 'Module 5: Implement code improvements using GitHub Copilot tools'
 ---
 
+# Demo: Improve code security by using GitHub Copilot Chat
+
+## Instructions
+
+The demo activities are designed for an environment that includes the following resources:
+
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
+
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+
+### Introduce the demo
 
 Code security refers to the measures taken to protect software from unauthorized access, data breaches, and other security threats. Code security is an essential aspect of software development that involves protecting applications and systems from security threats. Improving your code security can help you to protect your applications and systems from security threats.
 
 > [!IMPORTANT]
-> This training isn't about best practices for developing secure code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code security in a sample application. The suggestions do not represent best practices or comprehensive solutions for developing secure code. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
+> Explain to the students that this demo isn't about best practices for developing secure code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code security in a sample application. The suggestions do not represent best practices or comprehensive solutions for developing secure code. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
 
-## Code security
+#### Code security
 
 Ensuring code security is everyone's responsibility, not just the developer. However, developers play a crucial role by ensuring that the code they write follows secure coding practices. Secure coding practices help to ensure that software vulnerabilities can't be exploited by attackers. By following secure coding practices, developers can help protect the software from security threats and ensure that it is secure and reliable.
 
 The following sections provide an overview of code security processes that you may want to consider.
 
-### Evaluate code security using a comprehensive approach
+##### Evaluate code security using a comprehensive approach
 
 When evaluating code security, it’s important to consider a comprehensive approach that encompasses various aspects of the software development lifecycle. Here are some key considerations:
 
@@ -32,7 +49,7 @@ When evaluating code security, it’s important to consider a comprehensive appr
 
 Considering these factors and integrating security best practices into your development process contributes to the creation of secure content and applications.
 
-### Conduct code security reviews
+##### Conduct code security reviews
 
 When working to ensure that code is secure, developers should review the following aspects of their code:
 
@@ -49,7 +66,7 @@ When working to ensure that code is secure, developers should review the followi
 
 When developers review these aspects of their code, they can significantly enhance the security of their code. Code reviews help developers contribute to the overall security posture of the software they develop.
 
-### Analyze code vulnerabilities
+##### Analyze code vulnerabilities
 
 Certain portions of an application are more vulnerable to security attacks, and it’s crucial to focus on securing these areas. Here are some of the more vulnerable areas:
 
@@ -63,7 +80,7 @@ Certain portions of an application are more vulnerable to security attacks, and 
 
 Developers and security teams should prioritize these areas and implement strong security measures to protect against potential attacks. Regular security reviews, updates, and adherence to best practices can help mitigate these vulnerabilities.
 
-### Search for common security flaws
+##### Search for common security flaws
 
 Developers can encounter various security flaws in their code, which can lead to vulnerabilities if not properly addressed. Some typical security flaws include:
 
@@ -79,16 +96,6 @@ Developers can encounter various security flaws in their code, which can lead to
 
 Many other security flaws can be found in code. It’s important for developers to use tools and best practices to identify and fix these issues proactively.
 
-## Improve code security using GitHub Copilot Chat
-
-In this exercise, you'll use GitHub Copilot Chat to generate suggestions that help you improve code security in a sample application.
-
-### Prepare sample apps in your Visual Studio Code environment
-
-You'll use the **APL2007M5BankAccount-Security** project during this exercise. It's located in the **SampleApps** folder that you downloaded in the previous unit. You should be able to find the SampleApps folder on your Windows Desktop.
-
-Open the **APL2007M5BankAccount-Security** sample app in Visual Studio Code.
-
 ### Develop prompts for GitHub Copilot Chat
 
 The prompts you write for GitHub Copilot Chat should provide a clearly defined context and intent. Consider the following suggestions when developing your prompts:
@@ -97,10 +104,9 @@ The prompts you write for GitHub Copilot Chat should provide a clearly defined c
 - Use chat participants and chat variables to help specify context. You can use the `#file:` and `#selection` chat variables to identify the specific code you are focused on. You can also include the full workspace (`@workspace`) when appropriate. Refer to the file or code selection in the natural language portion of your prompt.
 - The intent should be clear, concise, and specific. Your prompt should specify the type of improvement you want to achieve.
 
-During this portion of the exercise, you review the **APL2007M5BankAccount-Security** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code security.
+During this portion of the demo, you review the **APL2007M5BankAccount-Security** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code security.
 
-Use the following steps to complete this portion of the exercise:
-Your goal for this exercise is to write prompts that help you to improve code security. You use the **APL2007M5BankAccount-Security** project to develop your prompts.
+Use the following steps to complete this portion of the demo:
 
 1. Open the **APL2007M5BankAccount-Security** project, and then review the **Program.cs** and **BankAccount.cs** code files.
 
