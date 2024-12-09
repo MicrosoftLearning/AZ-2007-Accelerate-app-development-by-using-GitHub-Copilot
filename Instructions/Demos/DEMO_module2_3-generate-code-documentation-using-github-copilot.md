@@ -56,13 +56,13 @@ Use the following steps to complete this section of the demo:
     The generated response should look similar to the following code sample:
 
     ```csharp
+
     namespace ParallelAsyncExample
     {
         public partial class MainWindow : Window
         {
             // HttpClient instance with a maximum response content buffer size of 1,000,000 bytes
             private readonly HttpClient _client = new HttpClient { MaxResponseContentBufferSize = 1_000_000 };
-    
             // List of URLs to download content from
             private readonly IEnumerable<string> _urlList = new string[]
             {
@@ -86,24 +86,20 @@ Use the following steps to complete this section of the demo:
                 "https://docs.microsoft.com/education",
                 "https://docs.microsoft.com/gaming"
             };
-    
             // Event handler for the start button click event
             private void OnStartButtonClick(object sender, RoutedEventArgs e)
             {
                 // Disable the start button and clear the results text box
                 _startButton.IsEnabled = false;
                 _resultsTextBox.Clear();
-    
                 // Start the asynchronous operation to sum page sizes
                 Task.Run(() => StartSumPageSizesAsync());
             }
-    
             // Starts the asynchronous operation to sum page sizes
             private async Task StartSumPageSizesAsync()
             {
                 // Perform the main download operation
                 await SumPageSizesAsync();
-    
                 // Update the UI to re-enable the start button and indicate that control has returned
                 await Dispatcher.BeginInvoke(() =>
                 {
@@ -111,25 +107,20 @@ Use the following steps to complete this section of the demo:
                     _startButton.IsEnabled = true;
                 });
             }
-    
             // Asynchronously sums the sizes of the pages from the URLs
             private async Task SumPageSizesAsync()
             {
                 // Start a stopwatch to measure elapsed time
                 var stopwatch = Stopwatch.StartNew();
-    
                 // Create tasks to download content from each URL
                 IEnumerable<Task<int>> downloadTasksQuery =
                     from url in _urlList
                     select ProcessUrlAsync(url, _client);
-    
                 // Convert the sequence of tasks into an array
                 Task<int>[] downloadTasks = downloadTasksQuery.ToArray();
-    
                 // Wait for all tasks to complete and sum the lengths of the downloaded content
                 int[] lengths = await Task.WhenAll(downloadTasks);
                 int total = lengths.Sum();
-    
                 // Update the UI with the total bytes and elapsed time
                 await Dispatcher.BeginInvoke(() =>
                 {
@@ -138,7 +129,6 @@ Use the following steps to complete this section of the demo:
                     _resultsTextBox.Text += $"\nElapsed time:          {stopwatch.Elapsed}\n";
                 });
             }
-    
             // Asynchronously processes a URL by downloading its content and returning the length of the content
             private async Task<int> ProcessUrlAsync(string url, HttpClient client)
             {
@@ -146,10 +136,8 @@ Use the following steps to complete this section of the demo:
                 {
                     // Download the content of the URL
                     byte[] byteArray = await client.GetByteArrayAsync(url);
-    
                     // Update the UI with the URL and content length
                     await DisplayResultsAsync(url, byteArray);
-    
                     // Return the length of the downloaded content
                     return byteArray.Length;
                 }
@@ -161,22 +149,20 @@ Use the following steps to complete this section of the demo:
                         _resultsTextBox.Text += $"{url,-60} {"Error",-10}\n";
                         _resultsTextBox.Text += $"Exception: {e.Message}\n";
                     });
-    
                     // Return 0 to indicate failure
                     return 0;
                 }
             }
-    
             // Updates the UI with the URL and the length of the downloaded content
             private Task DisplayResultsAsync(string url, byte[] content) =>
                 Dispatcher.BeginInvoke(() =>
                     _resultsTextBox.Text += $"{url,-60} {content.Length,10:#,#}\n")
                           .Task;
-    
             // Disposes of the HttpClient instance when the window is closed to free up resources
             protected override void OnClosed(EventArgs e) => _client.Dispose();
         }
     }
+
     ```
 
     The response includes suggested code comments and *a portion* of the associated code. Some of your code may be omitted for brevity. You could manually move code comments into the actual code file.

@@ -171,36 +171,32 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
     *Here's a simple example of how you might add password-based authentication to the BankAccount class:*
 
     ```csharp
+
     public class BankAccount
     {
         // Existing code...
-    
         private string password;
-    
         public BankAccount(string accountNumber, double initialBalance, string accountHolderName, string accountType, DateTime dateOpened, string password)
         {
             // Existing code...
     
             this.password = password;
         }
-    
         public bool Authenticate(string password)
         {
             return this.password == password;
         }
-    
         public void Credit(double amount, string password)
         {
             if (!Authenticate(password))
             {
                 throw new Exception("Authentication failed.");
             }
-    
             // Existing code...
         }
-    
         // Similar changes would be made to the Debit, Transfer, and other methods...
     }
+
     ```
 
     *In this example, a password is added as a parameter to the BankAccount constructor and stored in a private field. An Authenticate method is added that checks if the provided password matches the stored password. The Credit method (and other methods that should require authentication) is modified to take a password as an argument and call Authenticate before performing the operation.*
@@ -260,10 +256,10 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
     *Here is an updated version of BankAccount.cs that uses encryption for account numbers and account holder names:*
 
     ```csharp
+
     using System;
     using System.Security.Cryptography;
     using System.Text;
-    
     namespace BankAccountApp
     {
         public class InsufficientFundsException : Exception
@@ -278,111 +274,91 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                 CurrentBalance = currentBalance;
             }
         }
-    
         public class InvalidAccountTypeException : Exception
         {
             public string AccountType { get; }
-    
             public InvalidAccountTypeException(string accountType)
                 : base($"Invalid account type: {accountType}.")
             {
                 AccountType = accountType;
             }
         }
-    
         public class InvalidAccountNumberException : Exception
         {
             public string AccountNumber { get; }
-    
             public InvalidAccountNumberException(string accountNumber)
                 : base($"Invalid account number: {accountNumber}.")
             {
                 AccountNumber = accountNumber;
             }
         }
-    
         public class InvalidAccountHolderNameException : Exception
         {
             public string AccountHolderName { get; }
-    
             public InvalidAccountHolderNameException(string accountHolderName)
                 : base($"Invalid account holder name: {accountHolderName}.")
             {
                 AccountHolderName = accountHolderName;
             }
         }
-    
         public class InvalidDateOpenedException : Exception
         {
             public DateTime DateOpened { get; }
-    
             public InvalidDateOpenedException(DateTime dateOpened)
                 : base($"Invalid date opened: {dateOpened}.")
             {
                 DateOpened = dateOpened;
             }
         }
-    
         public class InvalidInitialBalanceException : Exception
         {
             public double InitialBalance { get; }
-    
             public InvalidInitialBalanceException(double initialBalance)
                 : base($"Invalid initial balance: {initialBalance}.")
             {
                 InitialBalance = initialBalance;
             }
         }
-    
         public class InvalidInterestRateException : Exception
         {
             public double InterestRate { get; }
-    
             public InvalidInterestRateException(double interestRate)
                 : base($"Invalid interest rate: {interestRate}.")
             {
                 InterestRate = interestRate;
             }
         }
-    
         public class InvalidTransferAmountException : Exception
         {
             public double TransferAmount { get; }
-    
             public InvalidTransferAmountException(double transferAmount)
                 : base($"Invalid transfer amount: {transferAmount}.")
             {
                 TransferAmount = transferAmount;
             }
         }
-    
         public class InvalidCreditAmountException : Exception
         {
             public double CreditAmount { get; }
-    
             public InvalidCreditAmountException(double creditAmount)
                 : base($"Invalid credit amount: {creditAmount}.")
             {
                 CreditAmount = creditAmount;
             }
         }
-    
         public class InvalidDebitAmountException : Exception
         {
             public double DebitAmount { get; }
-    
             public InvalidDebitAmountException(double debitAmount)
                 : base($"Invalid debit amount: {debitAmount}.")
             {
                 DebitAmount = debitAmount;
             }
         }
-    
         public class AuthenticationException : Exception
         {
             public AuthenticationException(string message) : base(message) { }
         }
-    
         public class BankAccount
         {
             public enum AccountTypes
@@ -393,39 +369,32 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                 CertificateOfDeposit,
                 Retirement
             }
-    
             private string EncryptedAccountNumber { get; }
             private string EncryptedAccountHolderName { get; }
             public double Balance { get; private set; }
             public AccountTypes AccountType { get; }
             public DateTime DateOpened { get; }
             private const double MaxTransferAmountForDifferentOwners = 500;
-    
             private string Username { get; }
             private string Password { get; }
-    
             public BankAccount(string accountNumber, double initialBalance, string accountHolderName, string accountType, DateTime dateOpened, string username, string password)
             {
                 if (accountNumber.Length != 10)
                 {
                     throw new InvalidAccountNumberException(accountNumber);
                 }
-    
                 if (initialBalance < 0)
                 {
                     throw new InvalidInitialBalanceException(initialBalance);
                 }
-    
                 if (accountHolderName.Length < 2)
                 {
                     throw new InvalidAccountHolderNameException(accountHolderName);
                 }
-    
                 if (dateOpened > DateTime.Now)
                 {
                     throw new InvalidDateOpenedException(dateOpened);
                 }
-    
                 EncryptedAccountNumber = Encrypt(accountNumber);
                 EncryptedAccountHolderName = Encrypt(accountHolderName);
                 Balance = initialBalance;
@@ -434,24 +403,20 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                 Username = username;
                 Password = password;
             }
-    
             public void Credit(double amount)
             {
                 if (amount < 0)
                 {
                     throw new InvalidCreditAmountException(amount);
                 }
-    
                 Balance += amount;
             }
-    
             public void Debit(double amount)
             {
                 if (amount < 0)
                 {
                     throw new InvalidDebitAmountException(amount);
                 }
-    
                 if (Balance >= amount)
                 {
                     Balance -= amount;
@@ -461,17 +426,14 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                     throw new InsufficientFundsException(amount, Balance);
                 }
             }
-    
             public double GetBalance()
             {
                 return Balance;
             }
-    
             public void Transfer(BankAccount toAccount, double amount)
             {
                 ValidateTransferAmount(amount);
                 ValidateTransferLimitForDifferentOwners(toAccount, amount);
-    
                 if (Balance >= amount)
                 {
                     Debit(amount);
@@ -482,7 +444,6 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                     throw new InsufficientFundsException(amount, Balance);
                 }
             }
-    
             private void ValidateTransferAmount(double amount)
             {
                 if (amount < 0)
@@ -490,7 +451,6 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                     throw new InvalidTransferAmountException(amount);
                 }
             }
-    
             private void ValidateTransferLimitForDifferentOwners(BankAccount toAccount, double amount)
             {
                 if (Decrypt(EncryptedAccountHolderName) != Decrypt(toAccount.EncryptedAccountHolderName) && amount > MaxTransferAmountForDifferentOwners)
@@ -498,22 +458,18 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                     throw new Exception("Transfer amount exceeds maximum limit for different account owners.");
                 }
             }
-    
             public void PrintStatement()
             {
                 Console.WriteLine($"Account Number: {Decrypt(EncryptedAccountNumber)}, Balance: {Balance}");
             }
-    
             public double CalculateInterest(double interestRate)
             {
                 if (interestRate < 0)
                 {
                     throw new InvalidInterestRateException(interestRate);
                 }
-    
                 return Balance * interestRate;
             }
-    
             public void Authenticate(string username, string password)
             {
                 if (Username != username || Password != password)
@@ -521,16 +477,13 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                     throw new AuthenticationException("Invalid username or password.");
                 }
             }
-    
             private string Encrypt(string plainText)
             {
                 using (Aes aes = Aes.Create())
                 {
                     aes.Key = Encoding.UTF8.GetBytes("A very strong key"); // Use a secure key
                     aes.IV = Encoding.UTF8.GetBytes("A strong IV123456"); // Use a secure IV
-    
                     ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-    
                     using (var ms = new System.IO.MemoryStream())
                     {
                         using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
@@ -540,21 +493,17 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                                 sw.Write(plainText);
                             }
                         }
-    
                         return Convert.ToBase64String(ms.ToArray());
                     }
                 }
             }
-    
             private string Decrypt(string cipherText)
             {
                 using (Aes aes = Aes.Create())
                 {
                     aes.Key = Encoding.UTF8.GetBytes("A very strong key"); // Use a secure key
                     aes.IV = Encoding.UTF8.GetBytes("A strong IV123456"); // Use a secure IV
-    
                     ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-    
                     using (var ms = new System.IO.MemoryStream(Convert.FromBase64String(cipherText)))
                     {
                         using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
@@ -569,6 +518,7 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
             }
         }
     }
+
     ```
 
     *Usage:*
@@ -623,13 +573,13 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
     *Here is an updated version of Program.cs that incorporates these improvements:*
 
     ```csharp
+
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
     using System.Threading.Tasks;
-    
     namespace BankAccountApp
     {
         class Program
@@ -642,14 +592,12 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
             private const double maxTransactionAmount = 500.0;
             private const double minAccountStart = 200.0;
             private const double maxAccountStart = 1000.0;
-    
             static async Task Main()
             {
                 List<BankAccount> accounts = CreateBankAccounts(NumberOfAccounts);
                 await SimulateTransactionsAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
                 await SimulateTransfersAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
             }
-    
             static List<BankAccount> CreateBankAccounts(int numberOfAccounts)
             {
                 List<BankAccount> accounts = new();
@@ -686,7 +634,6 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                 }
                 return accounts;
             }
-    
             static async Task SimulateTransactionsAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 var tasks = accounts.Select(async account =>
@@ -713,13 +660,10 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                             Console.WriteLine($"Transaction failed: {ex.Message}");
                         }
                     }
-    
                     Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                 });
-    
                 await Task.WhenAll(tasks);
             }
-    
             static async Task SimulateTransfersAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 var tasks = accounts.Select(async account =>
@@ -740,13 +684,10 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                             Console.WriteLine($"Transfer failed: {ex.Message}");
                         }
                     }
-    
                     Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                 });
-    
                 await Task.WhenAll(tasks);
             }
-    
             static double GenerateRandomDollarAmount(bool isAccount, double min, double max)
             {
                 if (isAccount)
@@ -760,34 +701,28 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                     return Math.Round(transactionAmount, 2);
                 }
             }
-    
             static string GenerateRandomAccountHolder()
             {
                 string[] accountHolderNames = { "John Smith", "Maria Garcia", "Mohammed Khan", "Sophie Dubois", "Liam Johnson", "Emma Martinez", "Noah Lee", "Olivia Kim", "William Chen", "Ava Wang", "James Brown", "Isabella Nguyen", "Benjamin Wilson", "Mia Li", "Lucas Anderson", "Charlotte Liu", "Alexander Taylor", "Amelia Patel", "Daniel Garcia", "Sophia Kim" };
                 var accountHolderName = accountHolderNames[random.Next(0, accountHolderNames.Length)];
                 return accountHolderName;
             }
-    
             static string GenerateRandomAccountType()
             {
                 string[] accountTypes = { "Savings", "Checking", "Money Market", "Certificate of Deposit", "Retirement" };
                 return accountTypes[random.Next(0, accountTypes.Length)];
             }
-    
             static DateTime GenerateRandomDateOpened()
             {
                 DateTime startDate = new(DateTime.Today.Year - MaxYearsBack, 1, 1);
                 int daysRange = (DateTime.Today - startDate).Days;
                 DateTime randomDate = startDate.AddDays(random.Next(daysRange));
-    
                 if (randomDate.Year == DateTime.Today.Year && randomDate >= DateTime.Today)
                 {
                     randomDate = randomDate.AddDays(-1);
                 }
-    
                 return randomDate;
             }
-    
             static string GenerateSecurePassword()
             {
                 const int passwordLength = 12;
@@ -796,7 +731,6 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                 using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
                 {
                     byte[] uintBuffer = new byte[sizeof(uint)];
-    
                     while (passwordLength > password.Length)
                     {
                         rng.GetBytes(uintBuffer);
@@ -804,11 +738,11 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                         password.Append(validChars[(int)(num % (uint)validChars.Length)]);
                     }
                 }
-    
                 return password.ToString();
             }
         }
     }
+
     ```
 
 1. Notice that the updates to Program.cs focused on secure random number generation.
@@ -846,13 +780,13 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
     *Here is an updated version of Program.cs with secure exception handling:*
 
     ```csharp
+
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
     using System.Threading.Tasks;
-    
     namespace BankAccountApp
     {
         class Program
@@ -865,14 +799,12 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
             private const double maxTransactionAmount = 500.0;
             private const double minAccountStart = 200.0;
             private const double maxAccountStart = 1000.0;
-    
             static async Task Main()
             {
                 List<BankAccount> accounts = CreateBankAccounts(NumberOfAccounts);
                 await SimulateTransactionsAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
                 await SimulateTransfersAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
             }
-    
             static List<BankAccount> CreateBankAccounts(int numberOfAccounts)
             {
                 List<BankAccount> accounts = new();
@@ -911,7 +843,6 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                 }
                 return accounts;
             }
-    
             static async Task SimulateTransactionsAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 var tasks = accounts.Select(async account =>
@@ -959,13 +890,10 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                             LogException(ex);
                         }
                     }
-    
                     Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                 });
-    
                 await Task.WhenAll(tasks);
             }
-    
             static async Task SimulateTransfersAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 var tasks = accounts.Select(async account =>
@@ -1002,13 +930,10 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                             LogException(ex);
                         }
                     }
-    
                     Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                 });
-    
                 await Task.WhenAll(tasks);
             }
-    
             static double GenerateRandomDollarAmount(bool isAccount, double min, double max)
             {
                 if (isAccount)
@@ -1022,34 +947,28 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                     return Math.Round(transactionAmount, 2);
                 }
             }
-    
             static string GenerateRandomAccountHolder()
             {
                 string[] accountHolderNames = { "John Smith", "Maria Garcia", "Mohammed Khan", "Sophie Dubois", "Liam Johnson", "Emma Martinez", "Noah Lee", "Olivia Kim", "William Chen", "Ava Wang", "James Brown", "Isabella Nguyen", "Benjamin Wilson", "Mia Li", "Lucas Anderson", "Charlotte Liu", "Alexander Taylor", "Amelia Patel", "Daniel Garcia", "Sophia Kim" };
                 var accountHolderName = accountHolderNames[random.Next(0, accountHolderNames.Length)];
                 return accountHolderName;
             }
-    
             static string GenerateRandomAccountType()
             {
                 string[] accountTypes = { "Savings", "Checking", "Money Market", "Certificate of Deposit", "Retirement" };
                 return accountTypes[random.Next(0, accountTypes.Length)];
             }
-    
             static DateTime GenerateRandomDateOpened()
             {
                 DateTime startDate = new(DateTime.Today.Year - MaxYearsBack, 1, 1);
                 int daysRange = (DateTime.Today - startDate).Days;
                 DateTime randomDate = startDate.AddDays(random.Next(daysRange));
-    
                 if (randomDate.Year == DateTime.Today.Year && randomDate >= DateTime.Today)
                 {
                     randomDate = randomDate.AddDays(-1);
                 }
-    
                 return randomDate;
             }
-    
             static string GenerateSecurePassword()
             {
                 const int passwordLength = 12;
@@ -1058,7 +977,6 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                 using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
                 {
                     byte[] uintBuffer = new byte[sizeof(uint)];
-    
                     while (passwordLength > password.Length)
                     {
                         rng.GetBytes(uintBuffer);
@@ -1066,10 +984,8 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
                         password.Append(validChars[(int)(num % (uint)validChars.Length)]);
                     }
                 }
-    
                 return password.ToString();
             }
-    
             static void LogException(Exception ex)
             {
                 // Implement a secure logging mechanism here
@@ -1078,6 +994,7 @@ GitHub Copilot Chat can be used to help improve code security. Your prompts can 
             }
         }
     }
+
     ```
 
 1. Implement the suggested updates that help to improve code security for your `Program.cs` file.

@@ -103,19 +103,16 @@ In this section of the demo, you use the **Explain** smart action to generate an
 1. Scroll down to locate the `SumPageSizesAsync()` method.
 
     ```csharp
+
     private async Task SumPageSizesAsync()
     {
         var stopwatch = Stopwatch.StartNew();
-    
         IEnumerable<Task<int>> downloadTasksQuery =
             from url in _urlList
             select ProcessUrlAsync(url, _client);
-    
         Task<int>[] downloadTasks = downloadTasksQuery.ToArray();
-    
         int[] lengths = Task.WhenAll(downloadTasks);
         int total = lengths.Sum();
-    
         await Dispatcher.BeginInvoke(() =>
         {
             stopwatch.Stop();
@@ -124,6 +121,7 @@ In this section of the demo, you use the **Explain** smart action to generate an
             _resultsTextBox.Text += $"\nElapsed time:          {stopwatch.Elapsed}\n";
         });
     }
+
     ```
 
 1. Select the following code lines, and then use the **Explain** smart action to generate an explanation.
@@ -135,7 +133,6 @@ In this section of the demo, you use the **Explain** smart action to generate an
     IEnumerable<Task<int>> downloadTasksQuery =
         from url in _urlList
         select ProcessUrlAsync(url, _client);
-
     Task<int>[] downloadTasks = downloadTasksQuery.ToArray();
 
     ```

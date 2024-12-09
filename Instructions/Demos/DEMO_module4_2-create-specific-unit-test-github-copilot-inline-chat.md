@@ -42,11 +42,12 @@ Use the following steps to complete this section of the demo:
     The contents of the PrimeServiceTests.cs file should resemble the following code snippet:
 
     ```csharp
+
     namespace System.Numbers.UnitTests;
-    
     public class PrimeServiceTests
     {
     }
+
     ```
 
 1. Save the PrimeServiceTests.cs file, and then rebuild the solution.
@@ -62,71 +63,59 @@ Use the following steps to complete this section of the demo:
     The next section of the demo shows how to use GitHub Copilot Chat to ask GitHub Copilot to suggest additional edge cases that should be tested.
 
     ```csharp
+
     namespace System.Numbers.UnitTests
     {
         public class PrimeServiceTests
         {
             private readonly PrimeService _primeService;
-    
             public PrimeServiceTests()
             {
                 _primeService = new PrimeService();
             }
-    
             [Fact]
             public void IsPrime_ReturnsFalse_ForNegativeNumbers()
             {
                 // Arrange
                 int candidate = -5;
-    
                 // Act
                 bool result = _primeService.IsPrime(candidate);
-    
                 // Assert
                 Assert.False(result);
             }
-    
             [Fact]
             public void IsPrime_ReturnsFalse_ForZero()
             {
                 // Arrange
                 int candidate = 0;
-    
                 // Act
                 bool result = _primeService.IsPrime(candidate);
-    
                 // Assert
                 Assert.False(result);
             }
-    
             [Fact]
             public void IsPrime_ReturnsFalse_ForOne()
             {
                 // Arrange
                 int candidate = 1;
-    
                 // Act
                 bool result = _primeService.IsPrime(candidate);
-    
                 // Assert
                 Assert.False(result);
             }
-    
             [Fact]
             public void IsPrime_ReturnsTrue_ForPrimeNumbers()
             {
                 // Arrange
                 int candidate = 7;
-    
                 // Act
                 bool result = _primeService.IsPrime(candidate);
-    
                 // Assert
                 Assert.True(result);
             }
         }
     }
-    
+
     ```
 
 ### Create unit tests for specific conditions using GitHub Copilot and GitHub Copilot Chat
@@ -160,70 +149,58 @@ Use the following steps to complete this section of the demo:
     ```
 
     ```csharp
+
     [Fact]
     public void IsPrime_ReturnsTrue_ForTwo()
     {
         // Arrange
         int candidate = 2;
-    
         // Act
         bool result = _primeService.IsPrime(candidate);
-    
         // Assert
         Assert.True(result);
     }
-    
     [Fact]
     public void IsPrime_ReturnsTrue_ForThree()
     {
         // Arrange
         int candidate = 3;
-    
         // Act
         bool result = _primeService.IsPrime(candidate);
-    
         // Assert
         Assert.True(result);
     }
-    
     [Fact]
     public void IsPrime_ReturnsFalse_ForEvenNumbersGreaterThanTwo()
     {
         // Arrange
         int candidate = 4;
-    
         // Act
         bool result = _primeService.IsPrime(candidate);
-    
         // Assert
         Assert.False(result);
     }
-    
     [Fact]
     public void IsPrime_ReturnsTrue_ForLargePrimeNumber()
     {
         // Arrange
         int candidate = 7919;
-    
         // Act
         bool result = _primeService.IsPrime(candidate);
-    
         // Assert
         Assert.True(result);
     }
-    
     [Fact]
     public void IsPrime_ReturnsFalse_ForLargeNonPrimeNumber()
     {
         // Arrange
         int candidate = 8000;
-    
         // Act
         bool result = _primeService.IsPrime(candidate);
-    
         // Assert
         Assert.False(result);
     }
+
     ```
 
 1. Create a blank line after the last test method in the `PrimeServiceTests` class.

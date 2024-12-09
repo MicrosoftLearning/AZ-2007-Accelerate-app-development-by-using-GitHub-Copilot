@@ -480,7 +480,7 @@ Use the following steps to complete this section of the exercise:
     git config --global user.name "user name"
     ```
 
-    Replace **"lab assigned email"** with the email defined in the lab environment: +++@lab.CloudPortalCredential(1).Username+++
+    Replace **"lab assigned email"** with the email defined in the lab environment: `@lab.CloudPortalCredential(1).Username`
 
     Replace **"user name"** with your own name.
 

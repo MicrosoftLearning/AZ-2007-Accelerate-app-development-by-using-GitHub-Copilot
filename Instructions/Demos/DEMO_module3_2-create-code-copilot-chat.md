@@ -127,11 +127,13 @@ To create and update the data structure, complete the following steps:
     Your data structure should resemble the following code:
 
     ```csharp
+
     public struct ProdDepartments
     {
         public static string[] DepartmentNames =  ["Men's Clothing", "Women's Clothing", "Children's Clothing", "Accessories", "Footwear", "Outerwear", "Sportswear", "Undergarments"];
         public static string[] DepartmentAbbreviations =  ["MENS", "WOMN", "CHLD", "ACCS", "FOOT", "OUTR", "SPRT", "UNDR" ];
     }
+
     ```
 
 1. To accept the suggestion, press the tab key or select **Accept**.
@@ -155,10 +157,12 @@ To create and update the data structure, complete the following steps:
     Your data structures should resemble the following code:
 
     ```csharp
+
     public struct ManufacturingSites
     {
         public static string[] manSites = [ "US1", "US2", "US3", "UK1", "UK2", "UK3", "JP1", "JP2", "JP3", "MX1" ];
     }
+
     ```
 
 1. To accept the suggestion, press the tab key or select **Accept**.
@@ -180,6 +184,7 @@ To create and update the data structure, complete the following steps:
     Your updated SalesData data structures should resemble the following code:
 
     ```csharp
+
     public struct SalesData
     {
         public DateOnly dateSold;
@@ -190,6 +195,7 @@ To create and update the data structure, complete the following steps:
         public double baseCost;
         public int volumeDiscount;
     }
+
     ```
 
 With the new and updated data structures in place, you can now work on updating the `GenerateSalesData` method.
@@ -248,6 +254,7 @@ To update the `GenerateSalesData` method, complete the following steps:
 1. Copy the following variable declarations and paste them at the location of the second blank code line that you created.
 
     ```csharp
+
     int indexOfDept = 0;
     string deptAbb = "";
     string firstDigit = "";
@@ -255,6 +262,7 @@ To update the `GenerateSalesData` method, complete the following steps:
     string sizeCode = "";
     string colorCode = "";
     string manufacturingSite = "";
+
     ```
 
     You should have a blank code line before and after the variable declarations.
@@ -343,6 +351,7 @@ To update the `GenerateSalesData` method, complete the following steps:
     You should have a series of code lines that assign values to the variables used to construct the productID. The next step is to construct the productID value.
 
     ```csharp
+
     int indexOfDept = Array.IndexOf(ProdDepartments.departmentNames, salesData[i].departmentName);
     string deptAbb = ProdDepartments.departmentAbbreviations[indexOfDept];
     string firstDigit = (indexOfDept + 1).ToString();
@@ -350,6 +359,7 @@ To update the `GenerateSalesData` method, complete the following steps:
     string sizeCode = new string[] { "XS", "S", "M", "L", "XL" }[random.Next(0, 5)];
     string colorCode = new string[] { "BK", "BL", "GR", "RD", "YL", "OR", "WT", "GY" }[random.Next(0, 8)];
     string manufacturingSite = ManufacturingSites.manufacturingSites[random.Next(0, ManufacturingSites.manufacturingSites.Length)];
+
     ```
 
 1. Select the `salesData[i].productID = random.Next(1, 101);` code line, open the inline chat, and then enter the following prompt:
@@ -401,16 +411,15 @@ To update the `GenerateSalesData` method, complete the following steps:
 1. Your updated GenerateSalesData method should now resemble the following snippet:
 
     ```csharp
+
     public SalesData[] GenerateSalesData()
     {
         SalesData[] salesData = new SalesData[1000];
         Random random = new Random();
-
         for (int i = 0; i < 1000; i++)
         {
             salesData[i].dateSold = new DateOnly(2023, random.Next(1, 13), random.Next(1, 29));
             salesData[i].departmentName = ProdDepartments.departmentNames[random.Next(0, ProdDepartments.departmentNames.Length)];
-
             int indexOfDept = Array.IndexOf(ProdDepartments.departmentNames, salesData[i].departmentName);
             string deptAbb = ProdDepartments.departmentAbbreviations[indexOfDept];
             string firstDigit = (indexOfDept + 1).ToString();
@@ -418,17 +427,15 @@ To update the `GenerateSalesData` method, complete the following steps:
             string sizeCode = new string[] { "XS", "S", "M", "L", "XL" }[random.Next(0, 5)];
             string colorCode = new string[] { "BK", "BL", "GR", "RD", "YL", "OR", "WT", "GY" }[random.Next(0, 8)];
             string manufacturingSite = ManufacturingSites.manufacturingSites[random.Next(0, ManufacturingSites.manufacturingSites.Length)];
-
             salesData[i].productID = $"{deptAbb}-{firstDigit}{nextTwoDigits}-{sizeCode}-{colorCode}-{manufacturingSite}";
             salesData[i].quantitySold = random.Next(1, 101);
             salesData[i].unitPrice = random.Next(25, 300) + random.NextDouble();
             salesData[i].baseCost = salesData[i].unitPrice * (1 - (random.Next(5, 21) / 100.0));
             salesData[i].volumeDiscount = (int)(salesData[i].quantitySold * 0.1);
-
         }
-
         return salesData;
     }
+
     ```
 
 1. Save your changes.
@@ -446,18 +453,17 @@ You need to update the `QuarterlySalesReport` method. Based on the project goals
 At this point, your `QuarterlySalesReport` method should resemble the following code snippet:
 
 ```csharp
+
 public void QuarterlySalesReport(SalesData[] salesData)
 {
     // create a dictionary to store the quarterly sales data
     Dictionary<string, double> quarterlySales = new Dictionary<string, double>();
-
     // iterate through the sales data
     foreach (SalesData data in salesData)
     {
         // calculate the total sales for each quarter
         string quarter = GetQuarter(data.dateSold.Month);
         double totalSales = data.quantitySold * data.unitPrice;
-
         if (quarterlySales.ContainsKey(quarter))
         {
             quarterlySales[quarter] += totalSales;
@@ -467,7 +473,6 @@ public void QuarterlySalesReport(SalesData[] salesData)
             quarterlySales.Add(quarter, totalSales);
         }
     }
-
     // display the quarterly sales report
     Console.WriteLine("Quarterly Sales Report");
     Console.WriteLine("----------------------");
@@ -475,8 +480,8 @@ public void QuarterlySalesReport(SalesData[] salesData)
     {
         Console.WriteLine("{0}: ${1}", quarter.Key, quarter.Value);
     }
-
 }
+
 ```
 
 To update the `QuarterlySalesReport` method, complete the following steps:

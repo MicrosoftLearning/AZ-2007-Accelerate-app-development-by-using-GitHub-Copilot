@@ -61,7 +61,8 @@ Use the following steps to complete this section of the demo:
 
 1. Replace the contents of the Program.cs file with the following code:
 
-    ```C#
+    ```csharp
+
     namespace ReportGenerator
     {
         class QuarterlyIncomeReport
@@ -70,20 +71,16 @@ Use the following steps to complete this section of the demo:
             {
                 // create a new instance of the class
                 QuarterlyIncomeReport report = new QuarterlyIncomeReport();
-
                 // call the GenerateSalesData method
-
                 // call the QuarterlySalesReport method
-                
             }
-
             public void QuarterlySalesReport()
             {
-
                 Console.WriteLine("Quarterly Sales Report");
             }
         }    
     }
+
     ```
 
 Your setup requirements are complete and you're ready to continue the demo.
@@ -124,7 +121,8 @@ Use the following steps to complete this section of the demo:
 
 1. To modify the field data types, update your code as follows:
 
-    ```C#
+    ```csharp
+
     public struct SalesData
     {
         public DateOnly dateSold;
@@ -133,6 +131,7 @@ Use the following steps to complete this section of the demo:
         public int quantitySold;
         public double unitPrice;
     }
+
     ```
 
     Making quick adjustments to code completion suggestions helps to ensure that you're building the code you want. It's especially important to make corrections early in your development process when large portions of your codebase still need to be developed. Subsequent code completions will be based on the code you've already written, so it's important to ensure that your code is as accurate as possible.
@@ -168,12 +167,12 @@ Use the following steps to complete this section of the demo:
 
 1. If necessary, adjust the other code lines to match the following code snippet:
 
-    ```C#
+    ```csharp
+
     public SalesData[] GenerateSalesData()
     {
         SalesData[] salesData = new SalesData[1000];
         Random random = new Random();
-
         for (int i = 0; i < salesData.Length; i++)
         {
             salesData[i].dateSold = new DateOnly(2023, random.Next(1, 13), random.Next(1, 29));
@@ -182,9 +181,9 @@ Use the following steps to complete this section of the demo:
             salesData[i].quantitySold = random.Next(1, 101);
             salesData[i].unitPrice = random.NextDouble() * 100;
         }
-
         return salesData;
     }
+
     ```
 
 The ability to generate code from code comments is a powerful feature of GitHub Copilot. With just two comments, you were able to generate a data structure and a method that generates test data.
@@ -283,16 +282,15 @@ Use the following steps to complete this section of the demo:
     The suggested code completion calculates and displays the quarterly income based on sales data.
 
     ```csharp
+
     // create a dictionary to store the quarterly sales data
     Dictionary<string, double> quarterlySales = new Dictionary<string, double>();
-
     // iterate through the sales data
     foreach (SalesData data in salesData)
     {
         // calculate the total sales for each quarter
         string quarter = GetQuarter(data.dateSold.Month);
         double totalSales = data.quantitySold * data.unitPrice;
-
         if (quarterlySales.ContainsKey(quarter))
         {
             quarterlySales[quarter] += totalSales;
@@ -302,7 +300,6 @@ Use the following steps to complete this section of the demo:
             quarterlySales.Add(quarter, totalSales);
         }
     }
-
     // display the quarterly sales report
     Console.WriteLine("Quarterly Sales Report");
     Console.WriteLine("----------------------");
@@ -328,6 +325,7 @@ Use the following steps to complete this section of the demo:
 1. To accept the code completion suggested, press the Tab key.
 
     ```csharp
+
     public string GetQuarter(int month)
     {
         if (month >= 1 && month <= 3)
@@ -347,6 +345,7 @@ Use the following steps to complete this section of the demo:
             return "Q4";
         }
     }
+
     ```
 
 1. Notice that the `Main` method needs to be completed before you can run the code.
@@ -363,15 +362,14 @@ Use the following steps to complete this section of the demo:
 
 1. Your `Main` method should contain the following code:
 
-    ```C#
+    ```csharp
+
     static void Main(string[] args)
     {
         // create a new instance of the class
         QuarterlyIncomeReport report = new QuarterlyIncomeReport();
-
         // call the GenerateSalesData method
         SalesData[] salesData = report.GenerateSalesData();
-
         // call the QuarterlySalesReport method
         report.QuarterlySalesReport(salesData);
     }
@@ -380,7 +378,8 @@ Use the following steps to complete this section of the demo:
 
 1. Take a minute to review the code in your `QuarterlyIncomeReport` class.
 
-    ```C#
+    ```csharp
+
     namespace ReportGenerator
     {
         class QuarterlyIncomeReport
@@ -389,14 +388,11 @@ Use the following steps to complete this section of the demo:
             {
                 // create a new instance of the class
                 QuarterlyIncomeReport report = new QuarterlyIncomeReport();
-    
                 // call the GenerateSalesData method
                 SalesData[] salesData = report.GenerateSalesData();
-    
                 // call the QuarterlySalesReport method
                 report.QuarterlySalesReport(salesData);
             }
-    
             /* public struct SalesData includes the following fields: date sold, department name, product ID, quantity sold, unit price */
             public struct SalesData
             {
@@ -406,13 +402,11 @@ Use the following steps to complete this section of the demo:
                 public int quantitySold;
                 public double unitPrice;
             }
-    
             /* the GenerateSalesData method returns 1000 SalesData records. It assigns random values to each field of the data structure */
             public SalesData[] GenerateSalesData()
             {
                 SalesData[] salesData = new SalesData[1000];
                 Random random = new Random();
-    
                 for (int i = 0; i < 1000; i++)
                 {
                     salesData[i].dateSold = new DateOnly(2023, random.Next(1, 13), random.Next(1, 29));
@@ -421,22 +415,18 @@ Use the following steps to complete this section of the demo:
                     salesData[i].quantitySold = random.Next(1, 101);
                     salesData[i].unitPrice = random.NextDouble() * 100;
                 }
-    
                 return salesData;
             }
-    
             public void QuarterlySalesReport(SalesData[] salesData)
             {
                 // create a dictionary to store the quarterly sales data
                 Dictionary<string, double> quarterlySales = new Dictionary<string, double>();
-    
                 // iterate through the sales data
                 foreach (SalesData data in salesData)
                 {
                     // calculate the total sales for each quarter
                     string quarter = GetQuarter(data.dateSold.Month);
                     double totalSales = data.quantitySold * data.unitPrice;
-    
                     if (quarterlySales.ContainsKey(quarter))
                     {
                         quarterlySales[quarter] += totalSales;
@@ -446,7 +436,6 @@ Use the following steps to complete this section of the demo:
                         quarterlySales.Add(quarter, totalSales);
                     }
                 }
-    
                 // display the quarterly sales report
                 Console.WriteLine("Quarterly Sales Report");
                 Console.WriteLine("----------------------");
@@ -455,7 +444,6 @@ Use the following steps to complete this section of the demo:
                     Console.WriteLine(entry.Key + ": $" + entry.Value);
                 }
             }
-    
             public string GetQuarter(int month)
             {
                 if (month >= 1 && month <= 3)

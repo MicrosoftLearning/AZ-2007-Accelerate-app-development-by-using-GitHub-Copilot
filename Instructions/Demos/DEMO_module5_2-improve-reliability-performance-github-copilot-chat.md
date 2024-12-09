@@ -211,6 +211,7 @@ Use the following steps to complete this portion of the demo:
     *Here's how you could improve the `Debit` method with these suggestions:*
 
     ```csharp
+
     public void Debit(double amount)
     {
         if (Balance >= amount)
@@ -222,16 +223,17 @@ Use the following steps to complete this portion of the demo:
             throw new InvalidOperationException($"Insufficient balance for debit. Attempted to debit {amount}, but current balance is {Balance}.");
         }
     }
+
     ```
 
     *And here's an example of a custom exception class:*
 
     ```csharp
+
     public class InsufficientFundsException : Exception
     {
         public double AttemptedAmount { get; }
         public double CurrentBalance { get; }
-    
         public InsufficientFundsException(double attemptedAmount, double currentBalance)
             : base($"Insufficient balance for debit. Attempted to debit {attemptedAmount}, but current balance is {currentBalance}.")
         {
@@ -239,11 +241,13 @@ Use the following steps to complete this portion of the demo:
             CurrentBalance = currentBalance;
         }
     }
+
     ```
 
     *You could then throw this custom exception in the Debit method:*
 
     ```csharp
+
     public void Debit(double amount)
     {
         if (Balance >= amount)
@@ -255,6 +259,7 @@ Use the following steps to complete this portion of the demo:
             throw new InsufficientFundsException(amount, Balance);
         }
     }
+
     ```
 
     *This way, the calling code can catch InsufficientFundsException and have access to the AttemptedAmount and CurrentBalance properties to handle the error condition more effectively.*
@@ -281,11 +286,13 @@ Use the following steps to complete this portion of the demo:
     *1. Use Enum for Account Type: Instead of using a string for the account type and checking if it's "Savings" or "Current", consider using an enum. This would prevent potential issues with string comparison (like case sensitivity) and limit the account type to predefined values.*
 
     ```csharp
+
     public enum AccountType
     {
         Savings,
         Current
     }
+
     ```
 
     *2. Use Decimal for Monetary Values: It's generally recommended to use the decimal type instead of double for monetary values to avoid rounding errors.*
@@ -337,12 +344,11 @@ Use the following steps to complete this portion of the demo:
     Here's an example of how you might implement some of these suggestions:
 
     ```csharp
+
     public class BankAccount
     {
         private const double MaxTransferAmountForDifferentOwners = 500;
-    
         // ...
-    
         public void Transfer(BankAccount toAccount, double amount)
         {
             ValidateTransferAmount(amount);
@@ -358,7 +364,6 @@ Use the following steps to complete this portion of the demo:
                 throw new InsufficientFundsException(amount, Balance);
             }
         }
-    
         private void ValidateTransferAmount(double amount)
         {
             if (amount < 0)
@@ -366,7 +371,6 @@ Use the following steps to complete this portion of the demo:
                 throw new InvalidTransferAmountException(amount);
             }
         }
-    
         private void ValidateTransferLimitForDifferentOwners(BankAccount toAccount, double amount)
         {
             if (AccountHolderName != toAccount.AccountHolderName && amount > MaxTransferAmountForDifferentOwners)
@@ -375,6 +379,7 @@ Use the following steps to complete this portion of the demo:
             }
         }
     }
+
     ```
 
     You can continue working through the suggestions provided by GitHub Copilot Chat until you implement all of the improvements that you think are necessary.
@@ -402,10 +407,10 @@ Use the following steps to complete this portion of the demo:
     *Here is an improved version of the Program.cs file with asynchronous methods:*
 
     ```csharp
+
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    
     namespace BankAccountApp
     {
         class Program
@@ -418,14 +423,12 @@ Use the following steps to complete this portion of the demo:
             private const double maxTransactionAmount = 500.0;
             private const double minAccountStart = 200.0;
             private const double maxAccountStart = 1000.0;
-    
             static async Task Main(string[] args)
             {
                 List<BankAccount> accounts = await CreateBankAccountsAsync(NumberOfAccounts);
                 await SimulateTransactionsAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
                 await SimulateTransfersAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
             }
-    
             static async Task<List<BankAccount>> CreateBankAccountsAsync(int numberOfAccounts)
             {
                 List<BankAccount> accounts = new List<BankAccount>();
@@ -450,7 +453,6 @@ Use the following steps to complete this portion of the demo:
                 }
                 return accounts;
             }
-    
             static async Task SimulateTransactionsAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 List<Task> tasks = new List<Task>();
@@ -480,13 +482,11 @@ Use the following steps to complete this portion of the demo:
                             }
                             await Task.Yield(); // Yield control to allow other tasks to run
                         }
-    
                         Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                     }));
                 }
                 await Task.WhenAll(tasks);
             }
-    
             static async Task SimulateTransfersAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 List<Task> tasks = new List<Task>();
@@ -516,13 +516,11 @@ Use the following steps to complete this portion of the demo:
                             }
                             await Task.Yield(); // Yield control to allow other tasks to run
                         }
-    
                         Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                     }));
                 }
                 await Task.WhenAll(tasks);
             }
-    
             static double GenerateRandomDollarAmount(bool isAccount, double min, double max)
             {
                 if (isAccount)
@@ -536,35 +534,31 @@ Use the following steps to complete this portion of the demo:
                     return Math.Round(transactionAmount, 2);
                 }
             }
-    
             static string GenerateRandomAccountHolder()
             {
                 string[] accountHolderNames = { "John Smith", "Maria Garcia", "Mohammed Khan", "Sophie Dubois", "Liam Johnson", "Emma Martinez", "Noah Lee", "Olivia Kim", "William Chen", "Ava Wang", "James Brown", "Isabella Nguyen", "Benjamin Wilson", "Mia Li", "Lucas Anderson", "Charlotte Liu", "Alexander Taylor", "Amelia Patel", "Daniel Garcia", "Sophia Kim" };
                 var accountHolderName = accountHolderNames[random.Next(0, accountHolderNames.Length)];
                 return accountHolderName;
             }
-    
             static string GenerateRandomAccountType()
             {
                 string[] accountTypes = { "Savings", "Checking", "Money Market", "Certificate of Deposit", "Retirement" };
                 return accountTypes[random.Next(0, accountTypes.Length)];
             }
-    
             static DateTime GenerateRandomDateOpened()
             {
                 DateTime startDate = new DateTime(DateTime.Today.Year - MaxYearsBack, 1, 1);
                 int daysRange = (DateTime.Today - startDate).Days;
                 DateTime randomDate = startDate.AddDays(random.Next(daysRange));
-    
                 if (randomDate.Year == DateTime.Today.Year && randomDate >= DateTime.Today)
                 {
                     randomDate = randomDate.AddDays(-1);
                 }
-    
                 return randomDate;
             }
         }
     }
+
     ```
 
 1. Implement the suggested updates that help to improve code performance (or reliability) of your `Program` class.
@@ -591,10 +585,10 @@ Use the following steps to complete this portion of the demo:
     *Here is an improved version of the Program.cs file with better exception handling:*
 
     ```csharp
+
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    
     namespace BankAccountApp
     {
         class Program
@@ -607,14 +601,12 @@ Use the following steps to complete this portion of the demo:
             private const double maxTransactionAmount = 500.0;
             private const double minAccountStart = 200.0;
             private const double maxAccountStart = 1000.0;
-    
             static async Task Main(string[] args)
             {
                 List<BankAccount> accounts = await CreateBankAccountsAsync(NumberOfAccounts);
                 await SimulateTransactionsAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
                 await SimulateTransfersAsync(accounts, NumberOfTransactions, minTransactionAmount, maxTransactionAmount);
             }
-    
             static async Task<List<BankAccount>> CreateBankAccountsAsync(int numberOfAccounts)
             {
                 List<BankAccount> accounts = new List<BankAccount>();
@@ -643,7 +635,6 @@ Use the following steps to complete this portion of the demo:
                 }
                 return accounts;
             }
-    
             static async Task SimulateTransactionsAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 List<Task> tasks = new List<Task>();
@@ -681,13 +672,11 @@ Use the following steps to complete this portion of the demo:
                             }
                             await Task.Yield(); // Yield control to allow other tasks to run
                         }
-    
                         Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                     }));
                 }
                 await Task.WhenAll(tasks);
             }
-    
             static async Task SimulateTransfersAsync(List<BankAccount> accounts, int numberOfTransactions, double minTransactionAmount, double maxTransactionAmount)
             {
                 List<Task> tasks = new List<Task>();
@@ -725,13 +714,11 @@ Use the following steps to complete this portion of the demo:
                             }
                             await Task.Yield(); // Yield control to allow other tasks to run
                         }
-    
                         Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
                     }));
                 }
                 await Task.WhenAll(tasks);
             }
-    
             static double GenerateRandomDollarAmount(bool isAccount, double min, double max)
             {
                 if (isAccount)
@@ -745,35 +732,31 @@ Use the following steps to complete this portion of the demo:
                     return Math.Round(transactionAmount, 2);
                 }
             }
-    
             static string GenerateRandomAccountHolder()
             {
                 string[] accountHolderNames = { "John Smith", "Maria Garcia", "Mohammed Khan", "Sophie Dubois", "Liam Johnson", "Emma Martinez", "Noah Lee", "Olivia Kim", "William Chen", "Ava Wang", "James Brown", "Isabella Nguyen", "Benjamin Wilson", "Mia Li", "Lucas Anderson", "Charlotte Liu", "Alexander Taylor", "Amelia Patel", "Daniel Garcia", "Sophia Kim" };
                 var accountHolderName = accountHolderNames[random.Next(0, accountHolderNames.Length)];
                 return accountHolderName;
             }
-    
             static string GenerateRandomAccountType()
             {
                 string[] accountTypes = { "Savings", "Checking", "Money Market", "Certificate of Deposit", "Retirement" };
                 return accountTypes[random.Next(0, accountTypes.Length)];
             }
-    
             static DateTime GenerateRandomDateOpened()
             {
                 DateTime startDate = new DateTime(DateTime.Today.Year - MaxYearsBack, 1, 1);
                 int daysRange = (DateTime.Today - startDate).Days;
                 DateTime randomDate = startDate.AddDays(random.Next(daysRange));
-    
                 if (randomDate.Year == DateTime.Today.Year && randomDate >= DateTime.Today)
                 {
                     randomDate = randomDate.AddDays(-1);
                 }
-    
                 return randomDate;
             }
         }
     }
+
     ```
 
 ## Summary

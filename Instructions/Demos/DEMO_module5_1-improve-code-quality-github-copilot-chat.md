@@ -162,39 +162,34 @@ Use the following steps to complete this portion of the demo:
    *Here's how your code might look after these improvements:*
 
     ```csharp
+
     private static readonly Random random = new Random();
     private const int MaxYearsBack = 10;
-    
     static double GenerateRandomBalance(double min, double max)
     {
         double balance = random.NextDouble() * (max - min) + min;
         return Math.Round(balance, 2);
     }
-    
     static string GenerateRandomAccountHolder()
     {
         string[] accountHolderNames = {  /* names here */  };
         var accountHolderName = accountHolderNames[random.Next(0, accountHolderNames.Length)];
         return accountHolderName;
     }
-    
     static string GenerateRandomAccountType()
     {
         string[] accountTypes = {  /* types here */  };
         return accountTypes[random.Next(0, accountTypes.Length)];
     }
-    
     static DateTime GenerateRandomDateOpened()
     {
         DateTime startDate = new DateTime(DateTime.Today.Year - MaxYearsBack, 1, 1);
         int daysRange = (DateTime.Today - startDate).Days;
         DateTime randomDate = startDate.AddDays(random.Next(daysRange));
-    
         if (randomDate.Year == DateTime.Today.Year && randomDate >= DateTime.Today)
         {
             randomDate = randomDate.AddDays(-1);
         }
-    
         return randomDate;
     }
 
@@ -237,20 +232,19 @@ Use the following steps to complete this portion of the demo:
     *4. Code Duplication: The code for generating random values is duplicated in several places. This could be refactored into a utility class or methods.*
 
     ```csharp
+
     class Program
     {
         private static readonly Random random = new Random();
         private const int MaxYearsBack = 10;
         private const int NumberOfAccounts = 20;
         private const int NumberOfTransactions = 100;
-    
         static void Main(string[] args)
         {
             List<BankAccount> accounts = CreateBankAccounts(NumberOfAccounts);
             SimulateTransactions(accounts, NumberOfTransactions);
             SimulateTransfers(accounts);
         }
-    
         static List<BankAccount> CreateBankAccounts(int numberOfAccounts)
         {
             List<BankAccount> accounts = new List<BankAccount>();
@@ -268,19 +262,17 @@ Use the following steps to complete this portion of the demo:
             }
             return accounts;
         }
-    
         static void SimulateTransactions(List<BankAccount> accounts, int numberOfTransactions)
         {
             // same code as before...
         }
-    
         static void SimulateTransfers(List<BankAccount> accounts)
         {
             // same code as before...
         }
-    
         // same helper methods as before...
     }
+
     ```
 
 1. Review the suggestions provided by GitHub Copilot Chat.
@@ -319,20 +311,18 @@ Use the following steps to complete this portion of the demo:
     **Code snippet A: Use Interfaces**
 
     ```csharp
+
     interface IAccountFactory
     {
         BankAccount Create(int index);
     }
-    
     class BankAccountFactory : IAccountFactory
     {
         private readonly RandomDataGenerator _randomDataGenerator;
-    
         public BankAccountFactory(RandomDataGenerator randomDataGenerator)
         {
             _randomDataGenerator = randomDataGenerator;
         }
-    
         public BankAccount Create(int index)
         {
             double initialBalance = _randomDataGenerator.GenerateRandomBalance(10, 50000);
@@ -342,23 +332,18 @@ Use the following steps to complete this portion of the demo:
             return new BankAccount($"Account {index + 1}", initialBalance, accountHolderName, accountType, dateOpened);
         }
     }
-
-
     // In the `Program` class, you would then use the `IAccountFactory` to create accounts:
     interface IAccountFactory
     {
         BankAccount Create(int index);
     }
-    
     class BankAccountFactory : IAccountFactory
     {
         private readonly RandomDataGenerator _randomDataGenerator;
-    
         public BankAccountFactory(RandomDataGenerator randomDataGenerator)
         {
             _randomDataGenerator = randomDataGenerator;
         }
-    
         public BankAccount Create(int index)
         {
             double initialBalance = _randomDataGenerator.GenerateRandomBalance(10, 50000);
@@ -374,6 +359,7 @@ Use the following steps to complete this portion of the demo:
     **Code snippet B: Duplication**
 
     ```csharp
+
     static void SimulateOperations(List<BankAccount> accounts, int numberOfOperations, Action<BankAccount, double> operation)
     {
         foreach (BankAccount account in accounts)
@@ -391,12 +377,9 @@ Use the following steps to complete this portion of the demo:
                     Console.WriteLine($"Operation failed: {ex.Message}");
                 }
             }
-    
             Console.WriteLine($"Account: {account.AccountNumber}, Balance: {account.Balance.ToString("C")}, Account Holder: {account.AccountHolderName}, Account Type: {account.AccountType}");
         }
     }
-
-    
     // Then you can call this method like this:
     SimulateOperations(accounts, NumberOfTransactions, (account, amount) => {
         if (amount >= 0)
@@ -408,6 +391,7 @@ Use the following steps to complete this portion of the demo:
             account.Debit(-amount);
         }
     });
+
     ```
 
     > [!NOTE]

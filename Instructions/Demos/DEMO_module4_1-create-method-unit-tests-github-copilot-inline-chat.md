@@ -74,24 +74,23 @@ To create a new xUnit test project, complete the following steps:
     Your file should be similar to the following code snippet:
 
     ```csharp
+
     namespace PrimeService.UnitTests;
-    
     public class PrimeServiceTests
     {
-    
     }
-    
+
     ```
 
 1. To help avoid namespace issues when you build the project, update the PrimeServiceTests.cs file as follows:
 
     ```csharp
+
     namespace System.Numbers.UnitTests;
-    
     public class PrimeServiceTests
     {
-    
     }
+
     ```
 
     A namespace in C# is used to organize related classes and types. It's a way to avoid name collisions and to make it easier to understand the organization of the code. The `.UnitTests` suffix in the test project's namespace is a common convention to indicate that the code in this namespace is testing the code in the System.Numbers namespace. This makes it clear when looking at the project structure which code is production code and which code is test code.
@@ -101,22 +100,25 @@ To create a new xUnit test project, complete the following steps:
     The PrimeService.UnitTests.csproj file should include an `<ItemGroup>` that contains the following `<PackageReference />` elements:
 
     ```xml
+
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="xunit" Version="2.5.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+
     ```
 
     These package references are required to use xUnit as the test library and to configure the test runner. You should also see the following `<ItemGroup>` elements in the PrimeService.UnitTests.csproj file:
 
     ```xml
+
     <ItemGroup>
         <Using Include="Xunit" />
     </ItemGroup>
-    
     <ItemGroup>
         <ProjectReference Include="..\Numbers\Numbers.csproj" />
     </ItemGroup>
+
     ```
 
     These elements are required to reference the Numbers project and to use the xUnit test framework.
@@ -190,51 +192,41 @@ Use the following steps to complete this section of the demo:
     The code snippet provided should be similar to the following code snippet:
 
     ```csharp
+
     using Xunit;
-    
     namespace System.Numbers.UnitTests
     {
         public class PrimeServiceTests
         {
             private readonly PrimeService _primeService;
-    
             public PrimeServiceTests()
             {
                 _primeService = new PrimeService();
             }
-    
             [Fact]
             public void IsPrime_InputIs1_ReturnsFalse()
             {
                 var result = _primeService.IsPrime(1);
-    
                 Assert.False(result, "1 should not be prime");
             }
-    
             [Fact]
             public void IsPrime_InputIs2_ReturnsTrue()
             {
                 var result = _primeService.IsPrime(2);
-    
                 Assert.True(result, "2 should be prime");
             }
-    
             [Fact]
             public void IsPrime_InputIs3_ReturnsTrue()
             {
                 var result = _primeService.IsPrime(3);
-    
                 Assert.True(result, "3 should be prime");
             }
-    
             [Fact]
             public void IsPrime_InputIs4_ReturnsFalse()
             {
                 var result = _primeService.IsPrime(4);
-    
                 Assert.False(result, "4 should not be prime");
             }
-    
             [Theory]
             [InlineData(5, true)]
             [InlineData(6, false)]
@@ -245,22 +237,23 @@ Use the following steps to complete this section of the demo:
             public void IsPrime_Values_ReturnExpectedResult(int value, bool expected)
             {
                 var result = _primeService.IsPrime(value);
-    
                 Assert.Equal(expected, result);
             }
         }
     }
+
     ```
 
     Notice that the unit tests require an instance of the PrimeService class.
 
     ```csharp
+
     private readonly PrimeService _primeService;
-    
     public PrimeServiceTests()
     {
         _primeService = new PrimeService();
     }
+
     ```
 
 1. Rebuild the solution.
@@ -297,51 +290,41 @@ Use the following steps to complete this section of the demo:
 1. Take a minute to review the suggestions provided by inline chat.
 
     ```csharp
+
     using Xunit;
-    
     namespace System.Numbers.UnitTests
     {
         public class PrimeServiceTests
         {
             private readonly PrimeService _primeService;
-    
             public PrimeServiceTests()
             {
                 _primeService = new PrimeService();
             }
-    
             [Fact]
             public void IsPrime_InputIs1_ReturnsFalse()
             {
                 var result = _primeService.IsPrime(1);
-    
                 Assert.False(result, "1 should not be prime");
             }
-    
             [Fact]
             public void IsPrime_InputIs2_ReturnsTrue()
             {
                 var result = _primeService.IsPrime(2);
-    
                 Assert.True(result, "2 should be prime");
             }
-    
             [Fact]
             public void IsPrime_InputIs3_ReturnsTrue()
             {
                 var result = _primeService.IsPrime(3);
-    
                 Assert.True(result, "3 should be prime");
             }
-    
             [Fact]
             public void IsPrime_InputIs4_ReturnsFalse()
             {
                 var result = _primeService.IsPrime(4);
-    
                 Assert.False(result, "4 should not be prime");
             }
-    
             [Theory]
             [InlineData(5, true)]
             [InlineData(6, false)]
@@ -352,7 +335,6 @@ Use the following steps to complete this section of the demo:
             public void IsPrime_Values_ReturnExpectedResult(int value, bool expected)
             {
                 var result = _primeService.IsPrime(value);
-    
                 Assert.Equal(expected, result);
             }
         }
