@@ -1,3 +1,9 @@
+---
+demo:
+    title: 'Demo Prep Task: Prepare the "Sample Apps" for AZ-2007 instructor demonstrations'
+    module: 'Module 2-5'
+---
+
 # Prepare the Sample Applications for AZ-2007 instructor demonstrations
 
 ## Instructions
