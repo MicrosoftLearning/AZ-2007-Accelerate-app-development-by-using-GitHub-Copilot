@@ -1,0 +1,67 @@
+{
+  "name": "AZ-2007 GitHub Copilot Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "8.0",
+      "installUsingApt": false
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.flake8",
+        "ms-vscode.vscode-json",
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "ms-vscode.powershell"
+      ],
+      "settings": {
+        "github.copilot.enable": {
+          "*": true,
+          "yaml": true,
+          "plaintext": true,
+          "markdown": true
+        },
+        "github.copilot.advanced": {
+          "debug.overrideEngine": "copilot",
+          "debug.testOverrideProxyUrl": "",
+          "debug.overrideProxyUrl": ""
+        },
+        "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+        "python.formatting.provider": "black",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "dotnet.defaultSolution": "disable",
+        "omnisharp.enableEditorConfigSupport": true,
+        "omnisharp.enableRoslynAnalyzers": true
+      }
+    }
+  },
+
+  "forwardPorts": [3000, 5000, 5001, 8000, 8080],
+  
+  "postCreateCommand": "bash -c 'echo \"Development container ready for AZ-2007 GitHub Copilot training!\" && echo \"GitHub Copilot extensions should be available in VS Code.\"'",
+  
+  "remoteUser": "vscode",
+  
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}
