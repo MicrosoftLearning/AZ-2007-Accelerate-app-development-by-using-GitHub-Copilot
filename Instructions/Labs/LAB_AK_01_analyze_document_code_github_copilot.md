@@ -1,8 +1,13 @@
 ---
 lab:
-    title: 'Lab: Accelerate app development by using GitHub Copilot'
-    type: 'Answer Key'
-    module: 'Modules 2-5'
+  title: 'Lab: Accelerate app development by using GitHub Copilot'
+  description: In this exercise, you used GitHub Copilot to evaluate the existing UnitTests project and extend the project to begin testing the data access classes in the Library.Infrastructure project. You added a reference to the Library.Infrastructure project in the UnitTests.csproj file and created unit tests for the JsonLoanRepository class. You used GitHub Copilot to help you write the unit tests for the GetLoan method in the JsonLoanRepository class. You ran the unit tests using Visual Studio Code's Test Explorer and verified that the tests passed.
+  duration: 190 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - GitHub
+    - Visual Studio Code
 ---
 
 # Lab: Accelerate app development by using GitHub Copilot
