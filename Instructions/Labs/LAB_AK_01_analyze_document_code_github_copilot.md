@@ -1,8 +1,18 @@
 ---
 lab:
-    title: 'Lab: Accelerate app development by using GitHub Copilot'
-    type: 'Answer Key'
-    module: 'Modules 2-5'
+  title: 'Lab: Accelerate app development by using GitHub Copilot'
+  type: Answer Key
+  module: Modules 2-5
+  description: You're a software developer working for a regional IT department. Most
+    of the applications that you work on support the local community. Recently, the
+    community library's servers were damaged in an accident, and it will take weeks
+    to get the authorization to replace them. Your department needs to develop a temporary
+    solution that will enable librarians to perform basic functions.
+  duration: 190 minutes
+  level: 200
+  islab: true
+  primarytopics:
+  - GitHub
 ---
 
 # Lab: Accelerate app development by using GitHub Copilot
