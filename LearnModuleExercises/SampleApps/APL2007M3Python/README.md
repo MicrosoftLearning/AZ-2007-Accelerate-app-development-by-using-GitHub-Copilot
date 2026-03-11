@@ -17,19 +17,19 @@ SamplePython
 
 ## Files
 
-### `src/main.py`
+<!-- ### `src/main.py` -->
 
 This file is the entry point of the console application. It contains the main code logic for the SamplePython application.
 
-### `tests/test_main.py`
+<!-- ### `tests/test_main.py` -->
 
 This file contains unit tests for the `main.py` file. It ensures that the functionality of the application is working as expected.
 
-### `.gitignore`
+<!-- ### `.gitignore` -->
 
 This file specifies the files and directories that should be ignored by Git version control. It typically includes files such as compiled binaries, temporary files, and sensitive information.
 
-### `requirements.txt`
+<!-- ### `requirements.txt` -->
 
 This file lists the dependencies required for the project. It specifies the Python packages and their versions that need to be installed for the application to run successfully.
 
