@@ -46,13 +46,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
     - name: Create GuidedProjectApp zip
       run: | 
         cd ./LearnModuleExercises/GuidedProject
         zip -r -q ../Downloads/GuidedProjectApp.zip * .vscode/*
     - name: Commit and push
-      uses: Endbug/add-and-commit@v7
+      uses: Endbug/add-and-commit@8c12ff729a98cfbcd3fe38b49f55eceb98a5ec02 # v7.5.0
       with:
         add: '["LearnModuleExercises/Downloads/GuidedProjectApp.zip"]'
         message: 'Updating Zip with sample app source files'
